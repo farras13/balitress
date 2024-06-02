@@ -1,0 +1,166 @@
+#news-slider {
+	margin-top: 80px;
+}
+.post-slide {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(50, 203, 45, 0.1);
+    margin: 15px;
+}
+.post-img img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+.post-content {
+    padding: 20px;
+}
+.post-title a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+.post-description {
+    font-size: 14px;
+    color: #777;
+}
+.post-date {
+    font-size: 12px;
+    color: #aaa;
+}
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+.over-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(50, 203, 45, 0.2);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.post-img:hover .over-layer {
+    opacity: 1;
+}
+.post-slide .read-more:hover {
+	background: #28a745;
+	text-decoration: none;
+	color: #fff;
+}
+.owl-controls .owl-buttons {
+	text-align: center;
+	margin-top: 20px;
+}
+.owl-controls .owl-buttons .owl-prev {
+	background: #fff;
+	position: absolute;
+	top: -13%;
+	left: 15px;
+	padding: 0 18px 0 15px;
+	border-radius: 50px;
+	box-shadow: 3px 14px 25px -10px #92b4d0;
+	transition: background 0.5s ease 0s;
+}
+.owl-controls .owl-buttons .owl-next {
+	background: #fff;
+	position: absolute;
+	top: -13%;
+	right: 15px;
+	padding: 0 15px 0 18px;
+	border-radius: 50px;
+	box-shadow: -3px 14px 25px -10px #92b4d0;
+	transition: background 0.5s ease 0s;
+}
+.owl-controls .owl-buttons .owl-prev:after,
+.owl-controls .owl-buttons .owl-next:after {
+	content: "\f104";
+	font-family: FontAwesome;
+	color: #333;
+	font-size: 30px;
+}
+.owl-controls .owl-buttons .owl-next:after {
+	content: "\f105";
+}
+@media only screen and (max-width: 1280px) {
+	.post-slide .post-content {
+		padding: 0px 15px 25px 15px;
+	}
+}
+.blockquote-custom {
+	background: #258d1a00;
+	border-left: 10px solid #ccc;
+	margin: 1.5em 10px;
+	padding: 0.5em 10px;
+	quotes: "\201C""\201D""\2018""\2019";
+}
+.blockquote-custom::before {
+	color: #ccc;
+	content: open-quote;
+	font-size: 4em;
+	line-height: 0.1em;
+	margin-right: 0.25em;
+	vertical-align: -0.4em;
+}
+.blockquote-custom p {
+	display: inline;
+}
+.show-neighbors {
+	overflow: hidden;
+
+	/* hide clones of neighboring slides on mobile */
+	.item__third:first-child,
+	.item__third:last-child {
+		display: none;
+	}
+
+	@media (min-width: 500px) {
+		.carousel-indicators {
+			margin-right: 25%;
+			margin-left: 25%;
+		}
+
+		.carousel-control-prev,
+		.carousel-control-next {
+			background: rgba(32, 179, 52, 0.1);
+			width: 5%;
+			z-index: 11; /* .carousel-caption has z-index 10 */
+		}
+
+		.carousel-inner {
+			width: (100% - 2 * 25%) * 3;
+			left: 3 * 25% - 100%;
+		}
+
+		/* slides receive classes only while moving */
+		.carousel-item-next:not(.carousel-item-left),
+		.carousel-item-right.active {
+			-webkit-transform: translate3d(33%, 0, 0);
+			transform: translate3d(33%, 0, 0);
+		}
+		.carousel-item-prev:not(.carousel-item-right),
+		.carousel-item-left.active {
+			-webkit-transform: translate3d(-33%, 0, 0);
+			transform: translate3d(-33%, 0, 0);
+		}
+
+		/* now the content of the current slide occupies only a third of it between the clones of two adjacent slides */
+		.item__third {
+			display: block !important;
+			float: left;
+			position: relative; /* captions can now be added */
+			width: 33.33333333%;
+		}
+	}
+}
