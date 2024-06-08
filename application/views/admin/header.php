@@ -152,7 +152,7 @@
             </a>           
           </li>
           <li class="nav-item">
-            <a href="<?= base_url("tour_package") ?>" class="nav-link">
+            <a href="<?= base_url("tourpackage") ?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Tour Packages

@@ -9,25 +9,25 @@ class Tour_package_model extends CI_Model {
 
     public function get_packages($id = FALSE) {
         if ($id === FALSE) {
-            $query = $this->db->get('tour_packages');
+            $query = $this->db->get('tourpackage');
             return $query->result_array();
         }
         
-        $query = $this->db->get_where('tour_packages', array('id' => $id));
+        $query = $this->db->get_where('tourpackage', array('Id' => $id));
         return $query->row_array();
     }
 
     public function create_package($data) {
-        return $this->db->insert('tour_packages', $data);
+        return $this->db->insert('tourpackage', $data);
     }
 
     public function update_package($id, $data) {
-        $this->db->where('id', $id);
-        return $this->db->update('tour_packages', $data);
+        $this->db->where('Id', $id);
+        return $this->db->update('tourpackage', $data);
     }
 
     public function delete_package($id) {
-        $this->db->where('id', $id);
-        return $this->db->delete('tour_packages');
+        $this->db->where('Id', $id);
+        return $this->db->delete('tourpackage');
     }
 }

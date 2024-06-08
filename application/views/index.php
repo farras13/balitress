@@ -1,5 +1,5 @@
 <!-- Carousel Start -->
-<div class="container-fluid p-0">
+<div class="container p-0">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -38,7 +38,7 @@
 <!-- Carousel End -->
 
 <!-- Booking Start -->
-<div class="container-fluid booking mt-5 pb-5">
+<div class="container booking mt-5">
     <div class="container pb-5">
         <div class="bg-light shadow" style="padding: 30px;">
             <div class="row align-items-center" style="min-height: 60px;">
@@ -99,7 +99,7 @@
 
 
 <!-- About Start -->
-<div class="container-fluid">
+<div class="container">
     <div class="container pt-3 pb-3" style="max-height: 100%;">
         <div class="text-center mb-3 pb-3">
             <h1 class="mb-2 text-primary"><span class="text-dark">Welcome to </span>Balitress</h1>
@@ -116,8 +116,8 @@
         </div>
     </div>
 </div>
-
-<div class="container-fluid py-5">
+<!-- 
+<div class="container py-5">
     <div class="container pt-5">
         <div class="row">
             <div class="col-lg-6" style="min-height: 500px;">
@@ -143,12 +143,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- About End -->
 
 
 <!-- Feature Start -->
-<div class="container-fluid pb-5">
+<!-- <div class="container pb-5">
     <div class="container pb-5">
         <div class="row">
             <div class="col-md-4">
@@ -186,11 +186,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Feature End -->
 
 <!-- Activities Start -->
-<div class="container-fluid py-5">
+<div class="container py-5">
     <div class="container pt-5 pb-3">
         <div class="text-center mb-3 pb-3">
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Retreat</h6>
@@ -258,7 +258,7 @@
 
 <!-- Packages Start -->
 
-<div class="container-fluid py-5">
+<div class="container py-5">
     <div class="container pt-5 pb-3">
         <div class="text-center mb-3 pb-3">
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">VILLA & SUITES</h6>
@@ -269,11 +269,11 @@
                 <footer class="blockquote-footer">Nelson Mandela</footer>
             </blockquote>
         </div>
-        <div class="container-fluid mt-5">
+        <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="owl-carousel villa-carousel">
-                    <?php for($y=0;$y<5;$y++) { ?>
+                    <?php for($y=1;$y<6;$y++) { ?>
                             <div class="post-slide package-item bg-white mb-2">
                                 <img class="img-fluid" src="<?= base_url('assets/') ?>img/package-2.jpg" alt="">
                                 <div class="p-4">
@@ -282,7 +282,7 @@
                                         <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>1 days</small>
                                         <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>1 Person</small>
                                     </div>
-                                    <a class="h5 text-decoration-none" href="<?= base_url('Home/villa') ?>">Snorkeling and Mangrove Forest Day Tour</a>
+                                    <a class="h5 text-decoration-none" href="<?= base_url('Home/villa') ?>">Snorkeling <?= $y; ?></a>
                                     <div class="border-top mt-4 pt-4">
                                         <div class="d-flex justify-content-between">
                                             <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
@@ -300,7 +300,7 @@
 </div>
 <!-- Packages End -->
 
-<div class="container-fluid py-5">
+<div class="container py-5">
     <div class="container pt-5 pb-3">
         <div class="text-center mb-3 pb-3">
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Tour package</h6>
@@ -311,7 +311,7 @@
                 <footer class="blockquote-footer">Nelson Mandela</footer>
             </blockquote>
         </div>
-        <div class="container-fluid mt-5">
+        <div class="container mt-5">
             <div class="row">
                 <div class="col-md-12">
                     <div class="owl-carousel testimonial-carousel">
@@ -343,7 +343,7 @@
 
 
 <!-- Service Start -->
-<div class="container-fluid py-5">
+<div class="container py-5">
     <div class="container pt-5 pb-3">
         <div class="text-center mb-3 pb-3">
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Special Offer </h6>
@@ -383,7 +383,7 @@
 
 
 <!-- Registration Start -->
-<!-- <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+<!-- <div class="container bg-registration py-5" style="margin: 90px 0;">
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-5 mb-lg-0">
@@ -438,7 +438,7 @@
 <!-- Team End -->
 
 <!-- Testimonial Start -->
-<!-- <div class="container-fluid py-5">
+<!-- <div class="container py-5">
     <div class="container py-5">
         <div class="text-center mb-3 pb-3">
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Testimonial</h6>
@@ -487,7 +487,7 @@
 <!-- Testimonial End -->
 
 <!-- Blog Start -->
-<!-- <div class="container-fluid py-5">
+<!-- <div class="container py-5">
     <div class="container pt-5 pb-3">
         <div class="text-center mb-3 pb-3">
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Blog</h6>

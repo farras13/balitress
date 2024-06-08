@@ -26,64 +26,73 @@
     </script>
     <?php endif; ?>
     <section class="content">
-        <div class="container-fluid">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Add Tour & Package  </h3>
-                </div>
-                <div class="card-body">
-                <?php echo form_open($linkform); ?>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Add Tour & Package</h3>
+            </div>
+            <div class="card-body">
+                <?php echo form_open_multipart($linkform); ?>
 
                 <div class="form-group">
-                    <label for="package_name">Package Name</label>
-                    <input type="text" class="form-control" name="package_name" value="<?php echo set_value('package_name', isset($tour_package['package_name']) ? $tour_package['package_name'] : ''); ?>">
-                </div>
-                <div class="form-group">
-                    <label for="location">Location</label>
-                    <input type="text" class="form-control" name="location" value="<?php echo set_value('location', isset($tour_package['location']) ? $tour_package['location'] : ''); ?>">
-                </div>
-                <div class="form-group">
-                    <label for="duration">Duration</label>
-                    <input type="text" class="form-control" name="duration" value="<?php echo set_value('duration', isset($tour_package['duration']) ? $tour_package['duration'] : ''); ?>">
-                </div>
-                <div class="form-group">
-                    <label for="participants">Participants</label>
-                    <input type="text" class="form-control" name="participants" value="<?php echo set_value('participants', isset($tour_package['participants']) ? $tour_package['participants'] : ''); ?>">
+                    <label for="name">Package Name</label>
+                    <input type="text" class="form-control" name="name" value="<?php echo set_value('name', isset($tour_package['name']) ? $tour_package['name'] : ''); ?>">
                 </div>
                 
                 <div class="form-group">
                     <label for="price">Price</label>
                     <input type="text" class="form-control" name="price" value="<?php echo set_value('price', isset($tour_package['price']) ? $tour_package['price'] : ''); ?>">
                 </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control summernote" name="description"><?php echo set_value('description', isset($tour_package['description']) ? $tour_package['description'] : ''); ?></textarea>
+
+                <!-- <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="text" class="form-control" name="stock" value="<?php echo set_value('stock', isset($tour_package['stock']) ? $tour_package['stock'] : ''); ?>">
                 </div>
+                 -->
                 <div class="form-group">
-                    <label for="included">Included</label>
-                    <textarea class="form-control summernote" name="included"><?php echo set_value('included', isset($tour_package['included']) ? $tour_package['included'] : ''); ?></textarea>
+                    <label for="about">About</label>
+                    <textarea class="form-control summernote" name="about"><?php echo set_value('about', isset($tour_package['about']) ? $tour_package['about'] : ''); ?></textarea>
                 </div>
+
                 <div class="form-group">
-                    <label for="itinerary">Itinerary</label>
-                    <textarea class="form-control summernote" name="itinerary"><?php echo set_value('itinerary', isset($tour_package['itinerary']) ? $tour_package['itinerary'] : ''); ?></textarea>
+                    <label for="lite_desc">Lite Description</label>
+                    <textarea class="form-control summernote" name="lite_desc"><?php echo set_value('lite_desc', isset($tour_package['lite_desc']) ? $tour_package['lite_desc'] : ''); ?></textarea>
                 </div>
+
                 <div class="form-group">
-                    <label for="additional_info">Additional Info</label>
-                    <textarea class="form-control summernote" name="additional_info"><?php echo set_value('additional_info', isset($tour_package['additional_info']) ? $tour_package['additional_info'] : ''); ?></textarea>
+                    <label for="full_desc">Full Description</label>
+                    <textarea class="form-control summernote" name="full_desc"><?php echo set_value('full_desc', isset($tour_package['full_desc']) ? $tour_package['full_desc'] : ''); ?></textarea>
                 </div>
+
                 <div class="form-group">
-                    <label for="cancellation_policy">Cancellation Policy</label>
-                    <textarea class="form-control summernote" name="cancellation_policy"><?php echo set_value('cancellation_policy', isset($tour_package['cancellation_policy']) ? $tour_package['cancellation_policy'] : ''); ?></textarea>
+                    <label for="highlight">Highlight</label>
+                    <textarea class="form-control summernote" name="highlight"><?php echo set_value('highlight', isset($tour_package['highlight']) ? $tour_package['highlight'] : ''); ?></textarea>
                 </div>
+
+                <div class="form-group">
+                    <label for="info">Additional Info</label>
+                    <textarea class="form-control summernote" name="info"><?php echo set_value('info', isset($tour_package['info']) ? $tour_package['info'] : ''); ?></textarea>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <label for="thumbnail">Thumbnail</label>
+                    <input type="file" class="form-control" name="thumbnail">
+                </div>
+
+                
 
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="<?php echo site_url('tour_package'); ?>" class="btn btn-secondary">Cancel</a>
 
                 <?php echo form_close(); ?>
-                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+   
 </div>
 
 

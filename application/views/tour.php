@@ -157,15 +157,45 @@
                 <hr/>
             </div>
         </div>
-
+        
         <div class="row">
             <div class="col-md-12">
                 <h4>MOST POPULAR</h4>
                 <hr />
             </div>
+            <div class="row">
+                <?php for($x=1;$x<5;$x++){ ?>
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <div class="post-slide">
+                        <div class="post-img">
+                                <img src="<?= base_url('assets/') ?>img/package-5.jpg" alt="">
+                                <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+                            </div>
+                        <div class="testimonial-text bg-white p-4 mt-n5">
+                            <div class="post-content">
+                                <h3 class="post-title">
+                                    <a href="#">Bali Trees</a>
+                                </h3>
+                                <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
+                                <span class="post-date"><i class="fa fa-clock-o"></i> Oct 27, 2019</span>
+                                <!-- <a href="#" class="float-lg-right btn btn-sm btn-primary rounded">Explore</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+                
+                  
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Other Package</h4>
+                <hr />
+            </div>
             <div class="col-md-12">
                 <div class="owl-carousel testimonial-carousel">
-                    <?php for($y=0;$y<5;$y++) { ?>
+                    <?php for($y=1;$y<51;$y++) { ?>
                     <div class="post-slide">
                         <div class="post-img">
                                 <img src="<?= base_url('assets/') ?>img/package-3.jpg" alt="">
@@ -174,7 +204,7 @@
                         <div class="testimonial-text bg-white p-4 mt-n5">
                             <div class="post-content">
                                 <h3 class="post-title">
-                                    <a href="#">Bali Trees</a>
+                                    <a href="#">Bali Trees <?= $y; ?></a>
                                 </h3>
                                 <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
                                 <span class="post-date"><i class="fa fa-clock-o"></i> Oct 27, 2019</span>

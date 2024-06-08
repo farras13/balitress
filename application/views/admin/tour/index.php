@@ -45,32 +45,28 @@
               <table id="example1" class="table table-striped mt-3">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Package Name</th>
-                            <th>Location</th>
-                            <th>Duration</th>
-                            <th>Participants</th>
-                            <th>Rating</th>
-                            <th>Reviews</th>
+                            <th>No</th>
+                            <th>Package</th>
+                            <th>Description</th>
                             <th>Price</th>
+                            <th>Thumbnail</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($tour_packages as $package): ?>
+                        <?php foreach ($tour_packages as $index => $package): ?>
                         <tr>
-                            <td><?php echo $package['id']; ?></td>
-                            <td><?php echo $package['package_name']; ?></td>
-                            <td><?php echo $package['location']; ?></td>
-                            <td><?php echo $package['duration']; ?></td>
-                            <td><?php echo $package['participants']; ?></td>
-                            <td><?php echo $package['rating']; ?></td>
-                            <td><?php echo $package['reviews_count']; ?></td>
-                            <td><?php echo $package['price']; ?></td>
+                            <td><?= $index+1; ?></td>
+                            <td><?= $package['Name']; ?></td>
+                            <td><?= $package['Lite_desc']; ?></td>
+                            <td><?= $package['Price']; ?></td>
+                            <td><img src="<?= base_url() ?><?= $package['Thumbnail']; ?>" class="img-fluid"></td>                           
                             <td>
-                                <a href="<?php echo site_url('tour_package/view/'.$package['id']); ?>" class="btn btn-sm btn-info">View</a>
-                                <a href="<?php echo site_url('tour_package/edit/'.$package['id']); ?>" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="<?php echo site_url('tour_package/delete/'.$package['id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                <a href="<?= site_url("tourpackage/gallery/").$package['Id'] ?>" class="btn btn-primary"><i class="fa fa-image"></i></a>
+                                <a href="<?= site_url("tourpackage/include_exclude/").$package['Id'] ?>" class="btn btn-primary"><i class="fa fa-arrows"></i></a>
+                                <a href="<?= site_url('tourpackage/view/'.$package['Id']); ?>" class="btn btn-sm btn-info">View</a>
+                                <a href="<?= site_url('tourpackage/edit/'.$package['Id']); ?>" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="<?= site_url('tourpackage/delete/'.$package['Id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>

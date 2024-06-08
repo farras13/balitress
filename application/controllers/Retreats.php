@@ -6,7 +6,7 @@ class Retreats extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Retreats_model');
-        if (!$this->session->userdata('logged_in')) {
+        if (!$this->session->userdata('log')) {
             redirect('Login');
         }
     }
