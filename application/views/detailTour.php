@@ -1,30 +1,37 @@
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="package-item bg-white mb-2">
-              <center><img class="w-100" src="<?= base_url('assets/') ?>img/package-1.jpg" alt="Snorkeling and Mangrove Forest Day Tour"></center>
-                <div class="p-4">
-                    <div class="d-flex justify-content-between mb-3">
-                        <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Nusa Lembongan</small>
-                        <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>1 day</small>
-                        <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>1 Person</small>
-                    </div>
-                    <a class="h5 text-decoration-none" href="#">Snorkeling and Mangrove Forest Day Tour</a>
-                    <div class="border-top mt-4 pt-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                            <h5 class="m-0">$350</h5>
-                        </div>
-                        <div class="d-flex justify-content-end mt-2">
-                            <a href="#" class="btn btn-primary">+</a>
-                        </div>
-                    </div>
-                </div>
+<div class="container mt-4">
+    <form action="<?= base_url("tour/cari") ?>" method="post">
+        <div class="row">
+            <div class="col-md-8">
+                <input type="text" placeholder="Find place and things to do" class="form-control rounded mb-3">
             </div>
-    
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</>
+            </div>
+        </div>
+
+    </form>
+    <h5>Balinese - Tours Package - <?= $package['Name']; ?></h5>
+    <h2> <?= $package['Name']; ?> </h2>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <center><img src="<?= base_url(''.$package['Thumbnail']) ?>" class="img-fluid" id="mainImage" alt="Main Image"></center>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <?php foreach($gallery as $g): ?>
+            <div class="col-md-3">
+            <center><img src="<?= base_url(''.$g->images) ?>" class="img-thumbnail thumb-image" data-target="#imageModal" data-toggle="modal" data-slide-to="<?php echo $i-1; ?>" alt="Image <?php echo $i; ?>"></center>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">        
+        <div class="col-md-8">    
             <div class="bg-light p-5 rounded">
-                <h2 class="mb-4">Package Details</h2>
-                <p class="lead">Join us on an exciting Snorkeling and Mangrove Forest Day Tour in the beautiful Nusa Lembongan. Experience the vibrant marine life and the tranquility of the mangrove forest.</p>
+                <h2 class="mb-4">About This Activity</h2>
+                <p class="lead"><?= $package['About'] ?></p>
     
                 <h3 class="mt-4">What's included:</h3>
                 <ul class="list-unstyled mb-4">
@@ -34,9 +41,49 @@
                     <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>Lunch at a local restaurant</li>
                     <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>Round-trip transportation</li>
                 </ul>
-    
-                <h3 class="mt-4">Itinerary:</h3>
-                <ol class="mb-4">
+                <div class="bg-blue shadow p-4">
+                    <h6>Select Participants and Date </h6>
+                    <form action="<?= base_url("home/search") ?>" method="get">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                            </div>
+                                            <select class="custom-select rounded-right" name="adult" id="adult">
+                                                <option value="1" disabled selected>Guest</option>
+                                                <?php for ($i=1; $i < 16; $i++) { ?>
+                                                    <option value="<?= $i ?>"><?= $i ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-calendar-alt"></i></span>
+                                            </div>
+                                            <input type="date" name="checkin" id="checkin" hidden>
+                                            <input type="date" name="checkout" id="checkout" hidden>
+                                            <input type="text" id="daterange" class="form-control rounded-right" placeholder="Check In - Check Out">
+                                        </div>
+                                        
+                                    </div>                                                                        
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3 mt-md-0">
+                                <button type="submit" class="btn btn-primary btn-block rounded" style="height: 47px;">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <h3 class="mt-4">Highlight:</h3>
+                <div class="p-3">
+                    <?= $package['Highlight'] ?>
+                </div>
+                <!-- <ol class="mb-4">
                     <li class="mb-2">8:00 AM - Pick up from your hotel</li>
                     <li class="mb-2">9:00 AM - Arrive at Nusa Lembongan</li>
                     <li class="mb-2">9:30 AM - Snorkeling at designated spots</li>
@@ -44,20 +91,25 @@
                     <li class="mb-2">1:30 PM - Mangrove forest tour</li>
                     <li class="mb-2">3:00 PM - Free time to explore or relax</li>
                     <li class="mb-2">5:00 PM - Return to your hotel</li>
-                </ol>
-    
-                <h3 class="mt-4">Additional Information:</h3>
+                </ol> -->
+                <h3 class="mt-4">Include & Exclude :</h3>
                 <ul class="list-unstyled mb-4">
-                    <li class="mb-2"><i class="fa fa-info-circle text-primary mr-2"></i>Bring sunscreen, swimwear, and a change of clothes.</li>
-                    <li class="mb-2"><i class="fa fa-info-circle text-primary mr-2"></i>Not recommended for non-swimmers.</li>
-                    <li class="mb-2"><i class="fa fa-info-circle text-primary mr-2"></i>Vegetarian meal options are available.</li>
+                    <?php foreach($iexclude as $ie){ ?>
+                        <?php if($ie->Tipe == "include"){ ?>
+                            <li class="mb-2"><i class="fa fa-check-circle text-primary mr-2"></i><?= $ie->Name ?></li>
+                        <?php }else{ ?>
+                            <li class="mb-2"><i class="fa fa-times-circle text-danger mr-2"></i><?= $ie->Name ?></li>
+                        <?php } ?>
+                    <?php } ?>
                 </ul>
     
-                <h3 class="mt-4">Cancellation Policy:</h3>
-                <p class="mb-4">Full refund for cancellations made at least 24 hours before the start of the tour. No refund for cancellations made within 24 hours of the tour.</p>
-                <div class="d-flex justify-content-end mt-2">
-                    <a href="#" class="btn btn-primary">Book Now</a>
-                </div>
+                <h3 class="mt-4">Additional Information:</h3>
+                <p class="mb-4">
+                    <?= $package['Info'] ?>
+                </p>
+    
+                <h3 class="mt-4">Full Description:</h3>
+                <p class="mb-4"><?= $package['Full_desc'] ?></p>
             </div>
         </div>
         
@@ -66,54 +118,25 @@
             <div class="position-relative">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Reservation Summary</h5>
-                        <div class="container">
-                            <div class="row pt-3">
-                                <div class="col-xs-1">
-                                    <a class="btn btn-link text-danger px-3" href="#">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                        <div class="row pt-3">
+                            <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <small><b> per Person </b></small>
                                 </div>
-                                <div class="col">
-                                    <h6>Snorkeling and Mangrove Forest Day Tour</h6>
+                                <div class="col-md-12">
+                                    <h6>IDR 1,000,000</h6>
                                 </div>
-                                <div class="col">
-                                    <p class="text-right">
-                                        <strong>$350</strong><br>
-                                        <small>Qty : 1</small>
-                                    </p>
-                                </div>
+                                <div class="col-md-12">
+                                    <small><b> per Person </b></small>
+                                </div>       
                             </div>
-                            <!-- <div class="row pt-3">
-                                <div class="col-xs-1">
-                                    <a class="btn btn-link text-danger px-3" href="#">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <small>3 Days 2 nights Yoga, Meditation & Cultural Retreat in Bali</small>
-                                    <h6>Deluxe Double | Twin Bedroom</h6>
-                                </div>
-                                <div class="col">
-                                    <p class="text-right">
-                                        <strong>IDR 2,900,000</strong><br>
-                                        <small>Stay for 2 Nights<br>From Sat, 18 May 2024<br>to Mon, 20 May 2024</small>
-                                    </p>
-                                </div>
-                            </div> -->
-                            <table class="mt-3 mb-3" width="100%">
-                                <tbody>
-                                    <tr>
-                                        <td><h5>Total</h5></td>
-                                        <td class="text-right"><h5><strong>$350</strong></h5></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
+                            <div class="col-md-6">
+                                <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block rounded mb-3">Check Availablity</a>
+                            </div>                         
+                        </div>  
+                        <div class="alert">
+                            <small><i class="fa fa-calendar"></i> <b> Reserve now & pay later</b> to book your spot and pay nothing today.</small>
                         </div>
-                    </div>
-                    <div class="alert mt-3">
-                        <i class="material-icons">info</i> You can add multiple rooms with different period of stay
                     </div>
                 </div>
             </div>
@@ -123,71 +146,34 @@
         <div class="col-md-12">
             <div class="text-center"><h3>Other <span class="text-primary">Tour</span></h3></div>
         </div>
-        <div class="col-md-4">
-            <div class="package-item bg-white mb-2">
-                <img class="img-fluid" src="<?= base_url('assets/') ?>img/package-2.jpg" alt="">
-                <div class="p-4">
-                    <div class="d-flex justify-content-between mb-3">
-                        <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Nusa Penida</small>
-                        <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>1 days</small>
-                        <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>1 Person</small>
-                    </div>
-                    <a class="h5 text-decoration-none" href="">Escape to the beauty of Nusa Penida in just one day</a>
-                    <div class="border-top mt-4 pt-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                            <h5 class="m-0">$350</h5>
+            <?php if($cards){ foreach ($cards as $card): ?>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="<?= base_url($card['Thumbnail']); ?>" alt="Card image cap">
+                        <div class="carousel-item">
+                            <button class="btn btn-primary btn-hover rounded">Click Me</button>
+                            <div class="text-overlay">
+                                <p><?= $card['title']; ?></p>
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-end mt-2">
-                            <a href="#" class="btn btn-primary">+</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="package-item bg-white mb-2">
-                <img class="img-fluid" src="<?= base_url('assets/') ?>img/package-3.jpg" alt="">
-                <div class="p-4">
-                    <div class="d-flex justify-content-between mb-3">
-                        <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Taman Ayun & <br/> Tanah Lot Sunset</small>
-                        <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
-                        <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
-                    </div>
-                    <a class="h5 text-decoration-none" href="">The best way to explore the greatness of Balinese architecture and culture</a>
-                    <div class="border-top mt-4 pt-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                            <h5 class="m-0">$350</h5>
-                        </div>
-                        <div class="d-flex justify-content-end mt-2">
-                            <a href="#" class="btn btn-primary">+</a>
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $card['Name']; ?></h5>
+                            <p class="card-text"><?php
+                                        $description = $card['Lite_desc'];
+                                        if (strlen($description) > 200) {
+                                            $description = substr($description, 0, 200) . '...';
+                                        }
+                                        echo $description;
+                                        ?>
+                            </p>
+                            <p class="card-text">IDR <?= number_format($card['Price'], 0, ',', '.'); ?></p>
+                            <a class="btn btn-sm float-right btn-primary" href="<?= base_url('tour/detail/'.$card['Id']) ?>">Check Detail</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>  
-        <div class="col-md-4">
-            <div class="package-item bg-white mb-2">
-                <img class="img-fluid" src="<?= base_url('assets/') ?>img/package-3.jpg" alt="">
-                <div class="p-4">
-                    <div class="d-flex justify-content-between mb-3">
-                        <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Taman Ayun & <br/> Tanah Lot Sunset</small>
-                        <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
-                        <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
-                    </div>
-                    <a class="h5 text-decoration-none" href="">The best way to explore the greatness of Balinese architecture and culture</a>
-                    <div class="border-top mt-4 pt-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                            <h5 class="m-0">$350</h5>
-                        </div>
-                        <div class="d-flex justify-content-end mt-2">
-                            <a href="#" class="btn btn-primary">+</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>   
+                
+            <?php endforeach; } else { ?>
+                <h4>Data Tour and Package Kosong</h4>
+            <?php } ?>
     </div>
-    </div>
+</div>

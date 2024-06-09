@@ -57,7 +57,8 @@ $route['villa/detail'] = 'Home/detail_villa';
 $route['activities'] = 'Home/activities';
 $route['activities/detail'] = 'Home/detail_activities';
 $route['tour'] = 'Home/tour';
-$route['tour/detail'] = 'Home/detail_tour';
+$route['tour/(:any)'] = 'Home/tour/$1';
+$route['tour/detail/(:any)'] = 'Home/detail_tour/$1';
 $route['payment'] = 'Home/payment';
 $route['contact'] = 'Home/contact';
 

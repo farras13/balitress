@@ -30,4 +30,14 @@ class Tour_package_model extends CI_Model {
         $this->db->where('Id', $id);
         return $this->db->delete('tourpackage');
     }
+
+    public function get_cards($limit, $start) {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get('tourpackage'); // 'cards' adalah nama tabel di database
+        return $query->result_array();
+    }
+
+    public function get_total_tours() {
+        return $this->db->count_all('tourpackage'); // 'cards' adalah nama tabel di database
+    }
 }

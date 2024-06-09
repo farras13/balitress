@@ -54,7 +54,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($tour_packages as $index => $package): ?>
+                        <?php foreach ($tour_packages as $index => $package):   ?>
                         <tr>
                             <td><?= $index+1; ?></td>
                             <td><?= $package['Name']; ?></td>

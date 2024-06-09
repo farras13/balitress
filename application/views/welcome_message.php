@@ -3,82 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pemilihan Kamar Hotel</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Cards with Pagination</title>
+    <style>
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#single-room">Single Room</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#double-room">Double Room</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#suite-room">Suite Room</a>
-            </li>
-        </ul>
-
-        <div class="tab-content">
-            <div id="single-room" class="container tab-pane active"><br>
-                <h3>Single Room</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="checkin">Check-in Date:</label>
-                        <input type="date" class="form-control" id="checkin" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="checkout">Check-out Date:</label>
-                        <input type="date" class="form-control" id="checkout" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="guests">Number of Guests:</label>
-                        <input type="number" class="form-control" id="guests" min="1" max="1" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Book Now</button>
-                </form>
-            </div>
-            <div id="double-room" class="container tab-pane fade"><br>
-                <h3>Double Room</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="checkin2">Check-in Date:</label>
-                        <input type="date" class="form-control" id="checkin2" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="checkout2">Check-out Date:</label>
-                        <input type="date" class="form-control" id="checkout2" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="guests2">Number of Guests:</label>
-                        <input type="number" class="form-control" id="guests2" min="1" max="2" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Book Now</button>
-                </form>
-            </div>
-            <div id="suite-room" class="container tab-pane fade"><br>
-                <h3>Suite Room</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="checkin3">Check-in Date:</label>
-                        <input type="date" class="form-control" id="checkin3" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="checkout3">Check-out Date:</label>
-                        <input type="date" class="form-control" id="checkout3" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="guests3">Number of Guests:</label>
-                        <input type="number" class="form-control" id="guests3" min="1" max="4" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Book Now</button>
-                </form>
-            </div>
-        </div>
+<div class="container mt-4">
+    <div id="card-container" class="row">
+        <!-- Cards will be injected here by JavaScript -->
     </div>
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="#" id="prev-page">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#" id="next-page">Next</a></li>
+        </ul>
+    </nav>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        const itemsPerPage = 4;
+        let currentPage = 1;
+        const cardsData = [
+            {title: 'Card 1', text: 'This is the first card.'},
+            {title: 'Card 2', text: 'This is the second card.'},
+            {title: 'Card 3', text: 'This is the third card.'},
+            {title: 'Card 4', text: 'This is the fourth card.'},
+            {title: 'Card 5', text: 'This is the fifth card.'},
+            {title: 'Card 6', text: 'This is the sixth card.'},
+            {title: 'Card 7', text: 'This is the seventh card.'},
+            {title: 'Card 8', text: 'This is the eighth card.'}
+        ];
+
+        function renderCards(page) {
+            $('#card-container').empty();
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedItems = cardsData.slice(start, end);
+            
+            for (const item of paginatedItems) {
+                $('#card-container').append(`
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">${item.title}</h5>
+                                <p class="card-text">${item.text}</p>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            }
+        }
+
+        function updatePaginationButtons() {
+            $('#prev-page').parent().toggleClass('disabled', currentPage === 1);
+            $('#next-page').parent().toggleClass('disabled', currentPage * itemsPerPage >= cardsData.length);
+        }
+
+        $('#prev-page').click(function(e) {
+            e.preventDefault();
+            if (currentPage > 1) {
+                currentPage--;
+                renderCards(currentPage);
+                updatePaginationButtons();
+            }
+        });
+
+        $('#next-page').click(function(e) {
+            e.preventDefault();
+            if (currentPage * itemsPerPage < cardsData.length) {
+                currentPage++;
+                renderCards(currentPage);
+                updatePaginationButtons();
+            }
+        });
+
+        // Initial render
+        renderCards(currentPage);
+        updatePaginationButtons();
+    });
+</script>
 </body>
 </html>

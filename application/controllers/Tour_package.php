@@ -57,7 +57,7 @@ class Tour_package extends CI_Controller {
         {
             // Handle file upload
             $config['upload_path'] = './uploads/';
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
             $config['max_size'] = 2048;
             $this->load->library('upload', $config);
 
@@ -119,7 +119,7 @@ class Tour_package extends CI_Controller {
             $this->load->view('admin/footer');
         } else {
             $config['upload_path'] = './uploads/';
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
             $config['max_size'] = 2048;
             $this->load->library('upload', $config);
 
