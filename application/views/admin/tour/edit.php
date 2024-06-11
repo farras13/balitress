@@ -72,7 +72,17 @@
                     <label for="info">Additional Info</label>
                     <textarea class="form-control summernote" name="info"><?php echo set_value('info', isset($tour_package['Info']) ? $tour_package['Info'] : ''); ?></textarea>
                 </div>
-
+                
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" name="popular" class="custom-control-input" id="customSwitch1" <?php if($tour_package['Is_Popular'] == 1) { echo "checked"; } ?>>
+                        <label class="custom-control-label" for="customSwitch1">is tour popular?</label>
+                    </div>
+                    <!-- <div class="form-check form-switch">
+                        <input class="form-check-input" name="popular" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Is Popular ?</label>
+                    </div> -->
+                </div>
                 <div class="form-group">
                     <label for="thumbnail">Thumbnail</label>
                     <input type="file" class="form-control" name="thumbnail">

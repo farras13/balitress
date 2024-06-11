@@ -77,11 +77,11 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="<?= base_url() ?>" class="nav-item nav-link active">Home</a>
-                        <a href="<?= base_url('villa') ?>" class="nav-item nav-link">Villa & Suites </a>
-                        <a href="<?= base_url('activities') ?>" class="nav-item nav-link">Activities</a>
-                        <a href="<?= base_url('tour') ?>" class="nav-item nav-link">Tour Packages</a>
-                        <a href="<?= base_url() ?>" class="nav-item nav-link">Special Offer</a>
+                        <a href="<?= base_url() ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "") echo "active";?>">Home</a>
+                        <a href="<?= base_url('villa') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "villa") echo "active";?>">Villa & Suites </a>
+                        <a href="<?= base_url('activities') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "activities") echo "active";?>">Activities</a>
+                        <a href="<?= base_url('tour') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "tour") echo "active";?>">Tour Packages</a>
+                        <a href="<?= base_url() ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "special-over") echo "active";?>">Special Offer</a>
                         <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">

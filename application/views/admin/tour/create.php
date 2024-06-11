@@ -73,7 +73,12 @@
                     <label for="info">Additional Info</label>
                     <textarea class="form-control summernote" name="info"><?php echo set_value('info', isset($tour_package['info']) ? $tour_package['info'] : ''); ?></textarea>
                 </div>
-
+                <div class="form-group">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" name="popular" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Is Popular ?</label>
+                    </div>
+                </div>
                 
 
                 <div class="form-group">

@@ -1,28 +1,31 @@
-<div class="container mt-4">
-    <form action="<?= base_url("tour/cari") ?>" method="post">
-        <div class="row">
-            <div class="col-md-8">
-                <input type="text" placeholder="Find place and things to do" class="form-control rounded mb-3">
-            </div>
-            <div class="col-md-4">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</>
-            </div>
-        </div>
+<div class="container">
 
-    </form>
-    <h5>Balinese - Tours Package - <?= $package['Name']; ?></h5>
-    <h2> <?= $package['Name']; ?> </h2>
-    <div class="row mt-5">
-        <div class="col-md-12">
-            <center><img src="<?= base_url(''.$package['Thumbnail']) ?>" class="img-fluid" id="mainImage" alt="Main Image"></center>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <?php foreach($gallery as $g): ?>
-            <div class="col-md-3">
-            <center><img src="<?= base_url(''.$g->images) ?>" class="img-thumbnail thumb-image" data-target="#imageModal" data-toggle="modal" data-slide-to="<?php echo $i-1; ?>" alt="Image <?php echo $i; ?>"></center>
+    <div class="container mt-4">
+        <form action="<?= base_url("tour/cari") ?>" method="post">
+            <div class="row">
+                <div class="col-md-10">
+                    <input type="text" placeholder="Find place and things to do" class="form-control rounded mb-3">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</>
+                </div>
             </div>
-        <?php endforeach; ?>
+    
+        </form>
+        <h5>Balinese - Tours Package - <?= $package['Name']; ?></h5>
+        <h2> <?= $package['Name']; ?> </h2>
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <center><img src="<?= base_url(''.$package['Thumbnail']) ?>" class="img-fluid" id="mainImage" alt="Main Image"></center>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <?php foreach($gallery as $g): ?>
+                <div class="col-md-3">
+                    <center><img src="<?= base_url(''.$g->images) ?>" class="img-thumbnail thumb-image" data-target="#imageModal" data-toggle="modal" data-slide-to="<?php echo $i-1; ?>" alt="Image <?php echo $i; ?>"></center>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </div>
 
@@ -33,14 +36,14 @@
                 <h2 class="mb-4">About This Activity</h2>
                 <p class="lead"><?= $package['About'] ?></p>
     
-                <h3 class="mt-4">What's included:</h3>
+                <!-- <h3 class="mt-4">What's included:</h3>
                 <ul class="list-unstyled mb-4">
                     <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>Guided snorkeling tour</li>
                     <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>All snorkeling equipment</li>
                     <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>Visit to the mangrove forest</li>
                     <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>Lunch at a local restaurant</li>
                     <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>Round-trip transportation</li>
-                </ul>
+                </ul> -->
                 <div class="bg-blue shadow p-4">
                     <h6>Select Participants and Date </h6>
                     <form action="<?= base_url("home/search") ?>" method="get">
@@ -102,14 +105,14 @@
                         <?php } ?>
                     <?php } ?>
                 </ul>
-    
-                <h3 class="mt-4">Additional Information:</h3>
+                
+                <h3 class="mt-4">Full Description:</h3>
+                <p class="mb-4"><?= $package['Full_desc'] ?></p>
+
+                <h3 class="mt-4">Important Information:</h3>
                 <p class="mb-4">
                     <?= $package['Info'] ?>
                 </p>
-    
-                <h3 class="mt-4">Full Description:</h3>
-                <p class="mb-4"><?= $package['Full_desc'] ?></p>
             </div>
         </div>
         
@@ -124,14 +127,14 @@
                                     <small><b> per Person </b></small>
                                 </div>
                                 <div class="col-md-12">
-                                    <h6>IDR 1,000,000</h6>
+                                    <h6>IDR <?= number_format($package['Price'], 0, ',', '.'); ?></h6>
                                 </div>
                                 <div class="col-md-12">
                                     <small><b> per Person </b></small>
                                 </div>       
                             </div>
                             <div class="col-md-6">
-                                <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block rounded mb-3">Check Availablity</a>
+                                <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-sm btn-block rounded mb-3">Check Availablity</a>
                             </div>                         
                         </div>  
                         <div class="alert">
@@ -147,9 +150,9 @@
             <div class="text-center"><h3>Other <span class="text-primary">Tour</span></h3></div>
         </div>
             <?php if($cards){ foreach ($cards as $card): ?>
-                <div class="col-md-4">
+                <div class="col-6 col-sm-6 col-md-3 my-2">
                     <div class="card">
-                        <img class="card-img-top" src="<?= base_url($card['Thumbnail']); ?>" alt="Card image cap">
+                        <img class="card-img-top" src="<?= base_url($card['Thumbnail']); ?>" alt="Card image cap" width="250px" height="120px">
                         <div class="carousel-item">
                             <button class="btn btn-primary btn-hover rounded">Click Me</button>
                             <div class="text-overlay">

@@ -8,6 +8,8 @@ class Tour_package extends CI_Controller {
         $this->load->model('Tour_package_model');
         $this->load->model('GalleryTourPackage_model'); 
         $this->load->model('IncludeExclude_model');
+		$this->load->model('M_basic', 'm');
+
         $this->load->library('form_validation');
         $this->load->helper('form');
     }
@@ -23,6 +25,9 @@ class Tour_package extends CI_Controller {
 
     public function view($id) {
         $data['tour_package'] = $this->Tour_package_model->get_packages($id);
+        $data['package'] = $this->Tour_package_model->get_packages($id);
+		$data['gallery'] = $this->m->getData("galeritourpackage", ["Tour_id" => $id])->result();
+		$data['iexclude'] = $this->m->getData("ietourpackage", ["Tour_id" => $id])->result();
         
         if (empty($data['tour_package'])) {
             show_404();
@@ -81,6 +86,7 @@ class Tour_package extends CI_Controller {
                     'Highlight' => $this->input->post('highlight'),
                     'Info' => $this->input->post('info'),
                     'Thumbnail' => $thumbnail_path,
+                    'is_popular' => $this->input->post('popular'),
                     'Created_by' => "admin",
                     'Created_date' => date('Y-m-d H:i:s'),
                     'Modif_by' => "admin", // Initially same as Created_by
@@ -150,6 +156,7 @@ class Tour_package extends CI_Controller {
                 'Highlight' => $this->input->post('highlight'),
                 'Info' => $this->input->post('info'),
                 'Thumbnail' => $thumbnail_path,
+                'is_popular' => $this->input->post('popular'),
                 'Modif_by' => $this->input->post('modified_by'),
                 'Modif_date' => date('Y-m-d H:i:s')
             );

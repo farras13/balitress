@@ -60,13 +60,13 @@
                             <td><?= $package['Name']; ?></td>
                             <td><?= $package['Lite_desc']; ?></td>
                             <td><?= $package['Price']; ?></td>
-                            <td><img src="<?= base_url() ?><?= $package['Thumbnail']; ?>" class="img-fluid"></td>                           
-                            <td>
-                                <a href="<?= site_url("tourpackage/gallery/").$package['Id'] ?>" class="btn btn-primary"><i class="fa fa-image"></i></a>
-                                <a href="<?= site_url("tourpackage/include_exclude/").$package['Id'] ?>" class="btn btn-primary"><i class="fa fa-arrows"></i></a>
-                                <a href="<?= site_url('tourpackage/view/'.$package['Id']); ?>" class="btn btn-sm btn-info">View</a>
-                                <a href="<?= site_url('tourpackage/edit/'.$package['Id']); ?>" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="<?= site_url('tourpackage/delete/'.$package['Id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                            <td><img src="<?= base_url() ?><?= $package['Thumbnail']; ?>" width="180px" height="120px"></td>                           
+                            <td class="p-3">
+                                <a href="<?= site_url("tourpackage/include_exclude/").$package['Id'] ?>" class="btn btn-sm btn-info my-1">I / E</a>
+                                <a href="<?= site_url("tourpackage/gallery/").$package['Id'] ?>" class="btn btn-sm btn-primary my-1"><i class="fa fa-image"></i></a>
+                                <a href="<?= site_url('tourpackage/view/'.$package['Id']); ?>" class="btn btn-sm btn-info my-1"><i class="fa fa-info"></i></a>
+                                <a href="<?= site_url('tourpackage/edit/'.$package['Id']); ?>" class="btn btn-sm btn-warning my-1"><i class="fa fa-pen"></i></a>
+                                <a href="<?= site_url('tourpackage/delete/'.$package['Id']); ?>" class="btn btn-sm btn-danger my-1" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <?php endforeach; ?>

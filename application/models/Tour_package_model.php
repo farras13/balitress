@@ -17,6 +17,11 @@ class Tour_package_model extends CI_Model {
         return $query->row_array();
     }
 
+    public function get_package_where($where) {
+        $query = $this->db->get_where('tourpackage', $where);
+        return $query->row_array();
+    }
+
     public function create_package($data) {
         return $this->db->insert('tourpackage', $data);
     }

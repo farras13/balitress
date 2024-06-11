@@ -85,20 +85,27 @@
             </div>
         </div>        
         <div class="row">
-            <?php for($x=0;$x<3;$x++) {?>
-                <div class="col-md-4 mb-4">
+            <?php $i=1; foreach ($cards as $package){ if($package['is_popular'] == "on"){ $i++; if($i<5){  ?>
+                <div class="col-md-4  mb-4">
                     <div class="card package-card">
-                    <img src="<?= base_url('assets/') ?>img/package-4.jpg" class="card-img-top" alt="Package 1">
+                    <img src="<?= base_url(''.$package['Thumbnail']) ?>" class="card-img-top" alt="<?= $package['Name'] ?>" width="250px" height="180px">
                     <div class="card-body">
-                        <h5 class="card-title">Learn Balinese Music & Dance</h5>
-                        <p class="card-text text-center">
-                            This Activity is perfect for you who wants to experience the true beauty of Balinese Culture, learn new skills, and have fun.
+                        <h5 class="card-title"><?= $package['Name'] ?></h5>
+                        <p class="card-text text-justify">
+                            <?php  
+                                $descriptions = strip_tags($package['Lite_desc']);
+                                if (strlen($descriptions) > 120) {
+                                    $descriptions = substr($descriptions, 0, 120) . '...';
+                                }
+                                echo $descriptions;
+                            ?>    
                         </p>
-                        <center><a href="#" class="btn btn-primary text-center">View Retreat</a></center>
+                        <p class="card-text">IDR <?= number_format($package['Price'], 0, ',', '.'); ?></p>
+                        <center><a href="<?= base_url('tour/detail/'.$card['Id']) ?>" class="btn btn-primary text-center">Check Detail</a></center>
                     </div>
                     </div>
                 </div>
-            <?php } ?>                 
+            <?php }}} ?>                 
         </div>
         
         
@@ -111,27 +118,29 @@
             <div id="card-container" class="row">
 
                 <?php if($cards){ foreach ($cards as $card): ?>
-                    <div class="col-md-4">
+                    <div class="col-6 col-sm-6 col-md-3 my-2">
                         <div class="card">
-                            <img class="card-img-top" src="<?= base_url($card['Thumbnail']); ?>" alt="Card image cap">
+                            <img class="card-img-top" src="<?= base_url($card['Thumbnail']); ?>" alt="Card image cap" width="250px" height="120px">
                             <div class="carousel-item">
                                 <button class="btn btn-primary btn-hover rounded">Click Me</button>
                                 <div class="text-overlay">
-                                    <p><?= $card['title']; ?></p>
+                                    <p><?= $card['Name']; ?></p>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"><?= $card['Name']; ?></h5>
-                                <p class="card-text"><?php
-                                            $description = $card['Lite_desc'];
-                                            if (strlen($description) > 200) {
-                                                $description = substr($description, 0, 200) . '...';
+                                <p class="card-text text-justify"><?php
+                                            $description = strip_tags($card['Lite_desc']);
+                                            if (strlen($description) > 120) {
+                                                $description = substr($description, 0, 120) . '...';
                                             }
                                             echo $description;
                                             ?>
                                 </p>
                                 <p class="card-text">IDR <?= number_format($card['Price'], 0, ',', '.'); ?></p>
-                                <a class="btn btn-sm float-right btn-primary" href="<?= base_url('tour/detail/'.$card['Id']) ?>">Check Detail</a>
+                                <div class="card-footer">
+                                    <a class="btn btn-sm btn-primary" href="<?= base_url('tour/detail/'.$card['Id']) ?>">Check Detail</a>
+                                </div>
                             </div>
                         </div>
                     </div>
