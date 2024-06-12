@@ -75,7 +75,7 @@
                 
                 <div class="form-group">
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" name="popular" class="custom-control-input" id="customSwitch1" <?php if($tour_package['Is_Popular'] == 1) { echo "checked"; } ?>>
+                        <input type="checkbox" name="popular" class="custom-control-input" id="customSwitch1" <?php if($tour_package['is_popular'] == "on") { echo "checked"; } ?>>
                         <label class="custom-control-label" for="customSwitch1">is tour popular?</label>
                     </div>
                     <!-- <div class="form-check form-switch">
