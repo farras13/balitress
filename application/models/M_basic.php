@@ -13,6 +13,16 @@ class M_basic extends CI_Model {
 		return $this->db->get($t);
 	}
 
+	public function getDataLimit($t, $w = null, $limit, $start)
+	{
+		$this->db->limit($limit, $start);
+		if ($w != null) {
+			$this->db->where($w);
+		}
+		
+		return $this->db->get($t);
+	}
+
 	public function lastId($t, $w = null)
 	{
 		if ($w != null) {

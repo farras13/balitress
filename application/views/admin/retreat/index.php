@@ -44,7 +44,7 @@
                                             <td><?php echo $retreat->description; ?></td>
                                             <td><?php echo $retreat->highlights; ?></td>
                                             <td><?php echo $retreat->facilities; ?></td>
-                                            <td><img src="<?php echo base_url('uploads/' . $retreat->image); ?>" width="100" height="100"></td>
+                                            <td><img src="<?php echo base_url($retreat->image); ?>" width="100" height="100"></td>
                                             <td>
                                                 <a href="<?php echo site_url('retreats/edit/' . $retreat->retreat_id); ?>" class="btn btn-primary btn-sm">Edit</a>
                                                 <a href="<?php echo site_url('retreats/delete/' . $retreat->retreat_id); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this retreat?')">Delete</a>

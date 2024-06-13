@@ -42,36 +42,17 @@
             <div class="col-md-12 col-lg-8 mb-4">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="card-title text-center text-primary my-3"><span class="text-dark">Balinese Watukaru</span> Yoga Retreat</h1>
+                        <h1 class="card-title text-center text-primary my-3"><span class="text-dark"><?= $retreat->name ?></span> <?= $retreat->endname ?></h1>
                         <div class="card-text">
-                            <p>Join our retreat for an authentic and traditional Balinese yoga and meditation experience in the spiritual village near Mount Batukaru. Get close and involve yourself into daily cultural activities of the Sesandan Village community. At Balitress Retreats, you'll be welcomed into a family and village setting. Becoming part of both the family and the village community.</p>
+                            <p><?= $retreat->description ?></p>
                             <div class="row my-3">
                                 <div class="col-md-6">
                                     <h6><b>Highlight</b></h6>
-                                    <ul>
-                                        <li>3 Nights Accommodation (dapat pilih kamar)</li>
-                                        <li>Daily Morning and Afternoon Balinese Watukaru yoga sessions</li>
-                                        <li>Daily village cultural and activities (Other Local Activities)</li>
-                                        <li>Daily vegetarian/vegan/regular meals</li>
-                                        <li>Afternoon beach yoga session</li>
-                                    </ul>
+                                    <?= $retreat->highlights ?>
                                 </div>
                                 <div class="col-md-4">
                                     <h6><b>Facilities</b></h6>
-                                    <ul>
-                                        <li>Air-conditioned rooms</li>
-                                        <li>Environmentally friendly</li>
-                                        <li>Lounge</li>
-                                        <li>Meditation garden</li>
-                                        <li>Free bicycle</li>
-                                        <li>Free Wi-Fi</li>
-                                        <li>Spa</li>
-                                        <li>Dining area</li>
-                                        <li>Garden</li>
-                                        <li>Laundry</li>
-                                        <li>Outdoor shower</li>
-                                        <li>Luggage room / storage</li>
-                                    </ul>
+                                    <?= $retreat->facilities ?>
                                 </div>
                                 
                                 <div class="col-md-12">

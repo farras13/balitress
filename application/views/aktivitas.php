@@ -103,22 +103,22 @@
             <h1>Special Offer </h1>
         </div> -->
         <div class="row">
-            <?php for($y=1;$y<4;$y++) { ?>
+            <?php foreach($cards as $card) { ?>
                 <div class="col-md-12 mb-4 bg-registration">
                 <div class="row align-items-center py-5">
                     <div class="col-lg-7 mb-5 mb-lg-0 p-3 rounded" style="background-color:rgba(0, 0, 0, 0.2);">
                         <div class="mb-4">
-                            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"> <b>(<?= $y ?>)</b> Our Retreat </h6>
-                            <h1 class="text-white"><span class="text-primary">Retreat and Activities  </span>Balinese</h1>
+                            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"> <b>(<?= $card->endname ?>)</b> Our Retreat </h6>
+                            <h1 class="text-white"><span class="text-primary"> <?= $card->name ?> </span><?=  $card->endname ?></h1>
                         </div>
-                        <p class="text-white">Join our retreat for an authentic and traditional Balinese yoga and meditation experience in the spiritual village near Mount Batukaru. Get close and involve yourself into daily cultural activities of the Sesandan Village community. At Balitress Retreats, you'll be welcomed into a family and village setting. Becoming part of both the family and the village community</p>
-                        <a href="<?= base_url("activities/detail") ?>" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a>
+                        <p class="text-white"><?= $card->description ?></p>
+                        <a href="<?= base_url("activities/detail/").$card->retreat_id  ?>" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a>
                     </div>
                     <div class="col-lg-5">
                         <div id="retreat-carousel<?= $y; ?>" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="w-100" src="<?= base_url('assets/') ?>img/package-3.jpg" alt="Image">
+                                    <img class="w-100" src="<?= base_url($card->image) ?>" alt="Image">
 
                                 </div>
                                 <div class="carousel-item">
@@ -146,6 +146,7 @@
                     <a class="btn btn-md btn-primary" href="#">Read More</a>
                 </div>
             </div>             -->
+        <?= $pagination; ?>
         </div>
     </div>
 </div>

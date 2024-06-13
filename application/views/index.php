@@ -197,14 +197,20 @@
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Daily Activity</h6>
             </div>
             <!-- Package 1 -->
-            <?php for($x=0;$x<4;$x++) {?>
+            <?php foreach($retreats_daily as $retreat) {?>
             <div class="col-md-3 mb-4">
                 <div class="card package-card">
-                <img src="<?= base_url('assets/') ?>img/package-4.jpg" class="card-img-top" alt="Package 1">
+                <img src="<?= base_url($retreat->image) ?>" class="card-img-top" alt="<?= $retreat->name ?>">
                 <div class="card-body">
-                    <h5 class="card-title">Learn Balinese Music & Dance</h5>
+                    <h5 class="card-title"><?= $retreat->name ?></h5>
                     <p class="card-text">
-                        This Activity is perfect for you who wants to experience the true beauty of Balinese Culture, learn new skills, and have fun.
+                        <?php   
+                            $descriptions = strip_tags($retreat->description);
+                            if (strlen($descriptions) > 120) {
+                                $descriptions = substr($descriptions, 0, 120) . '...';
+                            }
+                            echo $descriptions;
+                        ?>
                     </p>
                     <a href="#" class="btn btn-primary">Explore</a>
                 </div>
@@ -236,7 +242,7 @@
                     <div class="carousel-item <?php if($y==1) echo 'active'; ?>">
                         <div class="col-lg-4 col-md-6">
                             <img class="img-fluid" src="<?= base_url('assets/') ?>img/package-3.jpg">
-                            <p class="text-overlay">Click Me</p>
+                            <a href="" class="btn btn-primary"><?= $y ?></a>
                         </div>
                     </div>
                 <?php } ?>
