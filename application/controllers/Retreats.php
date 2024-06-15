@@ -26,14 +26,19 @@ class Retreats extends CI_Controller {
     }
 
     public function insertdata(){
+        $home = "off";
+        if($this->input->post('popular') != null && $this->input->post('popular') != ""){
+           $home = $this->input->post('popular'); 
+        }
         $data = array(
             'name' => $this->input->post('name'),
             'description' => $this->input->post('description'),
             'highlights' => $this->input->post('highlights'),
             'facilities' => $this->input->post('facilities'),
-            'is_home' => $this->input->post('popular'),
+            'is_home' => $home,
             'image' => $this->upload_image()
         );
+        // var_dump($data);die;
         $this->Retreats_model->insert($data);
         $this->session->set_flashdata('message', 'Room created successfully');
         redirect('retreats');
@@ -114,7 +119,7 @@ class Retreats extends CI_Controller {
         $config['max_size'] = 3072; // Maksimum ukuran dalam KB (3 MB)
 
         $this->load->library('upload', $config);
-        if (!empty($_FILES['thumbnail']['name']))
+        if (!empty($_FILES['image']['name']))
         {
             if ($this->upload->do_upload('image')) { // 'image' merupakan nama input file di form
                 $data = $this->upload->data();
