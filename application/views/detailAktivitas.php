@@ -54,64 +54,47 @@
                                     <h6><b>Facilities</b></h6>
                                     <?= $retreat->facilities ?>
                                 </div>
-                                
                                 <div class="col-md-12">
-                                    <h6><b>Choose Your Room</b></h6>
-                                    <div class="package-item bg-white mb-2">
-                                        <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-1.jpg" alt="Kamar 1">
-                                        <div class="p-4">
-                                            <div class="d-flex justify-content-between mb-3">
-                                                <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Double Bed</small>
-                                                <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                                <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>En-suite Bathroom</small>
-                                            </div>
-                                            <a class="h5 text-decoration-none" href="#">Deluxe Room with Sea View</a>
-                                            <p class="mb-3">Nikmati pemandangan laut yang menakjubkan dari kamar deluxe ini.</p>
-                                            <div class="border-top mt-4 pt-4">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <h5 class="m-0">$150 per night</h5>
-                                                    <button class="btn btn-primary select-room">Select Room</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="package-item bg-white mb-2">
-                                        <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-2.jpg" alt="Kamar 2">
-                                        <div class="p-4">
-                                            <div class="d-flex justify-content-between mb-3">
-                                                <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Single Bed</small>
-                                                <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                                <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Shared Bathroom</small>
-                                            </div>
-                                            <a class="h5 text-decoration-none" href="#">Standard Room</a>
-                                            <p class="mb-3">Kamar standar dengan semua fasilitas dasar yang diperlukan.</p>
-                                            <div class="border-top mt-4 pt-4">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <h5 class="m-0">$100 per night</h5>
-                                                    <button class="btn btn-primary select-room">Select Room</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="package-item bg-white mb-2">
-                                        <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-3.jpg" alt="Kamar 3">
-                                        <div class="p-4">
-                                            <div class="d-flex justify-content-between mb-3">
-                                                <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Queen Bed</small>
-                                                <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                                <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Private Bathroom</small>
-                                            </div>
-                                            <a class="h5 text-decoration-none" href="#">Superior Room with Garden View</a>
-                                            <p class="mb-3">Kamar superior dengan pemandangan taman yang indah.</p>
-                                            <div class="border-top mt-4 pt-4">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <h5 class="m-0">$120 per night</h5>
-                                                    <button class="btn btn-primary select-room">Select Room</button>
-                                                </div>
+                                <h6><b>Choose Your Room</b></h6>
+                                <div class="package-item bg-white mb-2">
+                                    <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-1.jpg" alt="Kamar 1"> -->
+                                    <div class="p-4">
+                                        <!-- <div class="d-flex justify-content-between mb-3">
+                                            <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Double Bed</small>
+                                            <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
+                                            <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>En-suite Bathroom</small>
+                                        </div> -->
+                                        <a class="h5 text-decoration-none" href="#">Bali Tress</a>
+                                        <p class="mb-3">Deskripsi Bali Tress</p>
+                                        <div class="border-top mt-4 pt-4">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h5 class="m-0">Rp 1.500.000/night</h5>
+                                                <button class="btn btn-primary select-room">Select Room</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="package-item bg-white mb-2">
+                                    <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-2.jpg" alt="Kamar 2"> -->
+                                    <div class="p-4">
+                                        <!-- <div class="d-flex justify-content-between mb-3">
+                                            <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Single Bed</small>
+                                            <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
+                                            <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Shared Bathroom</small>
+                                        </div> -->
+                                        <a class="h5 text-decoration-none" href="#">Balocloves</a>
+                                        <p class="mb-3">Deskripsi Balocloves</p>
+                                        <div class="border-top mt-4 pt-4">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h5 class="m-0">Rp.1.000.000/night</h5>
+                                                <button class="btn btn-primary select-room">Select Room</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>   
+                                
                             </div>      
                             <center><a class="btn btn-primary">Add to cart</a></center>                          
                         </div>
@@ -125,7 +108,7 @@
                         <h5 class="card-title">Reservation Summary</h5>
                         <div class="container">
                             <div class="row pt-3">
-                                <div class="col-xs-1">
+                                <!-- <div class="col-xs-1">
                                     <a class="btn btn-link text-danger px-3" href="#">
                                         <i class="fa fa-trash"></i>
                                     </a>
@@ -140,6 +123,9 @@
                                         <strong>$350</strong><br>
                                         <small>Qty : 1</small>
                                     </p>
+                                </div> -->
+                                <div class="col">
+                                    <p>No one choosed</p>
                                 </div>
                             </div>
                             <!-- <div class="row pt-3">
@@ -163,11 +149,12 @@
                                 <tbody>
                                     <tr>
                                         <td><h5>Total</h5></td>
-                                        <td class="text-right"><h5><strong>$350</strong></h5></td>
+                                        <td class="text-right"><h5><strong>Rp. 0</strong></h5></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
+                            <!-- <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block mb-3">Proceed to Payment</a> -->
+                            <a href="" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
                         </div>
                     </div>
                     <div class="alert mt-3">
@@ -181,90 +168,26 @@
             <div class="col-md-12">
                 <center><h3>Other <span class="text-primary">Activities</span></h3></center>
             </div>
+            <?php $indx = 1; foreach($others as $other){ if($indx < 4){ ?>
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card">
                     <img src="https://via.placeholder.com/150" class="card-img-top" alt="Bali Trees Thumbnail">
                     <div class="card-body">
-                        <h5 class="card-title" data-toggle="collapse" data-target="#baliTrees2">Learn Balinese Music & Dance</h5>
-                        <div id="baliTrees2" class="collapse">
+                        <h5 class="card-title" data-toggle="collapse" data-target="#baliTrees<?=$indx?>"><?= $other->name ?></h5>
+                        <div id="baliTrees<?=$indx?>" class="collapse">
                             <div class="card-text">
-                                <h6 class="card-subtitle mb-2 text-muted">Room Type: Queen</h6>
-                                <p>This elegant room offers a queen-size bed with a stunning view of the rice fields.</p>
-                                <h6>Room Facilities:</h6>
-                                <ul>
-                                    <li>Air-conditioned room</li>
-                                    <li>Free Wifi</li>
-                                    <li>Hair Dryer</li>
-                                    <li>TV</li>
-                                    <li>Coffee / Tea</li>
-                                    <li>Towels</li>
-                                    <li>Desk</li>
-                                    <li>Toiletries</li>
-                                    <li>Refrigerator</li>
-                                    <li>Private Bathroom</li>
-                                </ul>
+                                <h6>Facilities:</h6>
+                                <p><?= $other->facilities ?></p>
+                                <h6>Highlight:</h6>
+                                <p><?= $other->highlights ?></p>
                                 <center><a class="btn btn-primary">Add to cart</a></center>  
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Bali Trees Thumbnail">
-                    <div class="card-body">
-                        <h5 class="card-title" data-toggle="collapse" data-target="#baliTrees3">Learn Hindu’s Offering</h5>
-                        <div id="baliTrees3" class="collapse">
-                            <div class="card-text">
-                                <h6 class="card-subtitle mb-2 text-muted">Room Type: King</h6>
-                                <p>Experience luxury in this king-size bed room with a magnificent ocean view.</p>
-                                <h6>Room Facilities:</h6>
-                                <ul>
-                                    <li>Air-conditioned room</li>
-                                    <li>Free Wifi</li>
-                                    <li>Hair Dryer</li>
-                                    <li>TV</li>
-                                    <li>Coffee / Tea</li>
-                                    <li>Towels</li>
-                                    <li>Desk</li>
-                                    <li>Toiletries</li>
-                                    <li>Refrigerator</li>
-                                    <li>Private Bathroom</li>
-                                </ul>
-                                <center><a class="btn btn-primary">Add to cart</a></center>  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Bali Trees Thumbnail">
-                    <div class="card-body">
-                        <h5 class="card-title" data-toggle="collapse" data-target="#baliTrees4">Visit Local Waterfall and Trekking in Sesandan Ricefield Village</h5>
-                        <div id="baliTrees4" class="collapse">
-                            <div class="card-text">
-                                <h6 class="card-subtitle mb-2 text-muted">Room Type: Twin</h6>
-                                <p>Ideal for friends or family, this room has twin beds and a view of the courtyard.</p>
-                                <h6>Room Facilities:</h6>
-                                <ul>
-                                    <li>Air-conditioned room</li>
-                                    <li>Free Wifi</li>
-                                    <li>Hair Dryer</li>
-                                    <li>TV</li>
-                                    <li>Coffee / Tea</li>
-                                    <li>Towels</li>
-                                    <li>Desk</li>
-                                    <li>Toiletries</li>
-                                    <li>Refrigerator</li>
-                                    <li>Private Bathroom</li>
-                                </ul>
-                                <center><a class="btn btn-primary">Add to cart</a></center>  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php $indx++; }} ?>
+            
         </div>    
          
     </div>

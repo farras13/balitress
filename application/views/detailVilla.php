@@ -57,62 +57,62 @@
                             </div>
                         </div>  
                         <div class="col-md-12">
-                                <h6><b>Choose Your Room</b></h6>
-                                <div class="package-item bg-white mb-2">
-                                    <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-1.jpg" alt="Kamar 1">
-                                    <div class="p-4">
-                                        <div class="d-flex justify-content-between mb-3">
-                                            <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Double Bed</small>
-                                            <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                            <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>En-suite Bathroom</small>
+                                    <h6><b>Choose Your Package</b></h6>
+                                    <div class="package-item bg-white mb-2">
+                                        <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-1.jpg" alt="Kamar 1"> -->
+                                        <div class="p-4">
+                                            <!-- <div class="d-flex justify-content-between mb-3">
+                                                <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Double Bed</small>
+                                                <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
+                                                <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>En-suite Bathroom</small>
+                                            </div> -->
+                                            <a class="h5 text-decoration-none" href="#">Room Only</a>
+                                            <p class="mb-3">Deskripsi Room Only.</p>
+                                            <div class="border-top mt-4 pt-4">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h5 class="m-0">Rp 1.000.000/night</h5>
+                                                    <button class="btn btn-primary select-room">Select Package</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <a class="h5 text-decoration-none" href="#">Deluxe Room with Sea View</a>
-                                        <p class="mb-3">Nikmati pemandangan laut yang menakjubkan dari kamar deluxe ini.</p>
-                                        <div class="border-top mt-4 pt-4">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h5 class="m-0">$150 per night</h5>
-                                                <button class="btn btn-primary select-room">Select Room</button>
+                                    </div>
+                                    <div class="package-item bg-white mb-2">
+                                        <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-2.jpg" alt="Kamar 2"> -->
+                                        <div class="p-4">
+                                            <!-- <div class="d-flex justify-content-between mb-3">
+                                                <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Single Bed</small>
+                                                <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
+                                                <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Shared Bathroom</small>
+                                            </div> -->
+                                            <a class="h5 text-decoration-none" href="#">Room + Meals</a>
+                                            <p class="mb-3">Deskripsi Room + Meals</p>
+                                            <div class="border-top mt-4 pt-4">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h5 class="m-0">Rp 1.200.000/night</h5>
+                                                    <button class="btn btn-primary select-room">Select Package</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="package-item bg-white mb-2">
+                                        <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-3.jpg" alt="Kamar 3"> -->
+                                        <div class="p-4">
+                                            <!-- <div class="d-flex justify-content-between mb-3">
+                                                <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Queen Bed</small>
+                                                <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
+                                                <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Private Bathroom</small>
+                                            </div> -->
+                                            <a class="h5 text-decoration-none" href="#">With Yoga Retreat</a>
+                                            <p class="mb-3">Join our retreat for an authentic and traditional Balinese yoga and meditation experience in the spiritual village near Mount Batukaru.</p>
+                                            <div class="border-top mt-4 pt-4">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h5 class="m-0">Rp 1.500.000/night</h5>
+                                                    <button class="btn btn-primary select-room">Select Package</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="package-item bg-white mb-2">
-                                    <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-2.jpg" alt="Kamar 2">
-                                    <div class="p-4">
-                                        <div class="d-flex justify-content-between mb-3">
-                                            <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Single Bed</small>
-                                            <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                            <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Shared Bathroom</small>
-                                        </div>
-                                        <a class="h5 text-decoration-none" href="#">Standard Room</a>
-                                        <p class="mb-3">Kamar standar dengan semua fasilitas dasar yang diperlukan.</p>
-                                        <div class="border-top mt-4 pt-4">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h5 class="m-0">$100 per night</h5>
-                                                <button class="btn btn-primary select-room">Select Room</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="package-item bg-white mb-2">
-                                    <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-3.jpg" alt="Kamar 3">
-                                    <div class="p-4">
-                                        <div class="d-flex justify-content-between mb-3">
-                                            <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Queen Bed</small>
-                                            <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                            <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Private Bathroom</small>
-                                        </div>
-                                        <a class="h5 text-decoration-none" href="#">Superior Room with Garden View</a>
-                                        <p class="mb-3">Kamar superior dengan pemandangan taman yang indah.</p>
-                                        <div class="border-top mt-4 pt-4">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h5 class="m-0">$120 per night</h5>
-                                                <button class="btn btn-primary select-room">Select Room</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>   
                         <center><a class="btn btn-primary mt-3">Add to cart</a></center>                          
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                     <h5 class="card-title">Reservation Summary</h5>
                     <div class="container">
                         <div class="row pt-3">
-                            <div class="col-xs-1">
+                            <!-- <div class="col-xs-1">
                                 <a class="btn btn-link text-danger px-3" href="#">
                                     <i class="fa fa-trash"></i>
                                 </a>
@@ -140,7 +140,8 @@
                                     <strong>$350</strong><br>
                                     <small>Qty : 1</small>
                                 </p>
-                            </div>
+                            </div> -->
+                            <div class="col"><p>No one choosed</p></div>
                         </div>
                         <!-- <div class="row pt-3">
                             <div class="col-xs-1">
@@ -163,11 +164,12 @@
                             <tbody>
                                 <tr>
                                     <td><h5>Total</h5></td>
-                                    <td class="text-right"><h5><strong>$350</strong></h5></td>
+                                    <td class="text-right"><h5><strong>Rp 0</strong></h5></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
+                        <a href="" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
+                        <!-- <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block mb-3">Proceed to Payment</a> -->
                     </div>
                 </div>
                 <div class="alert mt-3">

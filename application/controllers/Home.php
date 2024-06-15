@@ -104,6 +104,7 @@ class Home extends CI_Controller {
 	public function detail_activities($id)
 	{
         $data["retreat"] = $this->m->getData("retreats", ["retreat_id" => $id])->row();
+        $data["others"] = $this->m->getData("retreats", ["retreat_id !=" => $id])->result();
         $text = trim($data["retreat"]->name);
         $expl = explode(' ', $text);
         $words = explode(' ', $text);
