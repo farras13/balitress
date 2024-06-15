@@ -44,16 +44,9 @@
                             <div class="col-md-6">                                    
                                 <p><strong>Room Facilities:</strong></p>
                                 <ul>
-                                    <li>Air-conditioned room</li>
-                                    <li>Free Wifi</li>
-                                    <li>Hair Dryer</li>
-                                    <li>TV</li>
-                                    <li>Coffee / Tea</li>
-                                    <li>Towels</li>
-                                    <li>Desk</li>
-                                    <li>Toiletries</li>
-                                    <li>Refrigerator</li>
-                                    <li>Private Bathroom</li>
+                                    <?php foreach($fasilitas as $f){ ?>
+                                    <li><?= $f->facility_name ?></li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                             <div class="col-md-6">

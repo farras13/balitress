@@ -82,6 +82,17 @@ class M_basic extends CI_Model {
     
         return $room;
     }
+
+	public function get_villa_fasilitass($id) {
+        
+        // Get room facilities
+        $this->db->select('facility_name');
+        $this->db->from('villa_fasilitas');
+        $this->db->join("facilities", "villa_fasilitas.facility_id = facilities.id");
+		$this->db->where('villa_id', $id);
+        $facility_query = $this->db->get();
+        return $facility_query->result();    
+    }
 	public function insert_villa_facilities($room_id, $facility_ids) {
         foreach ($facility_ids as $facility_id) {
             $this->db->insert('villa_fasilitas', ['villa_id' => $room_id, 'facility_id' => $facility_id]);

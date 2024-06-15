@@ -37,6 +37,7 @@ class Home extends CI_Controller {
 	public function detail_villa($id)
 	{
         $data["villa"] = $this->m->getData("villa", ["id" => $id])->row();
+        $data["fasilitas"] = $this->m->get_villa_fasilitass($id);
         $data["gallery"] = $this->m->getData("villa_galery", ["villa_id" => $id])->result();
 		$this->load->view('header', $data);
 		$this->load->view('detailVilla',$data);

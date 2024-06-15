@@ -118,7 +118,11 @@ class Villa extends CI_Controller {
                 'image' => $thumbnail_path,
             ];
             $this->m->upd('villa', $villa_data, ["id" => $id]);      
-
+            $facility_ids = $this->input->post('facility_ids');
+            if (!empty($facility_ids)) {
+                $this->m->del("villa_fasilitas", ["villa_id" => $id]);
+                $this->m->insert_villa_facilities($id, $facility_ids);
+            }
             $this->session->set_flashdata('message', 'Room updated successfully');
             redirect('admin/villa');
         }

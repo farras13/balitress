@@ -174,7 +174,7 @@ class Tour_package extends CI_Controller {
     public function gallery($id)
     {
         $data['package'] = $this->Tour_package_model->get_packages($id);
-        $data['gallery'] = $this->GalleryTourPackage_model->get_all_images();
+        $data['gallery'] = $this->GalleryTourPackage_model->get_all_images_tour($id);
         $data['id'] = $id;
         $this->load->view('admin/header', $data);
         $this->load->view('admin/tour/gallery', $data);

@@ -14,6 +14,12 @@ class GalleryTourPackage_model extends CI_Model {
         return $this->db->get('galeritourpackage')->result_array();
     }
 
+    public function get_all_images_tour($id)
+    {
+        $this->db->where("Tour_id", $id);
+        return $this->db->get('galeritourpackage')->result_array();
+    }
+
     public function add_image($data)
     {
         return $this->db->insert('galeritourpackage', $data);

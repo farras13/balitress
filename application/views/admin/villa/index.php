@@ -53,7 +53,7 @@
                     <?php foreach ($rooms as $room): ?>
                         <tr>
                             <td><?= $room->name; ?></td>
-                            <td><?= $room->description ?></td>
+                            <td><?= $room->deskripsi ?></td>
                             <td><img src="<?= base_url().$room->image ?>" alt="<?= $room->name ?>" width="250px" height="150px"></td>
                             <td>
                                 <a href="<?= site_url('admin/villa/edit/' . $room->id); ?>" class="btn btn-sm btn-warning my-1" ><i class="fa fa-pen"></i></a>
