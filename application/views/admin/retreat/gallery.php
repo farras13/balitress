@@ -4,12 +4,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Villa & Gallery</h1>
+            <h1>Retreat Gallery</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item">Villa</li>
+              <li class="breadcrumb-item">Retreat</li>
               <li class="breadcrumb-item active">Gallery</li>
             </ol>
           </div>
@@ -30,12 +30,12 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Villa Gallery</h3>
+                <h3 class="card-title">Retreat Gallery</h3>
             </div>
             <div class="card-body">
-                <?php echo form_open_multipart('admin/villa/upload_image/'.$id); ?>
+                <?php echo form_open_multipart('retreats/upload_gallery/'.$id); ?>
                 
-                <input hidden name="villa_id" value="<?= $id; ?>">
+                <input hidden name="retreat_id" value="<?= $id; ?>">
                 <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" class="form-control" name="image">
@@ -51,7 +51,7 @@
                             <div class="card mb-4">
                                 <img src="<?php echo base_url($image->image); ?>" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <a href="<?php echo site_url('admin/villa/delete_image/'.$image->id); ?>" class="btn btn-danger">Delete</a>
+                                    <a href="<?php echo site_url('retreats/delete_image/'.$image->id); ?>" class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         </div>

@@ -117,14 +117,11 @@
                     <div class="col-lg-5">
                         <div id="retreat-carousel<?= $y; ?>" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="w-100" src="<?= base_url($card->image) ?>" alt="Image">
-
+                                <?php $ind = 1; foreach($gallery as $g){ if($g->retreat_id == $card->retreat_id){  ?>
+                                <div class="carousel-item <?php if($ind==1){echo 'active';} ?>">
+                                    <img class="w-100" src="<?= base_url().$g->image ?>" alt="Image">
                                 </div>
-                                <div class="carousel-item">
-                                    <img class="w-100" src="<?= base_url('assets/') ?>img/package-5.jpg" alt="Image">
-
-                                </div>
+                                <?php $ind++; }} ?>
                             </div>
                             <a class="carousel-control-prev" href="#retreat-carousel<?= $y; ?>" data-slide="prev">
                                 <div class="btn btn-dark" style="width: 45px; height: 45px;">

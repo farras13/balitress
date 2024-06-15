@@ -75,6 +75,7 @@ class Home extends CI_Controller {
         $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
         $data['cards'] = $this->m->getDataLimit("retreats", "", $config['per_page'], $page)->result();
         $data['pagination'] = $this->pagination->create_links();
+		$data['gallery'] = $this->m->getData("retreat_gallery")->result();		
         foreach($data['cards'] as $d){
             $text = trim($d->name);
             $expl = explode(' ', $text);

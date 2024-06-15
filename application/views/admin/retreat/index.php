@@ -46,8 +46,9 @@
                                             <td><?php echo $retreat->facilities; ?></td>
                                             <td><img src="<?php echo base_url($retreat->image); ?>" width="100" height="100"></td>
                                             <td>
-                                                <a href="<?php echo site_url('retreats/edit/' . $retreat->retreat_id); ?>" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="<?php echo site_url('retreats/delete/' . $retreat->retreat_id); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this retreat?')">Delete</a>
+                                                <a href="<?php echo site_url('retreats/edit/' . $retreat->retreat_id); ?>" class="btn btn-primary btn-sm"><i class="fa fa-pen"></i></a>
+                                                <a href="<?php echo site_url('retreats/gallery/' . $retreat->retreat_id); ?>" class="btn btn-warning btn-sm"><i class="fa fa-image"></i></a>
+                                                <a href="<?php echo site_url('retreats/delete/' . $retreat->retreat_id); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this retreat?')"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

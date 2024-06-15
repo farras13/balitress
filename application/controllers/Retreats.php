@@ -6,6 +6,7 @@ class Retreats extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Retreats_model');
+        $this->load->model('M_basic', 'm');
         if (!$this->session->userdata('log')) {
             redirect('Login');
         }
@@ -134,46 +135,45 @@ class Retreats extends CI_Controller {
     }
 
     
-    // public function gallery($id)
-    // {
-    //     $data['package'] = $this->Tour_package_model->get_packages($id);
-    //     $data['gallery'] = $this->GalleryTourPackage_model->get_all_images();
-    //     $data['id'] = $id;
-    //     $this->load->view('admin/header', $data);
-    //     $this->load->view('admin/tour/gallery', $data);
-    //     $this->load->view('admin/footer');
-    // }
+    public function gallery($id)
+    {
+        $data['gallery'] = $this->m->getData("retreat_gallery")->result();
+        $data['id'] = $id;
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/retreat/gallery', $data);
+        $this->load->view('admin/footer');
+    }
 
-    // public function upload_images()
-    // {
-    //     $config['upload_path'] = './uploads/';
-    //     $config['allowed_types'] = 'gif|jpg|png';
-    //     $config['max_size'] = 2048;
-    //     $this->load->library('upload', $config);
+    public function upload_gallery($id)
+    {
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2048;
+        $this->load->library('upload', $config);
 
-    //     if (!$this->upload->do_upload('image'))
-    //     {
-    //         $data['upload_error'] = $this->upload->display_errors();
-    //         $this->gallery();
-    //     }
-    //     else
-    //     {
-    //         $upload_data = $this->upload->data();
-    //         $image_path = 'uploads/' . $upload_data['file_name'];
-    //         $url = "tourpackage/gallery/".$this->input->post('tour_id');
-    //         $data = array(
-    //             'tour_id' => $this->input->post('tour_id'),
-    //             'images' => $image_path
-    //         );
+        if (!$this->upload->do_upload('image'))
+        {
+            $data['upload_error'] = $this->upload->display_errors();
+            $this->gallery($id);
+        }
+        else
+        {
+            $upload_data = $this->upload->data();
+            $image_path = 'uploads/' . $upload_data['file_name'];
+            $url = "admin/villa/gallery/".$id;
+            $data = array(
+                'retreat_id	' => $id,
+                'image' => $image_path
+            );
 
-    //         $this->GalleryTourPackage_model->add_image($data);
-    //         redirect($url);
-    //     }
-    // }
+            $this->m->ins("retreat_gallery",$data);
+            $this->gallery($id);
+        }
+    }
 
-    // public function delete_image($id)
-    // {
-    //     $this->GalleryTourPackage_model->delete_image($id);
-    //     redirect('tourpackage/gallery/'.$id);
-    // }
+    public function delete_image($id)
+    {
+        $this->m->del("retreat_gallery",["id"=>$id]);
+        redirect('admin/villa/gallery/'.$id);
+    }
 }
