@@ -27,6 +27,8 @@ class Home extends CI_Controller {
 		$data['tourtiga'] = $this->m->getData("banners", ["menu" => "tour3"])->row();
 		$data['tourinfo'] = $this->m->getData("banners", ["menu" => "tourinfo"])->row();
 		$data['link'] = $this->m->getData("link")->row();
+		$data['desc'] = $this->m->getData("banners", ["menu" => "descvilla"])->row();
+
 
 		$this->load->view('header');
 		$this->load->view('index', $data);

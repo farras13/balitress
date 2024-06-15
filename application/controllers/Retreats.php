@@ -57,7 +57,7 @@ class Retreats extends CI_Controller {
         $retreat = $this->Retreats_model->get_by_id($id);
         $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
-            $config['max_size'] = 2048;
+            $config['max_size'] = 5120;
             $this->load->library('upload', $config);
             if (!empty($_FILES['image']['name']))
             {
@@ -147,8 +147,8 @@ class Retreats extends CI_Controller {
     public function upload_gallery($id)
     {
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 2048;
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
+        $config['max_size'] = 5120;
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('image'))

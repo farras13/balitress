@@ -37,7 +37,7 @@ class Villa extends CI_Controller {
         } else {
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
-            $config['max_size'] = 2048;
+            $config['max_size'] = 5120;
             $this->load->library('upload', $config);
            
             if (!$this->upload->do_upload('image'))
@@ -91,7 +91,7 @@ class Villa extends CI_Controller {
             {
                 $config['upload_path'] = './uploads/';
                 $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
-                $config['max_size'] = 2048;
+                $config['max_size'] = 5120;
                 $this->load->library('upload', $config);
                 
                 if (!$this->upload->do_upload('image'))
@@ -145,8 +145,8 @@ class Villa extends CI_Controller {
     public function upload_image($id)
     {
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 2048;
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
+        $config['max_size'] = 5120;
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('image'))

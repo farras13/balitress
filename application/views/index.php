@@ -150,11 +150,11 @@
                     <div class="col-lg-5">
                         <div id="retreat-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <?php foreach($galretreat as $idx => $gal){ ?>
+                                <?php $idx=1; foreach($galretreat as $gal){ ?>
                                 <div class="carousel-item <?php if($idx == 1){echo "active";} ?>">
                                     <img class="w-100" src="<?= base_url().$gal->image ?>" alt="Image">
                                 </div>
-                                <?php } ?>
+                                <?php $idx++; } ?>
                             </div>
                             <a class="carousel-control-prev" href="#retreat-carousel" data-slide="prev">
                                 <div class="btn btn-dark" style="width: 45px; height: 45px;">
@@ -206,23 +206,21 @@
             <h5 class="text-primary">VILLA & SUITES</h5>
             <h1 class="mb-2 text-primary"><span class="text-dark">Our Villa & Suites</h1>
             <blockquote class="blockquote blockquote-custom text-dark mx-4" style="font-size: 1rem !important;">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, voluptate. In at asperiores voluptas voluptates, natus quia recusandae enim quos laboriosam quae vero quis delectus aperiam praesentium dolorem rem omnis.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, voluptate. In at asperiores voluptas voluptates, natus quia recusandae enim quos laboriosam quae vero quis delectus aperiam praesentium dolorem rem omnis.</p>
-                <footer class="blockquote-footer">Nelson Mandela</footer>
+                <?= $desc->deskripsi ?>
             </blockquote>
         </div>
         <div class="row mx-auto my-auto">
             <div id="caroselvilla" class="carousel caroselvilla slide w-100" data-ride="carousel">
                 <div class="carousel-inner w-100" role="listbox">
                     
-                <?php foreach($villa as $v) { ?>
-                    <div class="carousel-item <?php if($y==1) echo 'active'; ?>">
+                <?php $ind = 1; foreach($villa as $v) { ?>
+                    <div class="carousel-item <?php if($ind==1) echo 'active'; ?>">
                         <div class="col-lg-4 col-md-6">
-                            <img class="img-fluid" src="<?= $v->image ?>">
+                            <img class="img-fluid" src="<?= base_url().$v->image ?>">
                             <a href="" class="btn btn-primary"><?= $v->name ?></a>
                         </div>
                     </div>
-                <?php $y++; } ?>
+                <?php $ind++; } ?>
                 </div>
                 <a class="carousel-control-prev rounded-0 w-auto" href="#caroselvilla" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon p-2 bg-dark rounded" aria-hidden="true"></span>

@@ -20,10 +20,17 @@ class Admin extends CI_Controller {
 		$data['tourinfo'] = $this->m->getData("banners", ["menu" => "tourinfo"])->row();
 
 		$data['link'] = $this->m->getData("link")->row();
+		$data['desc'] = $this->m->getData("banners", ["menu" => "descvilla"])->row();
 		if(empty($data['link'])){
 			$data['linkform'] = "admin/ins_link";
 		}else{
 			$data['linkform'] = "admin/upd_link/".$data['link']->id;
+		}
+
+		if(empty($data['desc'])){
+			$data['linkformdesc'] = "admin/ins_desc";
+		}else{
+			$data['linkformdesc'] = "admin/upd_desc/".$data['desc']->id;
 		}
 		$this->load->view('admin/header');
 		$this->load->view('admin/dashboard', $data);
@@ -33,8 +40,8 @@ class Admin extends CI_Controller {
 	public function banner_add()
     {
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 2048;
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
+        $config['max_size'] = 5120;
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('image'))
@@ -73,11 +80,22 @@ class Admin extends CI_Controller {
 		
 	}
 
+	public function ins_desc(){
+		$this->m->ins("banners", ["deskripsi" => $this->input->post("descvilla"), "menu" => "descvilla" ]);
+		redirect("admin");
+		
+	}
+	public function upd_desc($id){
+		$this->m->upd("banners", ["deskripsi" => $this->input->post("descvilla")], ["menu" => "descvilla"]);
+		redirect("admin");
+		
+	}
+
 	public function banner_tour_add()
     {
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 2048;
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
+        $config['max_size'] = 5120;
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('image'))

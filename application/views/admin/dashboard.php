@@ -39,6 +39,9 @@
         <li class="nav-item">
             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Tour package</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" id="villa-tab" data-toggle="tab" href="#villa" role="tab" aria-controls="villa" aria-selected="false">Villa</a>
+        </li>
        
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -178,6 +181,24 @@
                     
                 </div>
             </div>
+        </div>
+        <div class="tab-pane fade" id="villa" role="tabpanel" aria-labelledby="villa-tab">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Description Villa</h3>
+                </div>
+                <div class="card-body">
+                    <?php echo form_open_multipart($linkformdesc); ?>
+                    
+                    <div class="form-group">
+                        <label for="Description">Description</label>
+                        <textarea class="summernote form-class" name="descvilla"><?= isset($desc->deskripsi) ? $desc->deskripsi : "" ?></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <?php echo form_close(); ?>
+                </div>
+            </div>          
         </div>
     </div>
 </div>

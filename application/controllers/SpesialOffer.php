@@ -44,7 +44,7 @@ class SpesialOffer extends CI_Controller {
         // Mendapatkan data dari form
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
-        $config['max_size'] = 2048;
+        $config['max_size'] = 5120;
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('image'))
@@ -74,7 +74,7 @@ class SpesialOffer extends CI_Controller {
         // Mendapatkan data dari form
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
-        $config['max_size'] = 2048;
+        $config['max_size'] = 5120;
         $this->load->library('upload', $config);
        
         if (!empty($_FILES['image']['name']))
