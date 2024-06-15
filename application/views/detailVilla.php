@@ -50,9 +50,9 @@
                                 </ul>
                             </div>
                             <div class="col-md-6">
-                                <h2>Pemandangan</h2>
+                                <h2>View</h2>
                                 <p><?= $villa->pemandangan ?></p>
-                                <h2>Lokasi</h2>
+                                <h2>Location</h2>
                                 <p><?= $villa->lokasi ?></p>
                             </div>
                         </div>  
