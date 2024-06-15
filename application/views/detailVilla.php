@@ -42,7 +42,6 @@
                         <p><?= $villa->deskripsi ?></p>
                         <div class="row my-3">
                             <div class="col-md-6">                                    
-                                <p><strong>Room Type:</strong> King</p>
                                 <p><strong>Room Facilities:</strong></p>
                                 <ul>
                                     <li>Air-conditioned room</li>
@@ -59,9 +58,9 @@
                             </div>
                             <div class="col-md-6">
                                 <h2>Pemandangan</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis nunc ac sem consequat tempus.</p>
+                                <p><?= $villa->pemandangan ?></p>
                                 <h2>Lokasi</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis nunc ac sem consequat tempus.</p>
+                                <p><?= $villa->lokasi ?></p>
                             </div>
                         </div>  
                         <div class="col-md-12">

@@ -66,11 +66,28 @@ class M_basic extends CI_Model {
 		$this->db->group_by('claim');		
 	}
 
+	public function get_villa_fasilitas($id) {
+        $this->db->select('villa.*');
+        $this->db->from('villa');
+        $this->db->where('villa.id', $id);
+        $query = $this->db->get();
+        $room = $query->row_array();
+    
+        // Get room facilities
+        $this->db->select('facility_id');
+        $this->db->from('villa_fasilitas');
+        $this->db->where('villa_id', $id);
+        $facility_query = $this->db->get();
+        $room['facilities'] = $facility_query->result_array();
+    
+        return $room;
+    }
+	public function insert_villa_facilities($room_id, $facility_ids) {
+        foreach ($facility_ids as $facility_id) {
+            $this->db->insert('villa_fasilitas', ['villa_id' => $room_id, 'facility_id' => $facility_id]);
+        }
+    }
 
-	public function norut()
-	{
-
-	}
 }
 
 /* End of file M_basic.php */

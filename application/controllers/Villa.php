@@ -22,6 +22,7 @@ class Villa extends CI_Controller {
 
     public function create() {
         $data['room_types'] = $this->m->getData("rooms");
+        $data['facilities'] = $this->m->getData("facilities")->result_array();
         $data['linkform'] = 'admin/villa/create';
         $data['title'] = 'Create Villa';
 
@@ -53,10 +54,17 @@ class Villa extends CI_Controller {
             $villa_data = [
                 'name' => $this->input->post('villa_name'),
                 'deskripsi' => $this->input->post('villa_desk'),
+                'pemandangan' => $this->input->post('view_description'),
+                'lokasi' => $this->input->post('location'),
                 'image' => $thumbnail_path,
             ];
             $this->m->ins('villa',$villa_data);            
+            $room_id = $this->db->insert_id();
 
+            $facility_ids = $this->input->post('facility_ids');
+            if (!empty($facility_ids)) {
+                $this->m->insert_villa_facilities($room_id, $facility_ids);
+            }
             $this->session->set_flashdata('message', 'Room created successfully');
             redirect('admin/villa');
         }
@@ -64,6 +72,10 @@ class Villa extends CI_Controller {
 
     public function edit($id) {
         $data['villa'] = $this->m->getData("villa", ["id" => $id])->row();
+        $data['room'] = $this->m->get_villa_fasilitas($id);
+        $data['facilities'] = $this->m->getData("facilities")->result_array();
+
+        
         $data['linkform'] = 'admin/villa/edit/'.$id;
 
         $this->load->library('form_validation');
@@ -101,9 +113,10 @@ class Villa extends CI_Controller {
             $villa_data = [
                 'name' => $this->input->post('villa_name'),
                 'deskripsi' => $this->input->post('villa_desk'),
+                'pemandangan' => $this->input->post('view_description'),
+                'lokasi' => $this->input->post('location'),
                 'image' => $thumbnail_path,
             ];
-            
             $this->m->upd('villa', $villa_data, ["id" => $id]);      
 
             $this->session->set_flashdata('message', 'Room updated successfully');

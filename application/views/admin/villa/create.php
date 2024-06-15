@@ -39,7 +39,15 @@
                     <input type="text" class="form-control" name="villa_name" value="<?php echo set_value('name', isset($villa->name) ? $villa->name : ''); ?>">
                 </div>
                 
-                
+                <div class="form-group">
+                        <label for="view_description">View</label>
+                        <textarea class="form-control summernote" name="view_description"><?php echo set_value('view_description', isset($villa->pemandangan) ? $villa->pemandangan : ''); ?></textarea>
+                      </div>
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" name="location" value="<?= set_value('location', isset($villa->lokasi) ? $villa->lokasi : ''); ?>">
+                    </div>
 
                 <div class="form-group">
                     <label for="lite_desc">Description</label>
@@ -54,7 +62,16 @@
                         <img src="<?php echo base_url($villa->image); ?>" alt="Current Thumbnail" style="max-width: 200px; margin-top: 10px;">
                     <?php endif; ?>
                 </div>
-
+                
+                <div class="form-group">
+                    <label for="facility_ids">Facilities</label><br>
+                    <?php foreach ($facilities as $facility): ?>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="facility_ids[]" value="<?= $facility['id']; ?>" <?= isset($room['facilities']) ? set_checkbox('facility_ids[]', $facility['id'], in_array($facility['id'], array_column($room['facilities'], 'facility_id'))) : '' ; ?>>
+                            <label class="form-check-label"><?= $facility['facility_name']; ?></label>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
                 
 
                 <button type="submit" class="btn btn-primary">Save</button>
