@@ -53,7 +53,7 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['villa'] = 'Home/villa';
-$route['villa/detail'] = 'Home/detail_villa';
+$route['villa/detail/(:any)'] = 'Home/detail_villa/$1';
 $route['activities'] = 'Home/activities';
 $route['activities/detail/(:any)'] = 'Home/detail_activities/$1';
 $route['tour'] = 'Home/tour';
@@ -86,3 +86,19 @@ $route['tourpackage/include_exclude/delete_include/(:any)'] = 'tour_package/dele
 $route['tourpackage/include_exclude/delete_exclude/(:any)'] = 'tour_package/delete_exclude/$1';
 $route['tourpackage/delete_image/(:any)'] = 'tour_package/delete_image/$1';
 $route['tourpackage/upload_image'] = 'tour_package/upload_image';
+
+// admin
+$route['admin/villa'] = 'Villa/index';
+$route['admin/villa/create'] = 'Villa/create';
+$route['admin/villa/edit/(:any)'] = 'Villa/edit/$1';
+$route['admin/villa/delete/(:any)'] = 'Villa/delete/$1';
+$route['admin/villa/gallery/(:any)'] = 'Villa/gallery/$1';
+$route['admin/villa/delete_image/(:any)'] = 'Villa/delete_image/$1';
+$route['admin/villa/upload_image/(:any)'] = 'Villa/upload_image/$1';
+
+$route['admin/specialoffer'] = 'SpesialOffer/index';
+$route['admin/specialoffer/add'] = 'SpesialOffer/add';
+$route['admin/specialoffer/edit/(:any)'] = 'SpesialOffer/edit/$1';
+$route['admin/specialoffer/create'] = 'SpesialOffer/create';
+$route['admin/specialoffer/update/(:any)'] = 'SpesialOffer/update/$1';
+$route['admin/specialoffer/delete/(:any)'] = 'SpesialOffer/delete/$1';

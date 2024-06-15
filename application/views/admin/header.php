@@ -136,6 +136,14 @@
             </a>           
           </li>
           <li class="nav-item">
+            <a href="<?= base_url("admin/villa") ?>" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Villa
+              </p>
+            </a>           
+          </li>
+          <li class="nav-item">
             <a href="<?= base_url("rooms") ?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -160,7 +168,7 @@
             </a>           
           </li>
           <li class="nav-item">
-            <a href="<?= base_url("retreats") ?>" class="nav-link">
+            <a href="<?= base_url("admin/specialoffer") ?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Special Offer

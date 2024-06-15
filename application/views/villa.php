@@ -103,28 +103,28 @@
             <h1>Special Offer </h1>
         </div> -->
         <div class="row">
-            <?php for($y=1;$y<4;$y++) { ?>
+            <?php $y=1; foreach($villas as $v) { ?>
                 <div class="post-slide package-item bg-white mb-2">
                     <div class="row">
                         <div class="col-md-6">
-                        <img class="img-fluid" src="<?= base_url('assets/') ?>img/package-2.jpg" alt="">
+                        <img class="img-fluid" src="<?= base_url().$v->image ?>" alt="">
 
                         </div>
                         <div class="col-md-6">
                             <div class="p-4">
                                 <h5 class="text-primary">Suite</h5>
-                                <a class="h5 text-decoration-none" href="<?= base_url('Home/tour') ?>">Snorkeling and Mangrove Forest Day Tour</a>
-                                <div class="d-flex justify-content-between my-3">
+                                <a class="h5 text-decoration-none" href="<?= base_url('villa/detail/') ?>"><?= $v->name ?></a>
+                                <!-- <div class="d-flex justify-content-between my-3">
                                     <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Nusa Lembongan</small>
                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>1 days</small>
                                     <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>1 Person</small>
-                                </div>
+                                </div> -->
                                 <div class="border-top mt-4 pt-4">
                                     <div class="d-flex justify-content-between">
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt itaque soluta iste porro officiis quibusdam, rerum, numquam, atque at sunt distinctio ut vero blanditiis. Doloremque, earum aut? Recusandae, consequuntur soluta.</p>
+                                        <p><?= $v->deskripsi ?></p>
                                     </div>
                                     <div class="float-right">
-                                        <a href="<?= base_url("villa/detail") ?>" class="btn btn-primary"> See Detail </a>
+                                        <a href="<?= base_url("villa/detail/").$v->id ?>" class="btn btn-primary"> See Detail </a>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                     </div>
                    
                 </div>
-            <?php } ?>
+            <?php $y++; } ?>
             <!-- <div class="col-lg-12 col-md-12 mb-4">
                 <div class="text-center">
                     <a class="btn btn-md btn-primary" href="#">Read More</a>

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_basic extends CI_Model {
 
-	public function getData($t, $w = null)
+	public function getData($t, $w = null, $join = null )
 	{
 		if ($w != null) {
 			$this->db->where($w);

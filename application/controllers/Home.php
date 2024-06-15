@@ -17,7 +17,9 @@ class Home extends CI_Controller {
 	{
 
 		$data['retreats_daily'] = $this->m->getData("retreats")->result();
-
+        $data['villa'] = $this->m->getData("villa")->result();
+        $data['spesialoffer'] = $this->m->getData("spesialoffer")->result();
+        
 		$this->load->view('header');
 		$this->load->view('index', $data);
 		$this->load->view('footer');
@@ -25,15 +27,19 @@ class Home extends CI_Controller {
 
     public function villa()
 	{
-		$this->load->view('header');
-		$this->load->view('villa');
-		$this->load->view('footer');
+        $data["villas"] = $this->m->getData("villa")->result();
+        $data["gallery"] = $this->m->getData("villa_galery")->result();
+		$this->load->view('header', $data);
+		$this->load->view('villa', $data);
+		$this->load->view('footer', $data);
 	}
 
-	public function detail_villa()
+	public function detail_villa($id)
 	{
-		$this->load->view('header');
-		$this->load->view('detailVilla');
+        $data["villa"] = $this->m->getData("villa", ["id" => $id])->row();
+        $data["gallery"] = $this->m->getData("villa_galery", ["villa_id" => $id])->result();
+		$this->load->view('header', $data);
+		$this->load->view('detailVilla',$data);
 		$this->load->view('footer');
 	}
 

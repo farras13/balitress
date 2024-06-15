@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_basic extends CI_Model {
+class M_login extends CI_Model {
 
 	public function getData($t, $w = null)
 	{
@@ -16,4 +16,4 @@ class M_basic extends CI_Model {
 	
 }
 
-/* End of file M_basic.php */
+/* End of file M_login.php */

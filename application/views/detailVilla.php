@@ -9,21 +9,16 @@
     <div class="container p-0">
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="<?= base_url('assets/') ?>img/carousel-1.jpg" alt="Image">
+                <?php $y=1; foreach($gallery as $g){ ?>
+                <div class="carousel-item <?php if($y==1) {echo "active";} ?>">
+                    <img class="w-100" src="<?= base_url('').$g->image ?>" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h1 class="display-3 text-white mb-md-4">Villa Balitress</h1>
+                            <h1 class="display-3 text-white mb-md-4"><?= $villa->name ?></h1>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="<?= base_url('assets/') ?>img/carousel-2.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                        </div>
-                    </div>
-                </div>
+                <?php $y++; } ?>
             </div>
             <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
                 <div class="btn btn-dark" style="width: 45px; height: 45px;">
@@ -42,9 +37,9 @@
         <div class="col-md-12 col-lg-8 mb-4">
             <div class="card">
                 <div class="card-body">
-                <h1 class="card-title text-center text-primary my-3"><span class="text-dark">Balitress</span> Villa</h1>
+                <h1 class="card-title text-center text-primary my-3"><span class="text-dark"><?= $villa->name ?></h1>
                     <div class="card-text">
-                        <p>Join our retreat for an authentic and traditional Balinese yoga and meditation experience in the spiritual village near Mount Batukaru. Get close and involve yourself into daily cultural activities of the Sesandan Village community. At Balitress Retreats, you'll be welcomed into a family and village setting. Becoming part of both the family and the village community.</p>
+                        <p><?= $villa->deskripsi ?></p>
                         <div class="row my-3">
                             <div class="col-md-6">                                    
                                 <p><strong>Room Type:</strong> King</p>

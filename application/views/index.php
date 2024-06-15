@@ -80,42 +80,14 @@
         <div class="row mx-auto my-auto">
             <div id="caroselspecialoffer" class="carousel caroselspecialoffer slide w-100" data-ride="carousel">
                 <div class="carousel-inner w-100" role="listbox">
-                    <div class="carousel-item active">
+                    <?php $y=1; foreach($spesialoffer as $so){ ?>
+                    <div class="carousel-item <?php if($y==1) echo 'active'; ?>">
                         <div class="col-lg-4 col-md-6">
-                            <img class="img-fluid" src="http://placehold.it/350x180?text=1">
-                            <button class="btn btn-primary btn-hover rounded">Click Me</button>
+                            <img class="img-fluid" src="<?= base_url().$so->foto ?>">
+                            <button class="btn btn-primary btn-hover rounded"><?= $so->nama ?></button>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="col-lg-4 col-md-6">
-                            <img class="img-fluid" src="http://placehold.it/350x180?text=2">
-                            <button class="btn btn-primary btn-hover rounded">Click Me</button>
-                            </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-lg-4 col-md-6">
-                            <img class="img-fluid" src="http://placehold.it/350x180?text=3">
-                            <button class="btn btn-primary btn-hover rounded">Click Me</button>
-                            </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-lg-4 col-md-6">
-                            <img class="img-fluid" src="http://placehold.it/350x180?text=4">
-                            <button class="btn btn-primary btn-hover rounded">Click Me</button>
-                            </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-lg-4 col-md-6">
-                            <img class="img-fluid" src="http://placehold.it/350x180?text=5">
-                            <button class="btn btn-primary btn-hover rounded">Click Me</button>
-                            </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-lg-4 col-md-6">
-                            <img class="img-fluid" src="http://placehold.it/350x180?text=6">
-                            <button class="btn btn-primary btn-hover rounded">Click Me</button>
-                        </div>
-                    </div>
+                    <?php $y++; } ?>
                 </div>
                 <a class="carousel-control-prev bg-dark w-auto" href="#caroselspecialoffer" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -238,14 +210,14 @@
             <div id="caroselvilla" class="carousel caroselvilla slide w-100" data-ride="carousel">
                 <div class="carousel-inner w-100" role="listbox">
                     
-                <?php for($y=0;$y<8;$y++) { ?>
+                <?php foreach($villa as $v) { ?>
                     <div class="carousel-item <?php if($y==1) echo 'active'; ?>">
                         <div class="col-lg-4 col-md-6">
-                            <img class="img-fluid" src="<?= base_url('assets/') ?>img/package-3.jpg">
-                            <a href="" class="btn btn-primary"><?= $y ?></a>
+                            <img class="img-fluid" src="<?= $v->image ?>">
+                            <a href="" class="btn btn-primary"><?= $v->name ?></a>
                         </div>
                     </div>
-                <?php } ?>
+                <?php $y++; } ?>
                 </div>
                 <a class="carousel-control-prev rounded-0 w-auto" href="#caroselvilla" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon p-2 bg-dark rounded" aria-hidden="true"></span>
