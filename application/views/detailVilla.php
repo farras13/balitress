@@ -184,50 +184,29 @@
         </div>
         <div class="col-md-12">
             <div  class="owl-carousel news-slider">
+                <?php foreach($others as $o){ ?>
                 <div class="post-slide">
                 <div class="post-img">
                     <img src="https://via.placeholder.com/150" alt="">
-                    <a href="<?= base_url('villa') ?>" class="over-layer"><i class="fa fa-link"></i></a>
+                    <a href="<?= base_url('villa/detail/').$o->id ?>" class="over-layer"><i class="fa fa-link"></i></a>
                 </div>
                 <div class="post-content">
                     <h3 class="post-title">
-                    <a href="#">Bali Trees</a>
+                    <a href="#"><?= $o->name ?></a>
                     </h3>
-                    <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                    <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                    <a href="<?= base_url('villa') ?>" class="read-more">Explore</a>
+                    <p class="post-description">
+                    <?php   
+                            $descriptions = strip_tags($o->deskripsi);
+                            if (strlen($descriptions) > 120) {
+                                $descriptions = substr($descriptions, 0, 120) . '...';
+                            }
+                            echo $descriptions;
+                        ?>
+                    </p>
+                    <a href="<?= base_url('villa/detail').$o->id ?>" class="read-more">Explore</a>
                 </div>
-                </div>       
-            
-                <div class="post-slide">
-                <div class="post-img">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-                </div>
-                <div class="post-content">
-                    <h3 class="post-title">
-                    <a href="#">Lorem ipsum dolor sit amet.</a>
-                    </h3>
-                    <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                    <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                    <a href="<?= base_url('villa') ?>" class="read-more">Explore</a>
-                </div>
-                </div>
-                
-                <div class="post-slide">
-                <div class="post-img">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-                </div>
-                <div class="post-content">
-                    <h3 class="post-title">
-                    <a href="#">Lorem ipsum dolor sit amet.</a>
-                    </h3>
-                    <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                    <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                    <a href="<?= base_url('villa') ?>" class="read-more">Explore</a>
-                </div>
-                </div>
+                </div>   
+                <?php } ?>
             </div>
         </div>
     </div>   

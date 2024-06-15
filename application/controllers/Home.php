@@ -17,9 +17,17 @@ class Home extends CI_Controller {
 	{
 
 		$data['retreats_daily'] = $this->m->getData("retreats")->result();
+		$data['retreat'] = $this->m->getData("retreats", ['is_home' => "on"])->row();
+		$data['galretreat'] = $this->m->getData("retreat_gallery", ['retreat_id' => $data['retreat']->retreat_id])->row();
         $data['villa'] = $this->m->getData("villa")->result();
         $data['spesialoffer'] = $this->m->getData("spesialoffer")->result();
-        
+        $data['banner'] = $this->m->getData("banners", ["menu" => "utama"])->result();
+		$data['toursatu'] = $this->m->getData("banners", ["menu" => "tour1"])->row();
+		$data['tourdua'] = $this->m->getData("banners", ["menu" => "tour2"])->row();
+		$data['tourtiga'] = $this->m->getData("banners", ["menu" => "tour3"])->row();
+		$data['tourinfo'] = $this->m->getData("banners", ["menu" => "tourinfo"])->row();
+		$data['link'] = $this->m->getData("link")->row();
+
 		$this->load->view('header');
 		$this->load->view('index', $data);
 		$this->load->view('footer');
@@ -37,6 +45,7 @@ class Home extends CI_Controller {
 	public function detail_villa($id)
 	{
         $data["villa"] = $this->m->getData("villa", ["id" => $id])->row();
+        $data["others"] = $this->m->getData("villa", ["id !=" => $id])->result();
         $data["fasilitas"] = $this->m->get_villa_fasilitass($id);
         $data["gallery"] = $this->m->getData("villa_galery", ["villa_id" => $id])->result();
 		$this->load->view('header', $data);

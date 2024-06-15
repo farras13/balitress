@@ -113,7 +113,7 @@
             <div class="col-md-12 mb-4">
                 <div class="card package-card" >
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/KLuTLF3x9sA" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="<?= $link->link ?>" allowfullscreen></iframe>
                 </div>
                 </div>
             </div>
@@ -134,22 +134,27 @@
                     <div class="col-lg-7 mb-5 mb-lg-0 p-3 rounded" style="background-color:rgba(0, 0, 0, 0.2);">
                         <div class="mb-4">
                             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"> Our Retreat</h6>
-                            <h1 class="text-white"><span class="text-primary">Retreat and Activities  </span>Balinese</h1>
+                            <h1 class="text-white"><span class="text-primary"><?= $retreat->name ?></h1>
                         </div>
-                        <p class="text-white">Join our retreat for an authentic and traditional Balinese yoga and meditation experience in the spiritual village near Mount Batukaru. Get close and involve yourself into daily cultural activities of the Sesandan Village community. At Balitress Retreats, you'll be welcomed into a family and village setting. Becoming part of both the family and the village community</p>
-                        <a href="#" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a>
+                        <p class="text-white">
+                        <?php   
+                            $descriptions = strip_tags($retreat->description);
+                            if (strlen($descriptions) > 120) {
+                                $descriptions = substr($descriptions, 0, 120) . '...';
+                            }
+                            echo $descriptions;
+                        ?>
+                        </p>
+                        <a href="<?= base_url("activities/detail/").$retreat->retreat_id ?>" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a>
                     </div>
                     <div class="col-lg-5">
                         <div id="retreat-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="w-100" src="<?= base_url('assets/') ?>img/carousel-1.jpg" alt="Image">
-
+                                <?php foreach($galretreat as $idx => $gal){ ?>
+                                <div class="carousel-item <?php if($idx == 1){echo "active";} ?>">
+                                    <img class="w-100" src="<?= base_url().$gal->image ?>" alt="Image">
                                 </div>
-                                <div class="carousel-item">
-                                    <img class="w-100" src="<?= base_url('assets/') ?>img/carousel-2.jpg" alt="Image">
-
-                                </div>
+                                <?php } ?>
                             </div>
                             <a class="carousel-control-prev" href="#retreat-carousel" data-slide="prev">
                                 <div class="btn btn-dark" style="width: 45px; height: 45px;">
@@ -169,22 +174,22 @@
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Daily Activity</h6>
             </div>
             <!-- Package 1 -->
-            <?php foreach($retreats_daily as $retreat) {?>
+            <?php foreach($retreats_daily as $retreats) {?>
             <div class="col-md-3 mb-4">
                 <div class="card package-card">
-                <img src="<?= base_url($retreat->image) ?>" class="card-img-top" alt="<?= $retreat->name ?>">
+                <img src="<?= base_url($retreats->image) ?>" class="card-img-top" alt="<?= $retreats->name ?>">
                 <div class="card-body">
-                    <h5 class="card-title"><?= $retreat->name ?></h5>
+                    <h5 class="card-title"><?= $retreats->name ?></h5>
                     <p class="card-text">
                         <?php   
-                            $descriptions = strip_tags($retreat->description);
+                            $descriptions = strip_tags($retreats->description);
                             if (strlen($descriptions) > 120) {
                                 $descriptions = substr($descriptions, 0, 120) . '...';
                             }
                             echo $descriptions;
                         ?>
                     </p>
-                    <a href="#" class="btn btn-primary">Explore</a>
+                    <a href="<?= base_url("activities/detail/").$retreats->retreat_id ?>" class="btn btn-primary">Explore</a>
                 </div>
                 </div>
             </div>
@@ -241,20 +246,20 @@
         <div class="row">
             <div class="col-lg-6" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100" src="<?= base_url('assets/') ?>img/about.jpg" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100" src="<?= base_url().$toursatu->images ?>" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 pt-5 pb-lg-5">
                 <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
                     <h5 class="text-primary text-uppercase" style="letter-spacing: 5px;">Tour Package</h5>
-                    <h1 class="mb-3">We Provide Best Tour Packages In Your Budget</h1>
-                    <p>Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
+                    <h1 class="mb-3"><?= $tourinfo->judul ?></h1>
+                    <p><?= $tourinfo->deskripsi ?></p>
                     <div class="row mb-4">
                         <div class="col-6">
-                            <img class="img-fluid" src="<?= base_url('assets/') ?>img/about-1.jpg" alt="">
+                            <img class="img-fluid" src="<?= base_url().$tourdua->images ?>" alt="">
                         </div>
                         <div class="col-6">
-                            <img class="img-fluid" src="<?= base_url('assets/') ?>img/about-2.jpg" alt="">
+                            <img class="img-fluid" src="<?= base_url().$tourtiga->images ?>" alt="">
                         </div>
                     </div>
                     <a href="<?= base_url("tour") ?>" class="btn btn-primary mt-1">Explore</a>
