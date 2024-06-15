@@ -101,7 +101,7 @@
                             ?>    
                         </p>
                         <p class="card-text">IDR <?= number_format($package['Price'], 0, ',', '.'); ?></p>
-                        <center><a href="<?= base_url('tour/detail/'.$card['Id']) ?>" class="btn btn-primary text-center">Check Detail</a></center>
+                        <center><a href="<?= base_url('tour/detail/'.$package['Id']) ?>" class="btn btn-primary text-center">Check Detail</a></center>
                     </div>
                     </div>
                 </div>
