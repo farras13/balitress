@@ -3,6 +3,23 @@
     .selected {
         background-color: #d4edda !important; /* Warna hijau */
     }
+
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media (max-width: 576px) {
+        .flex-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .flex-container .btn {
+            margin-top: 10px;
+        }
+    }
 </style>
 <!-- Carousel End -->
 <div class="container mt-5">
@@ -42,7 +59,7 @@
                         <p><?= $villa->deskripsi ?></p>
                         <div class="row my-3">
                             <div class="col-md-6">                                    
-                                <p><strong>Room Facilities:</strong></p>
+                                <h2><strong>Room Facilities:</strong></h2>
                                 <ul>
                                     <?php foreach($fasilitas as $f){ ?>
                                     <li><?= $f->facility_name ?></li>
@@ -57,7 +74,7 @@
                             </div>
                         </div>  
                         <div class="col-md-12">
-                                    <h6><b>Choose Your Package</b></h6>
+                                    <h2><b>Choose Your Package</b></h2>
                                     <div class="package-item bg-white mb-2">
                                         <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-1.jpg" alt="Kamar 1"> -->
                                         <div class="p-4">
@@ -69,7 +86,7 @@
                                             <a class="h5 text-decoration-none" href="#">Room Only</a>
                                             <p class="mb-3">Deskripsi Room Only.</p>
                                             <div class="border-top mt-4 pt-4">
-                                                <div class="d-flex justify-content-between align-items-center">
+                                                <div class="flex-container">
                                                     <h5 class="m-0">Rp 1.000.000/night</h5>
                                                     <button class="btn btn-primary select-room">Select Package</button>
                                                 </div>
@@ -87,7 +104,7 @@
                                             <a class="h5 text-decoration-none" href="#">Room + Meals</a>
                                             <p class="mb-3">Deskripsi Room + Meals</p>
                                             <div class="border-top mt-4 pt-4">
-                                                <div class="d-flex justify-content-between align-items-center">
+                                                <div class="flex-container">
                                                     <h5 class="m-0">Rp 1.200.000/night</h5>
                                                     <button class="btn btn-primary select-room">Select Package</button>
                                                 </div>
@@ -103,9 +120,8 @@
                                                 <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Private Bathroom</small>
                                             </div> -->
                                             <a class="h5 text-decoration-none" href="#">With Yoga Retreat</a>
-                                            <p class="mb-3">Join our retreat for an authentic and traditional Balinese yoga and meditation experience in the spiritual village near Mount Batukaru.</p>
                                             <div class="border-top mt-4 pt-4">
-                                                <div class="d-flex justify-content-between align-items-center">
+                                                <div class="flex-container">
                                                     <h5 class="m-0">Rp 1.500.000/night</h5>
                                                     <button class="btn btn-primary select-room">Select Package</button>
                                                 </div>
@@ -189,7 +205,7 @@
                 <?php foreach($others as $o){ ?>
                 <div class="post-slide">
                 <div class="post-img">
-                    <img src="https://via.placeholder.com/150" alt="">
+                    <img src="<?= base_url().$o->image ?>" alt="">
                     <a href="<?= base_url('villa/detail/').$o->id ?>" class="over-layer"><i class="fa fa-link"></i></a>
                 </div>
                 <div class="post-content">

@@ -3,27 +3,45 @@
     .selected {
         background-color: #d4edda !important; /* Warna hijau */
     }
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media (max-width: 576px) {
+        .flex-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .flex-container .btn {
+            margin-top: 10px;
+        }
+    }
 </style>
 <!-- Carousel End -->
 <div class="container mt-5">
 <div class="container p-0">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="w-100" src="<?= base_url('assets/') ?>img/carousel-1.jpg" alt="Image">
+            <?php $index = 1; foreach($gallery as $g){ ?>
+            <div class="carousel-item <?php if($index == 1){echo "active";} ?>">
+                <img class="w-100" src="<?= base_url().$g->image ?>" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 900px;">
+                    <!-- <div class="p-3" style="max-width: 900px;">
                         <h1 class="display-3 text-white mb-md-4">Balinese Watukaru Yoga Retreat</h1>
-                    </div>
+                    </div> -->
                 </div>
             </div>
-            <div class="carousel-item">
+            <?php $index++; } ?>
+            <!-- <div class="carousel-item">
                 <img class="w-100" src="<?= base_url('assets/') ?>img/carousel-2.jpg" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
             <div class="btn btn-dark" style="width: 45px; height: 45px;">
@@ -47,15 +65,15 @@
                             <p><?= $retreat->description ?></p>
                             <div class="row my-3">
                                 <div class="col-md-6">
-                                    <h6><b>Highlight</b></h6>
+                                    <h2><b>Highlight</b></h2>
                                     <?= $retreat->highlights ?>
                                 </div>
                                 <div class="col-md-4">
-                                    <h6><b>Facilities</b></h6>
+                                    <h2><b>Facilities</b></h2>
                                     <?= $retreat->facilities ?>
                                 </div>
-                                <div class="col-md-12">
-                                <h6><b>Choose Your Room</b></h6>
+                                <div class="col-md-12 mt-2">
+                                <h2><b>Choose Your Room</b></h2>
                                 <div class="package-item bg-white mb-2">
                                     <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-1.jpg" alt="Kamar 1"> -->
                                     <div class="p-4">
@@ -67,7 +85,7 @@
                                         <a class="h5 text-decoration-none" href="#">Bali Tress</a>
                                         <p class="mb-3">Deskripsi Bali Tress</p>
                                         <div class="border-top mt-4 pt-4">
-                                            <div class="d-flex justify-content-between align-items-center">
+                                            <div class="flex-container">
                                                 <h5 class="m-0">Rp 1.500.000/night</h5>
                                                 <button class="btn btn-primary select-room">Select Room</button>
                                             </div>
@@ -85,7 +103,7 @@
                                         <a class="h5 text-decoration-none" href="#">Balocloves</a>
                                         <p class="mb-3">Deskripsi Balocloves</p>
                                         <div class="border-top mt-4 pt-4">
-                                            <div class="d-flex justify-content-between align-items-center">
+                                            <div class="flex-container">
                                                 <h5 class="m-0">Rp.1.000.000/night</h5>
                                                 <button class="btn btn-primary select-room">Select Room</button>
                                             </div>
@@ -171,7 +189,7 @@
             <?php $indx = 1; foreach($others as $other){ if($indx < 4){ ?>
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Bali Trees Thumbnail">
+                    <img src="<?= base_url().$other->image ?>" class="card-img-top" alt="Bali Trees Thumbnail">
                     <div class="card-body">
                         <h5 class="card-title" data-toggle="collapse" data-target="#baliTrees<?=$indx?>"><?= $other->name ?></h5>
                         <div id="baliTrees<?=$indx?>" class="collapse">
