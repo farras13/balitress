@@ -2,8 +2,8 @@
  <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Contact</h6>
-                <h1>Contact For Any Query</h1>
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Balitress</h6>
+                <h1>CONTACT US</h1>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">

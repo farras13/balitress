@@ -137,7 +137,7 @@ class Retreats extends CI_Controller {
     
     public function gallery($id)
     {
-        $data['gallery'] = $this->m->getData("retreat_gallery")->result();
+        $data['gallery'] = $this->m->getData("retreat_gallery", ["retreat_id" => $id])->result();
         $data['id'] = $id;
         $this->load->view('admin/header', $data);
         $this->load->view('admin/retreat/gallery', $data);
@@ -173,7 +173,8 @@ class Retreats extends CI_Controller {
 
     public function delete_image($id)
     {
+        $data = $this->m->getData("retreat_gallery", ["id" => $id])->row();
         $this->m->del("retreat_gallery",["id"=>$id]);
-        redirect('admin/villa/gallery/'.$id);
+        redirect('admin/villa/gallery/'.$data->retreat_id);
     }
 }

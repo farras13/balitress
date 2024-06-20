@@ -152,7 +152,7 @@
                             <div class="carousel-inner">
                                 <?php $idx=1; foreach($galretreat as $gal){ ?>
                                 <div class="carousel-item <?php if($idx == 1){echo "active";} ?>">
-                                    <img class="w-100" src="<?= base_url().$gal->image ?>" alt="Image">
+                                    <img class="w-100" src="<?= base_url($gal->image) ?>" alt="Image">
                                 </div>
                                 <?php $idx++; } ?>
                             </div>

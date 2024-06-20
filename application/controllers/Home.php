@@ -18,7 +18,7 @@ class Home extends CI_Controller {
 
 		$data['retreats_daily'] = $this->m->getData("retreats")->result();
 		$data['retreat'] = $this->m->getData("retreats", ['is_home' => "on"])->row();
-		$data['galretreat'] = $this->m->getData("retreat_gallery", ['retreat_id' => $data['retreat']->retreat_id])->row();
+		$data['galretreat'] = $this->m->getData("retreat_gallery", ['retreat_id' => $data['retreat']->retreat_id])->result();
         $data['villa'] = $this->m->getData("villa")->result();
         $data['spesialoffer'] = $this->m->getData("spesialoffer")->result();
         $data['banner'] = $this->m->getData("banners", ["menu" => "utama"])->result();

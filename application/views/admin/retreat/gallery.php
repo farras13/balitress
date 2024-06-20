@@ -35,7 +35,7 @@
             <div class="card-body">
                 <?php echo form_open_multipart('retreats/upload_gallery/'.$id); ?>
                 
-                <input hidden name="retreat_id" value="<?= $id; ?>">
+                 <input hidden name="retreat_id" value="<?= $id; ?>">
                 <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" class="form-control" name="image">
