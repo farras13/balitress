@@ -19,7 +19,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Tipe</label>
-                                <select name="retreat_tipe" id="retreat_tipe" required>
+                                <select name="retreat_tipe" id="retreat_tipe" class="form-control" required>
                                     <option value="">Choose Your Type</option>
                                     <option value="Activities">Activities</option>
                                     <option value="Retreat">Retreat</option>

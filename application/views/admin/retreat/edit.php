@@ -19,7 +19,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Tipe</label>
-                                <select name="retreat_tipe" id="retreat_tipe" required>
+                                <select name="retreat_tipe" id="retreat_tipe" class="form-control" required>
                                     <option value="" <?php if($retreat->retreat_tipe == ""){ echo "checked"; } ?>>Choose Your Type</option>
                                     <option value="Activities" <?php if($retreat->retreat_tipe == "Activities"){ echo "checked"; } ?>>Activities</option>
                                     <option value="Retreat" <?php if($retreat->retreat_tipe == "Retreat"){ echo "checked"; } ?>>Retreat</option>
