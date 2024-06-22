@@ -18,6 +18,20 @@
                                 <?= form_error('name', '<div class="text-danger">', '</div>'); ?>
                             </div>
                             <div class="form-group">
+                                <label>Tipe</label>
+                                <select name="retreat_tipe" id="retreat_tipe" required>
+                                    <option value="" <?php if($retreat->retreat_tipe == ""){ echo "checked"; } ?>>Choose Your Type</option>
+                                    <option value="Activities" <?php if($retreat->retreat_tipe == "Activities"){ echo "checked"; } ?>>Activities</option>
+                                    <option value="Retreat" <?php if($retreat->retreat_tipe == "Retreat"){ echo "checked"; } ?>>Retreat</option>
+                                </select>
+                                <?= form_error('retreat_tipe', '<div class="text-danger">', '</div>'); ?>
+                            </div>
+                            <div class="form-group">
+                                <label>Lite Description</label>
+                                <textarea name="lite_description" class="form-control summernote"><?= set_value('lite_description', isset($retreat->lite_description) ? $retreat->lite_description : ''); ?></textarea>
+                                <?= form_error('lite_description', '<div class="text-danger">', '</div>'); ?>
+                            </div>
+                            <div class="form-group">
                                 <label>Description</label>
                                 <textarea name="description" class="form-control summernote"><?= set_value('description', isset($retreat->description) ? $retreat->description : ''); ?></textarea>
                                 <?= form_error('description', '<div class="text-danger">', '</div>'); ?>

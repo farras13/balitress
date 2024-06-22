@@ -33,6 +33,8 @@ class Retreats extends CI_Controller {
         }
         $data = array(
             'name' => $this->input->post('name'),
+            'retreat_tipe' => $this->input->post('tipe'),
+            'lite_description' => $this->input->post('lite_description'),
             'description' => $this->input->post('description'),
             'highlights' => $this->input->post('highlights'),
             'facilities' => $this->input->post('facilities'),
@@ -78,6 +80,8 @@ class Retreats extends CI_Controller {
             }
         $data = array(
             'name' => $this->input->post('name'),
+            'retreat_tipe' => $this->input->post('tipe'),
+            'lite_description' => $this->input->post('lite_description'),
             'description' => $this->input->post('description'),
             'highlights' => $this->input->post('highlights'),
             'facilities' => $this->input->post('facilities'),

@@ -111,7 +111,7 @@
                             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"> <b>(<?= $card->endname ?>)</b> Our Retreat </h6>
                             <h1 class="text-white"><span class="text-primary"> <?= $card->name ?> </span><?=  $card->endname ?></h1>
                         </div>
-                        <p class="text-white"><?= $card->description ?></p>
+                        <p class="text-white"><?= $card->lite_description ?></p>
                         <a href="<?= base_url("activities/detail/").$card->retreat_id  ?>" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a>
                     </div>
                     <div class="col-lg-5">
