@@ -44,6 +44,7 @@
                   <thead>
                   <tr>
                     <th>Name</th>
+                    <th>Lite Description</th>
                     <th>Description</th>
                     <th>Thumbnail</th>
                     <th>Actions</th>
@@ -53,6 +54,7 @@
                     <?php foreach ($rooms as $room): ?>
                         <tr>
                             <td><?= $room->name; ?></td>
+                            <td><?= $room->lite_deskripsi ?></td>
                             <td><?= $room->deskripsi ?></td>
                             <td><img src="<?= base_url().$room->image ?>" alt="<?= $room->name ?>" width="250px" height="150px"></td>
                             <td>

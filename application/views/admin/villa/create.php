@@ -48,7 +48,10 @@
                         <label for="location">Location</label>
                         <input type="text" class="form-control" name="location" value="<?= set_value('location', isset($villa->lokasi) ? $villa->lokasi : ''); ?>">
                     </div>
-
+                <div class="form-group">
+                    <label for="lite_desc">Lite Description</label>
+                    <textarea class="form-control summernote" name="villa_desk_lite"><?php echo set_value('villa_desk_lite', isset($villa->lite_deskripsi) ? $villa->lite_deskripsi : ''); ?></textarea>
+                </div>
                 <div class="form-group">
                     <label for="lite_desc">Description</label>
                     <textarea class="form-control summernote" name="villa_desk"><?php echo set_value('villa_desk', isset($villa->deskripsi) ? $villa->deskripsi : ''); ?></textarea>

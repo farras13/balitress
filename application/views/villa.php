@@ -131,7 +131,7 @@
                                 </div> -->
                                 <div class="border-top mt-4 pt-4">
                                     <div class="d-flex justify-content-between">
-                                        <p><?= $v->deskripsi ?></p>
+                                        <p><?= $v->lite_deskripsi ?></p>
                                     </div>
                                     <div class="float-right">
                                         <a href="<?= base_url("villa/detail/").$v->id ?>" class="btn btn-primary"> See Detail </a>
