@@ -57,6 +57,7 @@ class Villa extends CI_Controller {
                 'lite_deskripsi' => $this->input->post('villa_desk_lite'),
                 'pemandangan' => $this->input->post('view_description'),
                 'lokasi' => $this->input->post('location'),
+                'price' => $this->input->post('price'),
                 'image' => $thumbnail_path,
             ];
             $this->m->ins('villa',$villa_data);            
@@ -117,6 +118,7 @@ class Villa extends CI_Controller {
                 'lite_deskripsi' => $this->input->post('villa_desk_lite'),
                 'pemandangan' => $this->input->post('view_description'),
                 'lokasi' => $this->input->post('location'),
+                'price' => $this->input->post('price'),
                 'image' => $thumbnail_path,
             ];
             $this->m->upd('villa', $villa_data, ["id" => $id]);      

@@ -82,8 +82,8 @@ $route['tourpackage/delete/(:any)'] = 'tour_package/delete/$1';
 $route['tourpackage/gallery/(:any)'] = 'tour_package/gallery/$1';
 $route['tourpackage/include_exclude/(:any)'] = 'tour_package/include_exclude/$1';
 $route['tourpackage/include_exclude/add/(:any)'] = 'tour_package/add_include_exclude/$1';
-$route['tourpackage/include_exclude/delete_include/(:any)'] = 'tour_package/delete_include/$1';
-$route['tourpackage/include_exclude/delete_exclude/(:any)'] = 'tour_package/delete_exclude/$1';
+$route['tourpackage/delete_include/(:any)'] = 'tour_package/delete_include/$1';
+$route['tourpackage/delete_exclude/(:any)'] = 'tour_package/delete_exclude/$1';
 $route['tourpackage/delete_image/(:any)'] = 'tour_package/delete_image/$1';
 $route['tourpackage/upload_image'] = 'tour_package/upload_image';
 

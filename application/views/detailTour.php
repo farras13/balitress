@@ -35,15 +35,6 @@
             <div class="bg-light p-5 rounded">
                 <h2 class="mb-4">About This Activity</h2>
                 <p class="lead"><?= $package['About'] ?></p>
-    
-                <!-- <h3 class="mt-4">What's included:</h3>
-                <ul class="list-unstyled mb-4">
-                    <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>Guided snorkeling tour</li>
-                    <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>All snorkeling equipment</li>
-                    <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>Visit to the mangrove forest</li>
-                    <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>Lunch at a local restaurant</li>
-                    <li class="mb-2"><i class="fa fa-check text-primary mr-2"></i>Round-trip transportation</li>
-                </ul> -->
                 <div class="bg-blue shadow p-4">
                     <h6>Select Participants and Date </h6>
                     <form action="<?= base_url("home/search") ?>" method="get">
@@ -86,15 +77,6 @@
                 <div class="p-3">
                     <?= $package['Highlight'] ?>
                 </div>
-                <!-- <ol class="mb-4">
-                    <li class="mb-2">8:00 AM - Pick up from your hotel</li>
-                    <li class="mb-2">9:00 AM - Arrive at Nusa Lembongan</li>
-                    <li class="mb-2">9:30 AM - Snorkeling at designated spots</li>
-                    <li class="mb-2">12:00 PM - Lunch at a local restaurant</li>
-                    <li class="mb-2">1:30 PM - Mangrove forest tour</li>
-                    <li class="mb-2">3:00 PM - Free time to explore or relax</li>
-                    <li class="mb-2">5:00 PM - Return to your hotel</li>
-                </ol> -->
                 <h3 class="mt-4">Include & Exclude :</h3>
                 <ul class="list-unstyled mb-4">
                     <?php foreach($iexclude as $ie){ ?>

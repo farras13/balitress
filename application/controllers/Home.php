@@ -163,7 +163,7 @@ class Home extends CI_Controller {
 		$data['iexclude'] = $this->m->getData("ietourpackage", ["Tour_id" => $id])->result();
 		$config['base_url'] = base_url('tour');
         $config['total_rows'] = $this->Tour_package_model->get_total_tours();
-        $config['per_page'] = 3;
+        $config['per_page'] = 4;
         $config['uri_segment'] = 2;
 		$config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
         $config['full_tag_close'] = '</ul></nav>';
