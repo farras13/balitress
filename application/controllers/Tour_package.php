@@ -210,8 +210,9 @@ class Tour_package extends CI_Controller {
 
     public function delete_image($id)
     {
+        $data = $this->m->getData(["galeritourpackage","Tour_id"=>$id]);
         $this->GalleryTourPackage_model->delete_image($id);
-        redirect('tourpackage/gallery/'.$id);
+        redirect('tourpackage/gallery/'.$data->Tour_id);
     }
 
     public function include_exclude($id)
