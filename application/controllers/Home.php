@@ -150,6 +150,7 @@ class Home extends CI_Controller {
         $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
         $data['cards'] = $this->Tour_package_model->get_cards($config['per_page'], $page);
         $data['pagination'] = $this->pagination->create_links();
+        $data["gallery"] = $this->m->getData("galeritourpackage")->result();
 		// var_dump($data);die;
 		$this->load->view('header');
 		$this->load->view('tour', $data);
