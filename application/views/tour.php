@@ -1,5 +1,5 @@
 <!-- Carousel Start -->
-<div class="container-fluid p-0">
+<div class="container-fluid p-0" hidden>
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" id="carouselBanner">
             <?php $index = 1; foreach($gallery as $g){ ?>
@@ -12,6 +12,41 @@
                     </div>
                 </div>
             <?php $index++; } ?>
+        </div>
+        <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+            <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                <span class="carousel-control-prev-icon mb-n2"></span>
+            </div>
+        </a>
+        <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+            <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                <span class="carousel-control-next-icon mb-n2"></span>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" id="carouselBanner">
+            <?php $index = 1; foreach($banner as $b){ ?>
+            <div class="carousel-item <?php if($index == 1){ echo "active"; } ?>">
+                <img class="w-100" src="<?= base_url().$b->images ?>" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 900px;">
+                        <h4 class="text-white text-uppercase mb-md-3"><?php   
+                        $descriptions = strip_tags($b->deskripsi);
+                        if (strlen($descriptions) > 120) {
+                            $descriptions = substr($deskripsi, 0, 120) . '...';
+                        }
+                        echo $descriptions;
+                    ?></h4>
+                        <h1 class="display-3 text-white mb-md-4"><?= $b->judul ?></h1>
+                    </div>
+                </div>
+            </div>
+            <?php $index++; } ?>
+           
         </div>
         <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
             <div class="btn btn-dark" style="width: 45px; height: 45px;">

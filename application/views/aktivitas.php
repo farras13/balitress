@@ -103,7 +103,7 @@
             <h1>Special Offer </h1>
         </div> -->
         <div class="row">
-            <?php foreach($cards as $card) { ?>
+            <?php $index=1; foreach($cards as $card) { ?>
                 <div class="col-md-12 mb-4 bg-registration">
                 <div class="row align-items-center py-5">
                     <div class="col-lg-7 mb-5 mb-lg-0 p-3 rounded" style="background-color:rgba(0, 0, 0, 0.2);">
@@ -115,7 +115,7 @@
                         <a href="<?= base_url("activities/detail/").$card->retreat_id  ?>" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a>
                     </div>
                     <div class="col-lg-5">
-                        <div id="retreat-carousel<?= $y; ?>" class="carousel slide" data-ride="carousel">
+                        <div id="retreat-carousel<?= $index; ?>" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <?php $ind = 1; foreach($gallery as $g){ if($g->retreat_id == $card->retreat_id){  ?>
                                 <div class="carousel-item <?php if($ind==1){echo 'active';} ?>">
@@ -137,7 +137,7 @@
                     </div>
                 </div>
             </div>
-            <?php } ?>
+            <?php $index++; } ?>
             <!-- <div class="col-lg-12 col-md-12 mb-4">
                 <div class="text-center">
                     <a class="btn btn-md btn-primary" href="#">Read More</a>

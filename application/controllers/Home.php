@@ -151,6 +151,7 @@ class Home extends CI_Controller {
         $data['cards'] = $this->Tour_package_model->get_cards($config['per_page'], $page);
         $data['pagination'] = $this->pagination->create_links();
         $data["gallery"] = $this->m->getData("galeritourpackage")->result();
+        $data['banner'] = $this->m->getData("banners", ["menu" => "utama"])->result();
 		// var_dump($data);die;
 		$this->load->view('header');
 		$this->load->view('tour', $data);
