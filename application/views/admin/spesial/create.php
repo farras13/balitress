@@ -35,18 +35,29 @@
                 <?php echo form_open_multipart($linkform); ?>
 
                 <div class="form-group">
-                    <label for="name">Villa Name</label>
+                    <label for="name">Specialoffer Name</label>
                     <input type="text" class="form-control" name="nama" value="<?php echo set_value('nama', isset($spesial->nama) ? $spesial->nama : ''); ?>">
                 </div>
-                
-                
-
+                <div class="form-group">
+                    <label for="name">Price</label>
+                    <input type="text" class="form-control" name="price" value="<?php echo set_value('price', isset($spesial->price) ? $spesial->price : ''); ?>">
+                </div>                
+                <div class="form-group">
+                    <label for="lite_desc">Lite Description</label>
+                    <textarea class="form-control summernote" name="lite_deskripsi"><?php echo set_value('lite_deskripsi', isset($spesial->lite_deskripsi) ? $spesial->lite_deskripsi : ''); ?></textarea>
+                </div>
                 <div class="form-group">
                     <label for="lite_desc">Description</label>
                     <textarea class="form-control summernote" name="deskripsi"><?php echo set_value('deskripsi', isset($spesial->deskripsi) ? $spesial->deskripsi : ''); ?></textarea>
                 </div>
-                
-
+                <div class="form-group">
+                    <label for="lite_desc">Highlight</label>
+                    <textarea class="form-control summernote" name="highlight"><?php echo set_value('highlight', isset($spesial->highlight) ? $spesial->highlight : ''); ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="lite_desc">Important Information</label>
+                    <textarea class="form-control summernote" name="important"><?php echo set_value('important', isset($spesial->important) ? $spesial->important : ''); ?></textarea>
+                </div>
                 <div class="form-group">
                     <label for="thumbnail">Thumbnail</label>
                     <input type="file" class="form-control" name="image">

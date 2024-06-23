@@ -81,7 +81,7 @@
                         <a href="<?= base_url('villa') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "villa") echo "active";?>">Villa & Suites </a>
                         <a href="<?= base_url('activities') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "activities") echo "active";?>">Activities</a>
                         <a href="<?= base_url('tour') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "tour") echo "active";?>">Tour Packages</a>
-                        <a href="<?= base_url() ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "special-over") echo "active";?>">Special Offer</a>
+                        <a href="<?= base_url('specialoffer') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "specialoffer") echo "active";?>">Special Offer</a>
                         <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">

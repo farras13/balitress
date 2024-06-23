@@ -2,26 +2,16 @@
 <div class="container-fluid p-0">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="w-100" src="<?= base_url('assets/') ?>img/carousel-1.jpg" alt="Image">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase mb-md-3">Tour Package</h4>
-                        <h1 class="display-3 text-white mb-md-4">Yoga Bali Retreat by Balitress</h1>
-                        <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+        <?php $index = 1; foreach($gallery as $g){ ?>
+                <div class="carousel-item <?php if($index == 1){echo "active";} ?>">
+                    <img class="w-100" src="<?= base_url().$g->image ?>" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <!-- <div class="p-3" style="max-width: 900px;">
+                            <h1 class="display-3 text-white mb-md-4">Balinese Watukaru Yoga Retreat</h1>
+                        </div> -->
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img class="w-100" src="<?= base_url('assets/') ?>img/carousel-2.jpg" alt="Image">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase mb-md-3">Tour Package</h4>
-                        <h1 class="display-3 text-white mb-md-4">Yoga Bali Retreat by Balitress</h1>
-                        <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
-                    </div>
-                </div>
-            </div>
+            <?php $index++; } ?>  
         </div>
         <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
             <div class="btn btn-dark" style="width: 45px; height: 45px;">
@@ -98,58 +88,39 @@
 <!-- Booking End -->
 <div class="container-fluid py-2">
     <div class="container pb-3">
-        <!-- <div class="text-center mb-3 pb-3">
-            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Special Offer </h6>
-            <h1>Special Offer </h1>
-        </div> -->
+        <div class="text-center mb-3 pb-3">
+            <?= $banner->deskripsi ?>
+        </div>
         <div class="row">
-            <?php for($y=1;$y<4;$y++) { ?>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="card package-card">
-                        <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Package 1">
-                        <div class="card-body" style="font-size:15px;">
-                            <h5 class="card-title">Snorkeling and Mangrove Forest Day Tour: Nusa Lembongan</h5>
-                            <p class="card-text">Explore the beautiful island in Bali on a guided full day outing. Enjoy the best view, food, and the atmosphere from rooftop resto.</p>
-                            <div class="include" data-toggle="collapse" data-target="#descinclude<?= $y; ?>">
-                                <h6>Include</h6>
+            <?php if($specialoffer){ foreach ($specialoffer as $card): ?>
+                <div class="col-6 col-sm-6 col-md-6 my-2">
+                    <div class="card">
+                        <img class="card-img-top" src="<?= base_url($card->foto); ?>" alt="Card image cap" width="250px" height="120px">
+                        <div class="carousel-item">
+                            <button class="btn btn-primary btn-hover rounded">Click Me</button>
+                            <div class="text-overlay">
+                                <p><?= $card->name; ?></p>
                             </div>
-                            <div class="descinclude collapse" id="descinclude<?= $y; ?>">
-                                <ul>
-                                    <li>English-speaking guide</li>
-                                    <li>Transportation to/from Sanur</li>
-                                    <li>Speedboat to/from Lembongan island</li>
-                                    <li>Transportation on the island</li>
-                                    <li>Lunch</li>
-                                    <li>Snorkeling equipment</li>
-                                    <li>Mangrove forest tour or island explore</li>
-                                </ul>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $card->nama; ?></h5>
+                            <p class="card-text text-justify"><?php
+                                        $description = strip_tags($card->lite_deskripsi);
+                                        if (strlen($description) > 120) {
+                                            $description = substr($description, 0, 120) . '...';
+                                        }
+                                        echo $description;
+                                        ?>
+                            </p>
+                            <p class="card-text">IDR <?= number_format($card->price, 0, ',', '.'); ?></p>
+                            <div class="card-footer">
+                                <a class="btn btn-sm btn-primary float-right" href="<?= base_url('specialoffer/'.$card->id) ?>">Check Detail</a>
                             </div>
-                            <hr/>
-                            <div class="exclude" data-toggle="collapse" data-target="#descexclude<?= $y; ?>">
-                                <h6>Exclude</h6>
-                            </div>
-                            <div class="descexclude collapse" id="descexclude<?= $y; ?>">
-                                <ul>
-                                    <li>Swimsuit</li>
-                                    <li>Cash</li>
-                                    <li>Change of clothes</li>
-                                </ul>
-                                <h6>Itinerary</h6>
-                                <ul class="itinerary">
-                                    <li>07.30 Speed Boat to Nusa Lembongan</li>
-                                    <li>09.00 Snorkeling at mangrove point</li>
-                                    <li>12.00 Lunch</li>
-                                    <li>13.00 Island Tour (Mangrove, Yellow Bridge, Dream Beach, Devil Tears)</li>
-                                    <li>15.30 Back to Sanur</li>
-                                    <li>16.30 Go to Hotel</li>
-                                </ul>
-                            </div>  
-                            <hr/>                          
-                            <a href="<?= base_url("tour/detail") ?>" class="btn btn-primary">Book Now</a>
                         </div>
                     </div>
                 </div>
+            <?php endforeach; } else { ?>
+                <h4>Data Special Offer Empty</h4>
             <?php } ?>
             <!-- <div class="col-lg-12 col-md-12 mb-4">
                 <div class="text-center">

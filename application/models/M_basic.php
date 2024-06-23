@@ -4,10 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_basic extends CI_Model {
 
-	public function getData($t, $w = null, $join = null )
+	public function getData($t, $w = null, $join = null, $like = null )
 	{
 		if ($w != null) {
 			$this->db->where($w);
+		}
+		if ($like != null) {
+			foreach ($like as $column => $keyword) {
+				$this->db->like($column, $keyword);
+			}
 		}
 		
 		return $this->db->get($t);

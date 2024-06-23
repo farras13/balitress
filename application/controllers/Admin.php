@@ -18,6 +18,7 @@ class Admin extends CI_Controller {
 		$data['tourdua'] = $this->m->getData("banners", ["menu" => "tour2"])->row();
 		$data['tourtiga'] = $this->m->getData("banners", ["menu" => "tour3"])->row();
 		$data['tourinfo'] = $this->m->getData("banners", ["menu" => "tourinfo"])->row();
+		$data['spesial'] = $this->m->getData("banners", ["menu" => "specialoffer"])->row();
 
 		$data['link'] = $this->m->getData("link")->row();
 		$data['desc'] = $this->m->getData("banners", ["menu" => "descvilla"])->row();
@@ -79,7 +80,11 @@ class Admin extends CI_Controller {
 		redirect("admin");
 		
 	}
-
+	public function ins_descspecialoffer(){
+		$this->m->ins("banners", ["deskripsi" => $this->input->post("descvilla"), "menu" => "specialoffer" ]);
+		redirect("admin");
+		
+	}
 	public function ins_desc(){
 		$this->m->ins("banners", ["deskripsi" => $this->input->post("descvilla"), "menu" => "descvilla" ]);
 		redirect("admin");

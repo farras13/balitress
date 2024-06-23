@@ -201,6 +201,26 @@ class Home extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+    public function specialoffer()
+	{
+        $data["specialoffer"] = $this->m->getData("spesialoffer")->result();
+        $data['banner'] = $this->m->getData("banners", ["menu" => "specialoffer"])->row();
+        $data["gallery"] = $this->m->getData("spesialoffer_gallery")->result();
+        $this->load->view('header');
+		$this->load->view('spesialoffer', $data);
+		$this->load->view('footer', $data);
+	}
+
+	public function detail_specialoffer($id)
+	{
+        $data["gallery"] = $this->m->getData("spesialoffer_gallery", ["spesialoffer_id" => $id])->result();
+        $data["specialoffer"] = $this->m->getData("spesialoffer", ['id' => $id])->row();
+        $data['banner'] = $this->m->getData("banners", ["menu" => "specialoffer"])->row();
+		$this->load->view('header', $data);
+		$this->load->view('detailspecialoffer',$data);
+		$this->load->view('footer');
+	}
+
 	public function payment()
 	{
 		$this->load->view('header');
@@ -210,8 +230,15 @@ class Home extends CI_Controller {
 
 	public function search()
 	{
+        $cari = $this->input->post("cari");
+        $tipe = $this->input->post("tipe");
+
+        $data["aktivitas"] = $this->m->getData("retreats",null,null, ["name" => $cari] )->result();
+        $data["villa"] = $this->m->getData("villa",null,null, ["name" => $cari])->result();
+        $data["tour"] = $this->m->getData("tourpackage",null,null, ["Name" => $cari])->result();
+
 		$this->load->view('header');
-		$this->load->view('search');
+		$this->load->view('search', $data);
 		$this->load->view('footer');
 	}
 }

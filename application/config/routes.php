@@ -59,6 +59,9 @@ $route['activities/detail/(:any)'] = 'Home/detail_activities/$1';
 $route['tour'] = 'Home/tour';
 $route['tour/(:any)'] = 'Home/tour/$1';
 $route['tour/detail/(:any)'] = 'Home/detail_tour/$1';
+$route['specialoffer'] = 'Home/specialoffer';
+$route['specialoffer/(:any)'] = 'Home/detail_specialoffer/$1';
+$route['payment'] = 'Home/payment';
 $route['payment'] = 'Home/payment';
 $route['contact'] = 'Home/contact';
 
@@ -98,6 +101,9 @@ $route['admin/villa/upload_image/(:any)'] = 'Villa/upload_image/$1';
 
 $route['admin/specialoffer'] = 'SpesialOffer/index';
 $route['admin/specialoffer/add'] = 'SpesialOffer/add';
+$route['admin/specialoffer/gallery/(:any)'] = 'SpesialOffer/gallery/$1';
+$route['admin/specialoffer/delete_image/(:any)'] = 'SpesialOffer/delete_image/$1';
+$route['admin/specialoffer/upload_image/(:any)'] = 'SpesialOffer/upload_image/$1';
 $route['admin/specialoffer/edit/(:any)'] = 'SpesialOffer/edit/$1';
 $route['admin/specialoffer/create'] = 'SpesialOffer/create';
 $route['admin/specialoffer/update/(:any)'] = 'SpesialOffer/update/$1';

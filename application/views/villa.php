@@ -23,14 +23,14 @@
                 </div>
             </div> -->
             <?php $index = 1; foreach($gallery as $g){ ?>
-            <div class="carousel-item <?php if($index == 1){echo "active";} ?>">
-                <img class="w-100" src="<?= base_url().$g->image ?>" alt="Image">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <!-- <div class="p-3" style="max-width: 900px;">
-                        <h1 class="display-3 text-white mb-md-4">Balinese Watukaru Yoga Retreat</h1>
-                    </div> -->
+                <div class="carousel-item <?php if($index == 1){echo "active";} ?>">
+                    <img class="w-100" src="<?= base_url().$g->image ?>" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <!-- <div class="p-3" style="max-width: 900px;">
+                            <h1 class="display-3 text-white mb-md-4">Balinese Watukaru Yoga Retreat</h1>
+                        </div> -->
+                    </div>
                 </div>
-            </div>
             <?php $index++; } ?>
         </div>
         <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">

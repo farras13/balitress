@@ -38,16 +38,19 @@
                     <label for="name">Villa Name</label>
                     <input type="text" class="form-control" name="villa_name" value="<?php echo set_value('name', isset($villa->name) ? $villa->name : ''); ?>">
                 </div>
-                
                 <div class="form-group">
-                        <label for="view_description">View</label>
-                        <textarea class="form-control summernote" name="view_description"><?php echo set_value('view_description', isset($villa->pemandangan) ? $villa->pemandangan : ''); ?></textarea>
-                      </div>
+                    <label for="name">Villa Price</label>
+                    <input type="number" class="form-control" name="villa_price" value="<?php echo set_value('price', isset($villa->price) ? $villa->price : ''); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="view_description">View</label>
+                    <textarea class="form-control summernote" name="view_description"><?php echo set_value('view_description', isset($villa->pemandangan) ? $villa->pemandangan : ''); ?></textarea>
+                </div>
 
-                    <div class="form-group">
-                        <label for="location">Location</label>
-                        <input type="text" class="form-control" name="location" value="<?= set_value('location', isset($villa->lokasi) ? $villa->lokasi : ''); ?>">
-                    </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" name="location" value="<?= set_value('location', isset($villa->lokasi) ? $villa->lokasi : ''); ?>">
+                </div>
                 <div class="form-group">
                     <label for="lite_desc">Lite Description</label>
                     <textarea class="form-control summernote" name="villa_desk_lite"><?php echo set_value('villa_desk_lite', isset($villa->lite_deskripsi) ? $villa->lite_deskripsi : ''); ?></textarea>

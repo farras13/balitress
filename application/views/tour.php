@@ -75,7 +75,12 @@
     <div class="container pb-3">
        <div class="row mb-4">
            <div class="col-md-12">
-               <input type="text" placeholder="Find place and things to do" class="form-control rounded">
+            <form action="<?= base_url("home/search") ?>" method="post">
+                <div class="input-group">
+                    <input type="text" name="cari" placeholder="Find place and things to do" class="form-control rounded">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </div>
+            </form> 
            </div>
        </div>
         <div class="row mb-4">

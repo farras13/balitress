@@ -175,8 +175,9 @@ class Villa extends CI_Controller {
 
     public function delete_image($id)
     {
+        $data = $this->m->getData("villa_galery", ["id"=>$id]);
         $this->m->del("villa_galery",["id"=>$id]);
-        redirect('admin/villa/gallery/'.$id);
+        redirect('admin/villa/gallery/'.$data->villa_id);
     }
 
 

@@ -56,6 +56,7 @@
                             <td><?= $room->deskripsi ?></td>
                             <td><img src="<?= base_url().$room->foto ?>" alt="<?= $room->name ?>" width="250px" height="150px"></td>
                             <td>
+                                <a href="<?= site_url('admin/specialoffer/gallery/' . $room->id); ?>" class="btn btn-sm btn-success my-1" ><i class="fa fa-image"></i></a>
                                 <a href="<?= site_url('admin/specialoffer/edit/' . $room->id); ?>" class="btn btn-sm btn-warning my-1" ><i class="fa fa-pen"></i></a>
                                 <a href="<?= site_url('admin/specialoffer/delete/'.$room->id); ?>" class="btn btn-sm btn-danger my-1" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></a>
 
