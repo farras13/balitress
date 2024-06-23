@@ -4,7 +4,7 @@
         <div class="carousel-inner" id="carouselBanner">
             <?php $index = 1; foreach($gallery as $g){ ?>
                 <div class="carousel-item <?php if($index == 1){echo "active";} ?>">
-                    <img class="w-100" src="<?= base_url().$g->image ?>" alt="Image">
+                    <img class="w-100" src="<?= base_url().$g->images ?>" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <!-- <div class="p-3" style="max-width: 900px;">
                             <h1 class="display-3 text-white mb-md-4">Balinese Watukaru Yoga Retreat</h1>
