@@ -1,4 +1,23 @@
 <!-- Carousel Start -->
+<style>
+    .card-custom {
+        margin-bottom: 30px;
+    }
+    .card-img-custom {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    .card-body-custom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .card-img-container {
+        height: 300px;
+        overflow: hidden;
+    }
+</style>
 <div class="container-fluid p-0">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -97,53 +116,83 @@
 </div>
 <!-- Booking End -->
 <div class="container-fluid py-2">
+    <div class="container mt-5">
+        <div class="row">
+        <?php foreach ($cards as $index => $retreat): ?>
+            <?php if ($index % 2 == 0): ?>
+                <!-- Card dengan gambar di sebelah kanan -->
+                <div class="col-md-12 mb-4">
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $retreat->name; ?></h5>
+                                    <p class="card-text"><?= $retreat->description; ?></p>
+                                    <a href="<?= base_url("activities/detail/.$retreat->retreat_id") ?>" class="btn btn-primary"> <i class="fa fa-arrow-circle-right"></i> View Retreat</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="<?= base_url($retreat->image); ?>" class="card-img-custom" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php else: ?>
+                <!-- Card dengan gambar di sebelah kiri -->
+                <div class="col-md-12 card-custom">
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="<?= base_url($retreat->image); ?>" class="card-img-custom" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $retreat->name; ?></h5>
+                                    <p class="card-text"><?= $retreat->description; ?></p>
+                                    <a href="<?= base_url("activities/detail/.$retreat->retreat_id") ?>" class="btn btn-primary"> <i class="fa fa-arrow-circle-right"></i> View Retreat</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+       
+        <?= $pagination1; ?>
+           
+        </div>
+    </div>
     <div class="container pb-3">
         <!-- <div class="text-center mb-3 pb-3">
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Special Offer </h6>
             <h1>Special Offer </h1>
         </div> -->
         <div class="row">
-            <?php $index=1; foreach($cards as $card) { ?>
-                <div class="col-md-12 mb-4 bg-registration">
-                <div class="row align-items-center py-5">
-                    <div class="col-lg-7 mb-5 mb-lg-0 p-3 rounded" style="background-color:rgba(0, 0, 0, 0.2);">
-                        <div class="mb-4">
-                            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"> <b>(<?= $card->endname ?>)</b> Our Retreat </h6>
-                            <h1 class="text-white"><span class="text-primary"> <?= $card->name ?> </span><?=  $card->endname ?></h1>
-                        </div>
-                        <p class="text-white"><?= $card->lite_description ?></p>
-                        <a href="<?= base_url("activities/detail/").$card->retreat_id  ?>" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a>
-                    </div>
-                    <div class="col-lg-5">
-                        <div id="retreat-carousel<?= $index; ?>" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <?php $ind = 1; foreach($gallery as $g){ if($g->retreat_id == $card->retreat_id){  ?>
-                                <div class="carousel-item <?php if($ind==1){echo 'active';} ?>">
-                                    <img class="w-100" src="<?= base_url().$g->image ?>" alt="Image">
-                                </div>
-                                <?php $ind++; }} ?>
-                            </div>
-                            <a class="carousel-control-prev" href="#retreat-carousel<?= $index; ?>" data-slide="prev">
-                                <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                                    <span class="carousel-control-prev-icon mb-n2"></span>
-                                </div>
-                            </a>
-                            <a class="carousel-control-next" href="#retreat-carousel<?= $index; ?>" data-slide="next">
-                                <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                                    <span class="carousel-control-next-icon mb-n2"></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php $index++; } ?>
-            <!-- <div class="col-lg-12 col-md-12 mb-4">
-                <div class="text-center">
-                    <a class="btn btn-md btn-primary" href="#">Read More</a>
-                </div>
-            </div>             -->
-        <?= $pagination; ?>
+       
         </div>
+        <h3 class="text-primary"> Daily Activity </h3>
+        <div class="row mb-4">
+            <?php foreach ($another_cards as $card){ if($card->retreat_tipe == "Activities"){  {  ?>
+                <div class="col-md-4">
+                    <div class="card package-card">
+                    <img src="<?= base_url(''.$card->image_bg) ?>" class="card-img-top" alt="<?= $card->name ?>" width="250px" height="180px">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $card->name ?></h5>
+                        <p class="card-text text-justify">
+                            <?php  
+                                $descriptions = strip_tags($card->lite_description);
+                                if (strlen($descriptions) > 120) {
+                                    $descriptions = substr($descriptions, 0, 120) . '...';
+                                }
+                                echo $descriptions;
+                            ?>    
+                        </p>
+                        <center><a href="<?= base_url('activities/detail/'.$card->retreat_id) ?>" class="btn btn-primary text-center">Check Detail</a></center>
+                    </div>
+                    </div>
+                </div>
+            <?php }}} ?> 
+        </div>
+        <?= $pagination2; ?>
     </div>
 </div>

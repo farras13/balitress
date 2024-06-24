@@ -58,49 +58,80 @@ class Home extends CI_Controller {
 
     public function activities()
 	{
-		$retreats = $this->m->getData("retreats")->result();		
-		$config['base_url'] = base_url('tour');
-        $config['total_rows'] = count($retreats);
-        $config['per_page'] = 16;
-        $config['uri_segment'] = 2;
-		$config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
-        $config['full_tag_close'] = '</ul></nav>';
-        $config['attributes'] = array('class' => 'page-link');
-        $config['first_link'] = 'First';
-        $config['last_link'] = 'Last';
-        $config['first_tag_open'] = '<li class="page-item">';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="page-item">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li class="page-item">';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li class="page-item">';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li class="page-item">';
-        $config['num_tag_close'] = '</li>';
+		$retreats = $this->m->getData("retreats", ["retreat_tipe !=" => "Activities"])->result();
+        $config1 = array();
+        $config1['base_url'] = base_url('activities');
+        $config1['total_rows'] = count($retreats);
+        $config1['per_page'] = 4;
+        $config1['uri_segment'] = 2;
+        $config1['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
+        $config1['full_tag_close'] = '</ul></nav>';
+        $config1['attributes'] = array('class' => 'page-link');
+        $config1['first_link'] = 'First';
+        $config1['last_link'] = 'Last';
+        $config1['first_tag_open'] = '<li class="page-item">';
+        $config1['first_tag_close'] = '</li>';
+        $config1['prev_link'] = '&laquo';
+        $config1['prev_tag_open'] = '<li class="page-item">';
+        $config1['prev_tag_close'] = '</li>';
+        $config1['next_link'] = '&raquo';
+        $config1['next_tag_open'] = '<li class="page-item">';
+        $config1['next_tag_close'] = '</li>';
+        $config1['last_tag_open'] = '<li class="page-item">';
+        $config1['last_tag_close'] = '</li>';
+        $config1['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config1['cur_tag_close'] = '</a></li>';
+        $config1['num_tag_open'] = '<li class="page-item">';
+        $config1['num_tag_close'] = '</li>';
 
-        $this->pagination->initialize($config);
+        $pagination1 = clone $this->pagination;
+        $pagination1->initialize($config1);
 
-        $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
-        $data['cards'] = $this->m->getDataLimit("retreats", "", $config['per_page'], $page)->result();
-        $data['pagination'] = $this->pagination->create_links();
-		$data['gallery'] = $this->m->getData("retreat_gallery")->result();		
-        foreach($data['cards'] as $d){
-            $text = trim($d->name);
-            $expl = explode(' ', $text);
-            $words = explode(' ', $text);
-            $d->endname = end($expl);
+        $page1 = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+        $data['cards'] = $this->m->getDataLimit("retreats", ["retreat_tipe !=" => "Activities"], $config1['per_page'], $page1)->result();
+        $data['pagination1'] = $pagination1->create_links();
 
-            array_pop($words);
-            $d->name = implode(" ", $words);
-        }
-		$this->load->view('header');
-		$this->load->view('aktivitas', $data);
-		$this->load->view('footer');
+        // Membuat instance pagination kedua
+        $pagination2 = clone $this->pagination;
+
+        $activities = $this->m->getData("retreats", ["retreat_tipe" => "Activities"])->result();
+
+        $config2['base_url'] = base_url('activities/daily');
+        $config2['total_rows'] = count($activities);
+        $config2['per_page'] = 8;
+        $config2['uri_segment'] = 3;
+        $config2['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
+        $config2['full_tag_close'] = '</ul></nav>';
+        $config2['attributes'] = array('class' => 'page-link');
+        $config2['first_link'] = 'First';
+        $config2['last_link'] = 'Last';
+        $config2['first_tag_open'] = '<li class="page-item">';
+        $config2['first_tag_close'] = '</li>';
+        $config2['prev_link'] = '&laquo';
+        $config2['prev_tag_open'] = '<li class="page-item">';
+        $config2['prev_tag_close'] = '</li>';
+        $config2['next_link'] = '&raquo';
+        $config2['next_tag_open'] = '<li class="page-item">';
+        $config2['next_tag_close'] = '</li>';
+        $config2['last_tag_open'] = '<li class="page-item">';
+        $config2['last_tag_close'] = '</li>';
+        $config2['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config2['cur_tag_close'] = '</a></li>';
+        $config2['num_tag_open'] = '<li class="page-item">';
+        $config2['num_tag_close'] = '</li>';
+
+        // Inisialisasi pagination kedua dengan instance yang baru
+        $pagination2->initialize($config2);
+
+        $page2 = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data['another_cards'] = $this->m->getDataLimit("retreats", ["retreat_tipe" => "Activities"], $config2['per_page'], $page2)->result();
+        $data['pagination2'] = $pagination2->create_links();
+
+        $data['gallery'] = $this->m->getData("retreat_gallery")->result();
+
+        $this->load->view('header');
+        $this->load->view('aktivitas', $data);
+        $this->load->view('footer');
 	}
 	public function detail_activities($id)
 	{
