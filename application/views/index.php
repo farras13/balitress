@@ -151,7 +151,7 @@
                         <a href="<?= base_url("activities/detail/").$retreat->retreat_id ?>" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a>
                     </div>
                     <div class="col-lg-5">
-                        <div id="retreat-carousel" class="carousel slide" data-ride="carousel">
+                        <div id="retreat-carousel" class="carousel caroselvilla slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <?php $idx=1; foreach($galretreat as $gal){ ?>
                                 <div class="carousel-item <?php if($idx == 1){echo "active";} ?>">
