@@ -81,7 +81,7 @@
                                             <p class="mb-3"><?= $v->lite_deskripsi ?></p>
                                             <div class="border-top mt-4 pt-4">
                                                 <div class="flex-container">
-                                                    <h5 class="m-0">Rp <?= $v->price ?>/night</h5>
+                                                    <h5 class="m-0">Rp <?= number_format($v->price, 2, '.', ','); ?>/night</h5>
                                                     <button class="btn btn-primary select-room">Select Room</button>
                                                 </div>
                                             </div>

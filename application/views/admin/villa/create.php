@@ -63,10 +63,12 @@
 
                 <div class="form-group">
                     <label for="thumbnail">Thumbnail</label>
-                    <input type="file" class="form-control" name="image">
+                    <input type="file" class="form-control" name="image" id="imageInput">
+                    <?= form_error('image', '<div class="text-danger">', '</div>'); ?>
                     <?php if(isset($villa->image)): ?>
-                        <img src="<?php echo base_url($villa->image); ?>" alt="Current Thumbnail" style="max-width: 200px; margin-top: 10px;">
+                        <img src="<?php echo base_url($villa->image); ?>" alt="Current Thumbnail" style="max-width: 200px; margin-top: 10px;" id="currentImage">
                     <?php endif; ?>
+                    <img id="previewImage" style="max-width: 200px; margin-top: 10px; display: none;">
                 </div>
                 
                 <div class="form-group">
