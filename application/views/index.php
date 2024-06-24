@@ -1,5 +1,40 @@
 <!-- Carousel Start -->
+<style>
+    #villa-card .card {
+        position: relative;
+        overflow: hidden;
+    }
 
+    #villa-card .card-img-top {
+        width: 100%;
+        height: 50;
+    }
+
+    #villa-card .overlay {
+        background-color: rgba(0, 0, 0, 0.5); /* Overlay color */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        color: white;
+        padding: 1rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #villa-card .card:hover .overlay {
+        opacity: 1; /* Show overlay on hover */
+    }
+
+    #villa-card .overlay .card-title,
+    #villa-card .overlay .card-text {
+        margin-bottom: 1rem;
+    }
+
+    #villa-card .overlay a.btn {
+        margin-top: auto; /* Push button to the bottom of overlay */
+    }
+</style>
 <div class="container-fluid p-0">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" id="carouselBanner">
@@ -220,10 +255,22 @@
                 <div class="carousel-inner w-100" role="listbox">
                     
                 <?php $ind = 1; foreach($villa as $v) { ?>
-                    <div class="carousel-item <?php if($ind==1) echo 'active'; ?>">
-                        <div class="col-lg-4 col-md-6">
-                            <img class="img-fluid" src="<?= base_url().$v->image ?>">
-                            <a href="<?= base_url("villa/detail/").$v->id ?>" class="btn btn-primary"><?= $v->name ?></a>
+                    <div class="carousel-item <?php if($ind==1) echo 'active'; ?>" id="villa-card">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card position-relative">
+                                <img src="<?= base_url() . $v->image ?>" class="card-img-top" alt="<?= $v->name ?>">
+                                <div class="overlay position-absolute w-100">
+                                    <div class="d-flex flex-column justify-content-between h-100">
+                                        <div class="p-3">
+                                            <h5 class="card-title text-white"><?= $v->name ?></h5>
+                                            <small class="card-text text-white"><?= $v->lite_deskripsi ?></small>
+                                        </div>
+                                        <div class="p-3 text-right">
+                                            <a href="<?= base_url('villa/detail/' . $v->id) ?>" class="btn btn-primary">Detail</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 <?php $ind++; } ?>
