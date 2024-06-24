@@ -130,7 +130,7 @@
             <h1>Retreat and Activities</h1>
         </div>
         <div class="row">
-            <div class="col-md-12 mb-4 bg-registration">
+            <div class="col-md-12 mb-4 custom-background" style="background-image: url('<?= base_url().$retreat->image_bg; ?>');">
                 <div class="row align-items-center py-5">
                     <div class="col-lg-7 mb-5 mb-lg-0 p-3 rounded" style="background-color:rgba(0, 0, 0, 0.2);">
                         <div class="mb-4">
@@ -175,26 +175,29 @@
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Daily Activity</h6>
             </div>
             <!-- Package 1 -->
-            <?php foreach($retreats_daily as $retreats) if($retreats->retreat_tipe == "Activities") {?>
-            <div class="col-md-3 mb-4">
-                <div class="card package-card">
-                <img src="<?= base_url($retreats->image) ?>" class="card-img-top" alt="<?= $retreats->name ?>">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $retreats->name ?></h5>
-                    <p class="card-text">
-                        <?php   
-                            $descriptions = strip_tags($retreats->description);
-                            if (strlen($descriptions) > 120) {
-                                $descriptions = substr($descriptions, 0, 120) . '...';
-                            }
-                            echo $descriptions;
-                        ?>
-                    </p>
-                    <a href="<?= base_url("activities/detail/").$retreats->retreat_id ?>" class="btn btn-primary">Explore</a>
-                </div>
-                </div>
-            </div>
-            <?php } ?>
+             <div class="row align-items-center px-4">
+                <?php foreach($retreats_daily as $retreats) if($retreats->retreat_tipe == "Activities") {?>
+                    <div class="col-md-3 mb-4 ">
+                        <div class="card package-card">
+                        <img src="<?= base_url($retreats->image) ?>" class="card-img-top" alt="<?= $retreats->name ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $retreats->name ?></h5>
+                            <p class="card-text">
+                                <?php   
+                                    $descriptions = strip_tags($retreats->description);
+                                    if (strlen($descriptions) > 120) {
+                                        $descriptions = substr($descriptions, 0, 120) . '...';
+                                    }
+                                    echo $descriptions;
+                                ?>
+                            </p>
+                            <a href="<?= base_url("activities/detail/").$retreats->retreat_id ?>" class="btn btn-primary">Explore</a>
+                        </div>
+                        </div>
+                    </div>
+                <?php } ?>
+             </div>
+         
         </div>
     </div>
 </div>
@@ -218,7 +221,7 @@
                     <div class="carousel-item <?php if($ind==1) echo 'active'; ?>">
                         <div class="col-lg-4 col-md-6">
                             <img class="img-fluid" src="<?= base_url().$v->image ?>">
-                            <a href="" class="btn btn-primary"><?= $v->name ?></a>
+                            <a href="<?= base_url("villa/detail/").$v->id ?>" class="btn btn-primary"><?= $v->name ?></a>
                         </div>
                     </div>
                 <?php $ind++; } ?>

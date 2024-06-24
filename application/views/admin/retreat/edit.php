@@ -53,6 +53,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label>Image Background</label>
+                                <input type="file" name="imagebg" class="form-control-file" id="imageInputbg">
+                                <?= form_error('image', '<div class="text-danger">', '</div>'); ?>
+                                <?php if(isset($retreat->image_bg)): ?>
+                                    <img src="<?= base_url($retreat->image_bg); ?>" alt="Current image" style="max-width: 200px; margin-top: 10px;" id="currentImagebg">
+                                <?php endif; ?>
+                                <img id="previewImagebg" style="max-width: 200px; margin-top: 10px; display: none;">
+                            </div>
+                            <div class="form-group">
                                 <label>Image</label>
                                 <input type="file" name="image" class="form-control-file" id="imageInput">
                                 <?= form_error('image', '<div class="text-danger">', '</div>'); ?>
@@ -60,7 +69,7 @@
                                     <img src="<?= base_url($retreat->image); ?>" alt="Current image" style="max-width: 200px; margin-top: 10px;" id="currentImage">
                                 <?php endif; ?>
                                 <img id="previewImage" style="max-width: 200px; margin-top: 10px; display: none;">
-                            </div>
+                            </div>                            
                             <div class="float-right">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <a href="<?= base_url("retreats") ?>" class="btn btn-secondary">cancel</a>

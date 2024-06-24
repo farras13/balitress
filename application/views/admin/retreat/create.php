@@ -53,9 +53,16 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Image</label>
-                                <input type="file" name="image" class="form-control-file">
+                                <label>Image background</label>
+                                <input type="file" name="imagebg" class="form-control-file" id="imageInputbg">
                                 <?= form_error('image', '<div class="text-danger">', '</div>'); ?>
+                                <img id="previewImagebg" style="max-width: 200px; margin-top: 10px; display: none;">
+                            </div>
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input type="file" name="image" class="form-control-file" id="imageInput">
+                                <?= form_error('image', '<div class="text-danger">', '</div>'); ?>
+                                <img id="previewImage" style="max-width: 200px; margin-top: 10px; display: none;">
                             </div>
                             <div class="float-right">
                                 <button type="submit" class="btn btn-primary">Submit</button>

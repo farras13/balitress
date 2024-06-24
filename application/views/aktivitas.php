@@ -123,12 +123,12 @@
                                 </div>
                                 <?php $ind++; }} ?>
                             </div>
-                            <a class="carousel-control-prev" href="#retreat-carousel<?= $y; ?>" data-slide="prev">
+                            <a class="carousel-control-prev" href="#retreat-carousel<?= $index; ?>" data-slide="prev">
                                 <div class="btn btn-dark" style="width: 45px; height: 45px;">
                                     <span class="carousel-control-prev-icon mb-n2"></span>
                                 </div>
                             </a>
-                            <a class="carousel-control-next" href="#retreat-carousel<?= $y; ?>" data-slide="next">
+                            <a class="carousel-control-next" href="#retreat-carousel<?= $index; ?>" data-slide="next">
                                 <div class="btn btn-dark" style="width: 45px; height: 45px;">
                                     <span class="carousel-control-next-icon mb-n2"></span>
                                 </div>

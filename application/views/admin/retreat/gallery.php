@@ -38,7 +38,8 @@
                  <input hidden name="retreat_id" value="<?= $id; ?>">
                 <div class="form-group">
                     <label for="image">Image</label>
-                    <input type="file" class="form-control" name="image">
+                    <input type="file" class="form-control" name="image" id="imageInput">
+                    <img id="previewImage" style="max-width: 200px; margin-top: 10px; display: none;">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Upload</button>

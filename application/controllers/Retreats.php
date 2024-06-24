@@ -39,7 +39,8 @@ class Retreats extends CI_Controller {
             'highlights' => $this->input->post('highlights'),
             'facilities' => $this->input->post('facilities'),
             'is_home' => $home,
-            'image' => $this->upload_image()
+            'image' => $this->upload_image(),
+            'image_bg' => $this->upload_image()
         );
         // var_dump($data);die;
         $this->Retreats_model->insert($data);
@@ -57,27 +58,47 @@ class Retreats extends CI_Controller {
 
     public function update($id) {
         $retreat = $this->Retreats_model->get_by_id($id);
+        
         $config['upload_path'] = './uploads/';
-            $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
-            $config['max_size'] = 5120;
-            $this->load->library('upload', $config);
-            if (!empty($_FILES['image']['name']))
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
+        $config['max_size'] = 5120;
+        $this->load->library('upload', $config);
+        if (!empty($_FILES['image']['name']))
+        {
+            if (!$this->upload->do_upload('image'))
             {
-                if (!$this->upload->do_upload('image'))
-                {
-                    $data['upload_error'] = $this->upload->display_errors();
-                    $this->load->view('admin/tour/edit', $data);
-                }
-                else
-                {
-                    $upload_data = $this->upload->data();
-                    $image_path = 'uploads/' . $upload_data['file_name'];
-                }
+                $data['upload_error'] = $this->upload->display_errors();
+                $this->load->view('admin/tour/edit', $data);
             }
             else
             {
-                $image_path = $retreat->image;
+                $upload_data = $this->upload->data();
+                $image_path = 'uploads/' . $upload_data['file_name'];
             }
+        }
+        else
+        {
+            $image_path = $retreat->image;
+        }
+
+        if (!empty($_FILES['imagebg']['name']))
+        {
+            if (!$this->upload->do_upload('imagebg'))
+            {
+                $data['upload_error'] = $this->upload->display_errors();
+                $this->load->view('admin/tour/edit', $data);
+            }
+            else
+            {
+                $upload_data = $this->upload->data();
+                $image_path_bg = 'uploads/' . $upload_data['file_name'];
+            }
+        }
+        else
+        {
+            $image_path_bg = $retreat->image_bg;
+        }
+
         $data = array(
             'name' => $this->input->post('name'),
             'retreat_tipe' => $this->input->post('retreat_tipe'),
@@ -86,7 +107,8 @@ class Retreats extends CI_Controller {
             'highlights' => $this->input->post('highlights'),
             'facilities' => $this->input->post('facilities'),
             'is_home' => $this->input->post('popular'),
-            'image' => $image_path // Upload gambar dan dapatkan nama file
+            'image' => $image_path, // Upload gambar dan dapatkan nama file
+            'image_bg' => $image_path_bg // Upload gambar dan dapatkan nama file
         );
         $this->Retreats_model->update($id, $data);
         $this->session->set_flashdata('sukses', "Berhasil Update");
@@ -135,7 +157,20 @@ class Retreats extends CI_Controller {
                 $this->session->set_flashdata('error', $error);
                 redirect('retreats/create'); // Redirect kembali ke halaman create
             }
-        }       
+        }      
+        
+        if (!empty($_FILES['imagebg']['name']))
+        {
+            if ($this->upload->do_upload('imagebg')) { // 'image' merupakan nama input file di form
+                $data = $this->upload->data();
+                return 'uploads/' . $data['file_name']; // Mengembalikan nama file yang diunggah
+            } else {
+                $error = $this->upload->display_errors();
+                // Handle error sesuai kebutuhan Anda, misalnya menampilkan pesan kesalahan
+                $this->session->set_flashdata('error', $error);
+                redirect('retreats/create'); // Redirect kembali ke halaman create
+            }
+        }    
     }
 
     
@@ -164,7 +199,7 @@ class Retreats extends CI_Controller {
         {
             $upload_data = $this->upload->data();
             $image_path = 'uploads/' . $upload_data['file_name'];
-            $url = "admin/villa/gallery/".$id;
+            $url = "admin/retreats/gallery/".$id;
             $data = array(
                 'retreat_id	' => $id,
                 'image' => $image_path
@@ -179,6 +214,6 @@ class Retreats extends CI_Controller {
     {
         $data = $this->m->getData("retreat_gallery", ["id" => $id])->row();
         $this->m->del("retreat_gallery",["id"=>$id]);
-        redirect('admin/villa/gallery/'.$data->retreat_id);
+        redirect('admin/retreats/gallery/'.$data->retreat_id);
     }
 }
