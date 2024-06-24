@@ -214,6 +214,6 @@ class Retreats extends CI_Controller {
     {
         $data = $this->m->getData("retreat_gallery", ["id" => $id])->row();
         $this->m->del("retreat_gallery",["id"=>$id]);
-        redirect('admin/retreats/gallery/'.$data->retreat_id);
+        redirect('retreats/gallery/'.$data->retreat_id);
     }
 }
