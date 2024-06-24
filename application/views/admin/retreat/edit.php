@@ -20,9 +20,9 @@
                             <div class="form-group">
                                 <label>Tipe</label>
                                 <select name="retreat_tipe" id="retreat_tipe" class="form-control" required>
-                                    <option value="" <?php if($retreat->retreat_tipe == ""){ echo "checked"; } ?>>Choose Your Type</option>
-                                    <option value="Activities" <?php if($retreat->retreat_tipe == "Activities"){ echo "checked"; } ?>>Activities</option>
-                                    <option value="Retreat" <?php if($retreat->retreat_tipe == "Retreat"){ echo "checked"; } ?>>Retreat</option>
+                                    <option value="">Choose Your Type</option>
+                                    <option value="Activities" <?php if($retreat->retreat_tipe == "Activities"){ echo "selected"; } ?>>Activities</option>
+                                    <option value="Retreat" <?php if($retreat->retreat_tipe == "Retreat"){ echo "selected"; } ?>>Retreat</option>
                                 </select>
                                 <?= form_error('retreat_tipe', '<div class="text-danger">', '</div>'); ?>
                             </div>
@@ -54,13 +54,17 @@
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
-                                <input type="file" name="image" class="form-control-file">
+                                <input type="file" name="image" class="form-control-file" id="imageInput">
                                 <?= form_error('image', '<div class="text-danger">', '</div>'); ?>
                                 <?php if(isset($retreat->image)): ?>
-                                    <img src="<?= base_url($retreat->image); ?>" alt="Current image" style="max-width: 200px; margin-top: 10px;">
+                                    <img src="<?= base_url($retreat->image); ?>" alt="Current image" style="max-width: 200px; margin-top: 10px;" id="currentImage">
                                 <?php endif; ?>
+                                <img id="previewImage" style="max-width: 200px; margin-top: 10px; display: none;">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="float-right">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="<?= base_url("retreats") ?>" class="btn btn-secondary">cancel</a>
+                            </div>
                         <?= form_close(); ?>
                     </div>
                     <!-- /.card-body -->

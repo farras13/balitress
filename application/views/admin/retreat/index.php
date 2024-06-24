@@ -21,7 +21,7 @@
                     <div class="card mt-3">
                         <div class="card-header">
                             <h3 class="card-title">Retreats</h3>
-                            <a href="<?php echo site_url('retreats/create'); ?>" class="float-right btn btn-primary">Create New Room</a>
+                            <a href="<?php echo site_url('retreats/create'); ?>" class="float-right btn btn-primary">Create Retreats</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -29,6 +29,7 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
+                                        <th>Type</th>
                                         <th>Description</th>
                                         <th>Highlights</th>
                                         <th>Facilities</th>
@@ -41,6 +42,7 @@
                                     <?php foreach ($retreats as $retreat): ?>
                                         <tr>
                                             <td><?php echo $retreat->name; ?></td>
+                                            <td><?php echo $retreat->retreat_tipe; ?></td>
                                             <td><?php echo $retreat->description; ?></td>
                                             <td><?php echo $retreat->highlights; ?></td>
                                             <td><?php echo $retreat->facilities; ?></td>

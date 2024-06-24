@@ -1,217 +1,220 @@
 (function ($) {
-    "use strict";
-    
-    // Dropdown on mouse hover
-    $(document).ready(function () {
-        function toggleNavbarMethod() {
-            if ($(window).width() > 992) {
-                $('.navbar .dropdown').on('mouseover', function () {
-                    $('.dropdown-toggle', this).trigger('click');
-                }).on('mouseout', function () {
-                    $('.dropdown-toggle', this).trigger('click').blur();
-                });
-            } else {
-                $('.navbar .dropdown').off('mouseover').off('mouseout');
-            }
-        }
-        toggleNavbarMethod();
-        $(window).resize(toggleNavbarMethod);
-    });
-    
-    
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
-        }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
-    });
+	"use strict";
 
+	// Dropdown on mouse hover
+	$(document).ready(function () {
+		function toggleNavbarMethod() {
+			if ($(window).width() > 992) {
+				$(".navbar .dropdown")
+					.on("mouseover", function () {
+						$(".dropdown-toggle", this).trigger("click");
+					})
+					.on("mouseout", function () {
+						$(".dropdown-toggle", this).trigger("click").blur();
+					});
+			} else {
+				$(".navbar .dropdown").off("mouseover").off("mouseout");
+			}
+		}
+		toggleNavbarMethod();
+		$(window).resize(toggleNavbarMethod);
+	});
 
-    // Date and time picker
-    $('.date').datetimepicker({
-        format: 'L'
-    });
-    $('.time').datetimepicker({
-        format: 'LT'
-    });
+	// Back to top button
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 100) {
+			$(".back-to-top").fadeIn("slow");
+		} else {
+			$(".back-to-top").fadeOut("slow");
+		}
+	});
+	$(".back-to-top").click(function () {
+		$("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
+		return false;
+	});
 
-    $(".news-slider").owlCarousel({
-        items : 3,
-        itemsDesktop:[1199,3],
-        itemsDesktopSmall:[980,2],
-        itemsMobile : [600,1],
-        navigation:true,
-        navigationText:["",""],
-        pagination:true,
-        autoPlay:true,
-        loop: true
-    });   
+	// Date and time picker
+	$(".date").datetimepicker({
+		format: "L",
+	});
+	$(".time").datetimepicker({
+		format: "LT",
+	});
 
-    // Testimonials carousel
-    $(".villa-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        margin: 30,
-        dots: true,
-        loop: true,
-        center: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:1
-            },
-            992:{
-                items:2
-            }
-        }
-    });
+	$(".news-slider").owlCarousel({
+		items: 3,
+		itemsDesktop: [1199, 3],
+		itemsDesktopSmall: [980, 2],
+		itemsMobile: [600, 1],
+		navigation: true,
+		navigationText: ["", ""],
+		pagination: true,
+		autoPlay: true,
+		loop: true,
+	});
 
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        margin: 30,
-        dots: true,
-        loop: true,
-        center: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            }
-        }
-    });
+	// Testimonials carousel
+	$(".villa-carousel").owlCarousel({
+		autoplay: true,
+		smartSpeed: 1500,
+		margin: 30,
+		dots: true,
+		loop: true,
+		center: true,
+		responsive: {
+			0: {
+				items: 1,
+			},
+			576: {
+				items: 1,
+			},
+			768: {
+				items: 1,
+			},
+			992: {
+				items: 2,
+			},
+		},
+	});
 
-    $('.select-room').on('click', function(){
-        console.log("halo");
-        $('.package-item').removeClass('selected');
-        $(this).closest('.package-item').addClass('selected');
-    });
-    
+	$(".testimonial-carousel").owlCarousel({
+		autoplay: true,
+		smartSpeed: 1500,
+		margin: 30,
+		dots: true,
+		loop: true,
+		center: true,
+		responsive: {
+			0: {
+				items: 1,
+			},
+			576: {
+				items: 1,
+			},
+			768: {
+				items: 2,
+			},
+			992: {
+				items: 3,
+			},
+		},
+	});
 
-    $('.carousels-item', '.show-neighbors').each(function(){
-        var next = $(this).next();
-        if (! next.length) {
-          next = $(this).siblings(':first');
-        }
-        next.children(':first-child').clone().appendTo($(this));
-      }).each(function(){
-        var prev = $(this).prev();
-        if (! prev.length) {
-          prev = $(this).siblings(':last');
-        }
-        prev.children(':nth-last-child(2)').clone().prependTo($(this));
-      });
+	$(".select-room").on("click", function () {
+		$(".package-item").removeClass("selected");
+		$(".item-value").addClass("disabled");
+		$(this).closest(".package-item").addClass("selected");
+		$(this).closest(".item-value").removeClass("disabled");
 
-      $(document).ready(function() {
-          // Harga tambahan untuk penjemputan
-          const pickupPrices = {
-              'none': 0,
-              'hotel': 50,
-              'airport': 75
-          };
+		console.log($(this).closest(".item-value"));
+	});
 
-          // Harga tambahan untuk aktivitas
-          const activityPrices = {
-              'snorkeling': 100,
-              'diving': 150,
-              'mangrove': 80
-          };
+	$(".carousels-item", ".show-neighbors")
+		.each(function () {
+			var next = $(this).next();
+			if (!next.length) {
+				next = $(this).siblings(":first");
+			}
+			next.children(":first-child").clone().appendTo($(this));
+		})
+		.each(function () {
+			var prev = $(this).prev();
+			if (!prev.length) {
+				prev = $(this).siblings(":last");
+			}
+			prev.children(":nth-last-child(2)").clone().prependTo($(this));
+		});
 
-          // Fungsi untuk menghitung total harga
-          function calculateTotal() {
-              let total = 0;
+	$(document).ready(function () {
+		// Harga tambahan untuk penjemputan
+		const pickupPrices = {
+			none: 0,
+			hotel: 50,
+			airport: 75,
+		};
 
-              // Tambah harga penjemputan
-              const pickup = $('#pickup').val();
-              total += pickupPrices[pickup];
+		// Harga tambahan untuk aktivitas
+		const activityPrices = {
+			snorkeling: 100,
+			diving: 150,
+			mangrove: 80,
+		};
 
-              // Tambah harga aktivitas
-              $('input[name="activities[]"]:checked').each(function() {
-                  total += activityPrices[$(this).val()];
-              });
+		// Fungsi untuk menghitung total harga
+		function calculateTotal() {
+			let total = 0;
 
-              // Update total harga
-              $('#total').val('$' + total);
-          }
+			// Tambah harga penjemputan
+			const pickup = $("#pickup").val();
+			total += pickupPrices[pickup];
 
-          // Event listener untuk perubahan di dropdown penjemputan dan checklist aktivitas
-          $('#pickup, input[name="activities[]"]').on('change', calculateTotal);
+			// Tambah harga aktivitas
+			$('input[name="activities[]"]:checked').each(function () {
+				total += activityPrices[$(this).val()];
+			});
 
-          // Hitung total harga saat halaman pertama kali dimuat
-          calculateTotal();
+			// Update total harga
+			$("#total").val("$" + total);
+		}
 
-          // Navigasi antar langkah
-          $('#nextToStep2').click(function() {
-              $('#step1').hide();
-              $('#step2').show();
-              $('#progress-bar').css('width', '66%').text('Step 2 of 3');
-          });
+		// Event listener untuk perubahan di dropdown penjemputan dan checklist aktivitas
+		$('#pickup, input[name="activities[]"]').on("change", calculateTotal);
 
-          $('#backToStep1').click(function() {
-              $('#step2').hide();
-              $('#step1').show();
-              $('#progress-bar').css('width', '33%').text('Step 1 of 3');
-          });
+		// Hitung total harga saat halaman pertama kali dimuat
+		calculateTotal();
 
-          $('#nextToStep3').click(function() {
-              $('#step2').hide();
-              $('#step3').show();
-              $('#progress-bar').css('width', '100%').text('Step 3 of 3');
-          });
+		// Navigasi antar langkah
+		$("#nextToStep2").click(function () {
+			$("#step1").hide();
+			$("#step2").show();
+			$("#progress-bar").css("width", "66%").text("Step 2 of 3");
+		});
 
-          $('#backToStep2').click(function() {
-              $('#step3').hide();
-              $('#step2').show();
-              $('#progress-bar').css('width', '66%').text('Step 2 of 3');
-          });
+		$("#backToStep1").click(function () {
+			$("#step2").hide();
+			$("#step1").show();
+			$("#progress-bar").css("width", "33%").text("Step 1 of 3");
+		});
 
-          // Tangani submit form
-          $('#paymentForm').submit(function(event) {
-              event.preventDefault();
-              alert('Pembayaran Berhasil!');
-              // Implementasi pembayaran sebenarnya bisa dilakukan di sini
-          });
-      });
-    $('.caroselspecialofer').carousel({
-        interval: 1000
-    })
-    
-    $('.carousel .carousel-item').each(function() {
-        var minPerSlide = 4;
-        var next = $(this).next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
-        }
-        next.children(':first-child').clone().appendTo($(this));
-    
-        for (var i = 0; i < minPerSlide; i++) {
-            next = next.next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
-    
-            next.children(':first-child').clone().appendTo($(this));
-        }
-    });
-    
+		$("#nextToStep3").click(function () {
+			$("#step2").hide();
+			$("#step3").show();
+			$("#progress-bar").css("width", "100%").text("Step 3 of 3");
+		});
+
+		$("#backToStep2").click(function () {
+			$("#step3").hide();
+			$("#step2").show();
+			$("#progress-bar").css("width", "66%").text("Step 2 of 3");
+		});
+
+		// Tangani submit form
+		$("#paymentForm").submit(function (event) {
+			event.preventDefault();
+			alert("Pembayaran Berhasil!");
+			// Implementasi pembayaran sebenarnya bisa dilakukan di sini
+		});
+	});
+	$(".caroselspecialofer").carousel({
+		interval: 1000,
+	});
+
+	$(".carousel .carousel-item").each(function () {
+		var minPerSlide = 4;
+		var next = $(this).next();
+		if (!next.length) {
+			next = $(this).siblings(":first");
+		}
+		next.children(":first-child").clone().appendTo($(this));
+
+		for (var i = 0; i < minPerSlide; i++) {
+			next = next.next();
+			if (!next.length) {
+				next = $(this).siblings(":first");
+			}
+
+			next.children(":first-child").clone().appendTo($(this));
+		}
+	});
+	
 })(jQuery);
-

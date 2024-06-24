@@ -175,7 +175,7 @@
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Daily Activity</h6>
             </div>
             <!-- Package 1 -->
-            <?php foreach($retreats_daily as $retreats) {?>
+            <?php foreach($retreats_daily as $retreats) if($retreats->retreat_tipe == "Activities") {?>
             <div class="col-md-3 mb-4">
                 <div class="card package-card">
                 <img src="<?= base_url($retreats->image) ?>" class="card-img-top" alt="<?= $retreats->name ?>">

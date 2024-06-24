@@ -74,42 +74,21 @@
                                 </div>
                                 <div class="col-md-12 mt-2">
                                 <h2><b>Choose Your Room</b></h2>
-                                <div class="package-item bg-white mb-2">
-                                    <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-1.jpg" alt="Kamar 1"> -->
-                                    <div class="p-4">
-                                        <!-- <div class="d-flex justify-content-between mb-3">
-                                            <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Double Bed</small>
-                                            <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                            <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>En-suite Bathroom</small>
-                                        </div> -->
-                                        <a class="h5 text-decoration-none" href="#">Bali Tress</a>
-                                        <p class="mb-3">Deskripsi Bali Tress</p>
-                                        <div class="border-top mt-4 pt-4">
-                                            <div class="flex-container">
-                                                <h5 class="m-0">Rp 1.500.000/night</h5>
-                                                <button class="btn btn-primary select-room">Select Room</button>
+                                <?php foreach($villa as $v){ ?>    
+                                    <div class="package-item bg-white mb-2">
+                                        <div class="p-4">                                         
+                                            <a class="h5 text-decoration-none" href="#"><?= $v->name ?></a>
+                                            <p class="mb-3"><?= $v->lite_deskripsi ?></p>
+                                            <div class="border-top mt-4 pt-4">
+                                                <div class="flex-container">
+                                                    <h5 class="m-0">Rp <?= $v->price ?>/night</h5>
+                                                    <button class="btn btn-primary select-room">Select Room</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="package-item bg-white mb-2">
-                                    <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-2.jpg" alt="Kamar 2"> -->
-                                    <div class="p-4">
-                                        <!-- <div class="d-flex justify-content-between mb-3">
-                                            <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Single Bed</small>
-                                            <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                            <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Shared Bathroom</small>
-                                        </div> -->
-                                        <a class="h5 text-decoration-none" href="#">Balocloves</a>
-                                        <p class="mb-3">Deskripsi Balocloves</p>
-                                        <div class="border-top mt-4 pt-4">
-                                            <div class="flex-container">
-                                                <h5 class="m-0">Rp.1.000.000/night</h5>
-                                                <button class="btn btn-primary select-room">Select Room</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php } ?>
+                               
                                 
                             </div>   
                                 
@@ -119,67 +98,67 @@
                     </div>
                 </div>
             </div>  
-            <div class="col-md-4">
-            <div class="position-relative">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Reservation Summary</h5>
-                        <div class="container">
-                            <div class="row pt-3">
-                                <!-- <div class="col-xs-1">
-                                    <a class="btn btn-link text-danger px-3" href="#">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+            <div class="col-lg-4 col-md-4">
+                <div class="position-relative">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Reservation Summary</h5>
+                            <div class="container">
+                                <div class="row pt-3">
+                                    <!-- <div class="col-xs-1">
+                                        <a class="btn btn-link text-danger px-3" href="#">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <h6>Balitress Villa</h6>
+                                        <small>Deluxe</small>
+                                        <small>1 room</small>
+                                    </div>
+                                    <div class="col">
+                                        <p class="text-right">
+                                            <strong>$350</strong><br>
+                                            <small>Qty : 1</small>
+                                        </p>
+                                    </div> -->
+                                    <div class="col">
+                                        <p>No one choosed</p>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <h6>Balitress Villa</h6>
-                                    <small>Deluxe</small>
-                                    <small>1 room</small>
-                                </div>
-                                <div class="col">
-                                    <p class="text-right">
-                                        <strong>$350</strong><br>
-                                        <small>Qty : 1</small>
-                                    </p>
+                                <!-- <div class="row pt-3">
+                                    <div class="col-xs-1">
+                                        <a class="btn btn-link text-danger px-3" href="#">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <small>3 Days 2 nights Yoga, Meditation & Cultural Retreat in Bali</small>
+                                        <h6>Deluxe Double | Twin Bedroom</h6>
+                                    </div>
+                                    <div class="col">
+                                        <p class="text-right">
+                                            <strong>IDR 2,900,000</strong><br>
+                                            <small>Stay for 2 Nights<br>From Sat, 18 May 2024<br>to Mon, 20 May 2024</small>
+                                        </p>
+                                    </div>
                                 </div> -->
-                                <div class="col">
-                                    <p>No one choosed</p>
-                                </div>
+                                <table class="mt-3 mb-3" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td><h5>Total</h5></td>
+                                            <td class="text-right"><h5><strong>Rp. 0</strong></h5></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block mb-3">Proceed to Payment</a> -->
+                                <a href="" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
                             </div>
-                            <!-- <div class="row pt-3">
-                                <div class="col-xs-1">
-                                    <a class="btn btn-link text-danger px-3" href="#">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <small>3 Days 2 nights Yoga, Meditation & Cultural Retreat in Bali</small>
-                                    <h6>Deluxe Double | Twin Bedroom</h6>
-                                </div>
-                                <div class="col">
-                                    <p class="text-right">
-                                        <strong>IDR 2,900,000</strong><br>
-                                        <small>Stay for 2 Nights<br>From Sat, 18 May 2024<br>to Mon, 20 May 2024</small>
-                                    </p>
-                                </div>
-                            </div> -->
-                            <table class="mt-3 mb-3" width="100%">
-                                <tbody>
-                                    <tr>
-                                        <td><h5>Total</h5></td>
-                                        <td class="text-right"><h5><strong>Rp. 0</strong></h5></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!-- <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block mb-3">Proceed to Payment</a> -->
-                            <a href="" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
+                        </div>
+                        <div class="alert mt-3">
+                            <i class="material-icons">info</i> You can add multiple rooms with different period of stay
                         </div>
                     </div>
-                    <div class="alert mt-3">
-                        <i class="material-icons">info</i> You can add multiple rooms with different period of stay
-                    </div>
                 </div>
-            </div>
             </div>
         </div>
         <div class="row my-3">

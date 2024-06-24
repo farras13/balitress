@@ -93,6 +93,7 @@
                             </div>
                         </div> -->
                         <a href="<?= base_url('contact') ?>" class="nav-item nav-link">Contact</a>
+                        <a href="#" class="nav-item nav-link"><i class="fa fa-shopping-cart"></i></a>
                     </div>
                 </div>
             </nav>

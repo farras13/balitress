@@ -33,7 +33,7 @@ class Retreats extends CI_Controller {
         }
         $data = array(
             'name' => $this->input->post('name'),
-            'retreat_tipe' => $this->input->post('tipe'),
+            'retreat_tipe' => $this->input->post('retreat_tipe'),
             'lite_description' => $this->input->post('lite_description'),
             'description' => $this->input->post('description'),
             'highlights' => $this->input->post('highlights'),
@@ -44,7 +44,7 @@ class Retreats extends CI_Controller {
         // var_dump($data);die;
         $this->Retreats_model->insert($data);
         $this->session->set_flashdata('message', 'Room created successfully');
-        redirect('retreats');
+        redirect('retreats', 'refresh');
     }
 
     public function edit($id) {
@@ -80,7 +80,7 @@ class Retreats extends CI_Controller {
             }
         $data = array(
             'name' => $this->input->post('name'),
-            'retreat_tipe' => $this->input->post('tipe'),
+            'retreat_tipe' => $this->input->post('retreat_tipe'),
             'lite_description' => $this->input->post('lite_description'),
             'description' => $this->input->post('description'),
             'highlights' => $this->input->post('highlights'),

@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card  mt-3">
                     <div class="card-header">
                         <h3 class="card-title">Create Retreat</h3>
                     </div>
@@ -57,8 +57,10 @@
                                 <input type="file" name="image" class="form-control-file">
                                 <?= form_error('image', '<div class="text-danger">', '</div>'); ?>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="<?= base_url("retreats/insertdata") ?>" class="btn btn-primary">asdasdasd</a>
+                            <div class="float-right">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="<?= base_url("retreats") ?>" class="btn btn-secondary">cancel</a>
+                            </div>
                         </form>
                     </div>
                     <!-- /.card-body -->
