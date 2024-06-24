@@ -13,7 +13,10 @@ class Admin extends CI_Controller {
 	}
 	public function index()
 	{
-		$data['banner'] = $this->m->getData("banners", ["menu" => "utama"])->result();
+		$data['categories'] = ['utama', 'Villa', 'Retreat', 'Tour', 'Special Offer'];
+		$data['categoriescode'] = ['utama', 'b-Villa', 'b-Retreat', 'b-Tour', 'b-Special'];
+		$categories = ['utama', 'b-Villa', 'b-Retreat', 'b-Tour', 'b-Special'];
+		$data['banner'] = $this->m->getDataWherein("banners", ["menu" => $categories])->result();
 		$data['toursatu'] = $this->m->getData("banners", ["menu" => "tour1"])->row();
 		$data['tourdua'] = $this->m->getData("banners", ["menu" => "tour2"])->row();
 		$data['tourtiga'] = $this->m->getData("banners", ["menu" => "tour3"])->row();
@@ -22,7 +25,7 @@ class Admin extends CI_Controller {
 
 		$data['link'] = $this->m->getData("link")->row();
 		$data['desc'] = $this->m->getData("banners", ["menu" => "descvilla"])->row();
-		if(empty($data['link'])){
+		if(empty($data['link']) ){
 			$data['linkform'] = "admin/ins_link";
 		}else{
 			$data['linkform'] = "admin/upd_link/".$data['link']->id;
@@ -55,7 +58,7 @@ class Admin extends CI_Controller {
             $upload_data = $this->upload->data();
             $image_path = 'uploads/' . $upload_data['file_name'];
             $data = array(
-				'menu' => "utama",
+				'menu' => $this->input->post("posisi"),
 				'judul' => $this->input->post("judul"),
                 'images' => $image_path
             );
@@ -71,12 +74,12 @@ class Admin extends CI_Controller {
 	}
 
 	public function ins_link(){
-		$this->m->ins("link", ["link" => $this->input->post("link")]);
+		$this->m->ins("link", ["link" => $this->input->post("link"), "link_villa" => $this->input->post("link_villa")]);
 		redirect("admin");
 		
 	}
 	public function upd_link($id){
-		$this->m->upd("link", ["link" => $this->input->post("link")], ["id" => $id]);
+		$this->m->upd("link", ["link" => $this->input->post("link"), "link_villa" => $this->input->post("link_villa")], ["id" => $id]);
 		redirect("admin");
 		
 	}

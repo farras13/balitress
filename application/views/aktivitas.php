@@ -21,26 +21,16 @@
 <div class="container-fluid p-0">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="w-100" src="<?= base_url('assets/') ?>img/carousel-1.jpg" alt="Image">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase mb-md-3">Our Retreats</h4>
-                        <h1 class="display-3 text-white mb-md-4">Yoga Bali Retreat by Balitress</h1>
-                        <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+            <?php $index = 1; foreach($banner as $g){ ?>
+                <div class="carousel-item <?php if($index == 1){echo "active";} ?>">
+                    <img class="w-100" src="<?= base_url().$g->images ?>" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h1 class="display-3 text-white mb-md-4"><?= $g->judul ?></h1>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img class="w-100" src="<?= base_url('assets/') ?>img/carousel-2.jpg" alt="Image">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase mb-md-3">Our Retreats</h4>
-                        <h1 class="display-3 text-white mb-md-4">Yoga Bali Retreat by Balitress</h1>
-                        <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
-                    </div>
-                </div>
-            </div>
+            <?php $index++; } ?>
         </div>
         <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
             <div class="btn btn-dark" style="width: 45px; height: 45px;">
@@ -57,7 +47,7 @@
 <!-- Carousel End -->
 
 <!-- Booking Start -->
-<div class="container-fluid booking mt-5 pb-5">
+<div class="container-fluid booking mt-5 pb-3">
     <div class="container pb-5">
         <div class="bg-light shadow" style="padding: 30px;">
             <div class="row align-items-center" style="min-height: 60px;">
@@ -115,8 +105,23 @@
     </div>
 </div>
 <!-- Booking End -->
-<div class="container-fluid py-2">
-    <div class="container mt-5">
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="text-center">
+                <h6 class="text-primary"><b>--SEE WHAT BALI CAN--</b></h6>
+            </div>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-4">            
+            <div class="text-center ">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse cupiditate voluptatibus, ipsa laborum molestiae similique optio maiores vero ab voluptate officia minus cumque dolores nulla nobis totam veritatis dicta corrupti!
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="container">        
+        <h3 style="color: #3f3f3f;"> Retreats </h3>
         <div class="row">
         <?php foreach ($cards as $index => $retreat): ?>
             <?php if ($index % 2 == 0): ?>
@@ -163,19 +168,12 @@
         </div>
     </div>
     <div class="container pb-3">
-        <!-- <div class="text-center mb-3 pb-3">
-            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Special Offer </h6>
-            <h1>Special Offer </h1>
-        </div> -->
-        <div class="row">
-       
-        </div>
         <h3 class="text-primary"> Daily Activity </h3>
         <div class="row mb-4">
             <?php foreach ($another_cards as $card){ if($card->retreat_tipe == "Activities"){  {  ?>
                 <div class="col-md-4">
                     <div class="card package-card">
-                    <img src="<?= base_url(''.$card->image_bg) ?>" class="card-img-top" alt="<?= $card->name ?>" width="250px" height="180px">
+                    <img src="<?= base_url(''.$card->image) ?>" class="card-img-top" alt="<?= $card->name ?>" width="250px" height="180px">
                     <div class="card-body">
                         <h5 class="card-title"><?= $card->name ?></h5>
                         <p class="card-text text-justify">

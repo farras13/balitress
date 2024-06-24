@@ -18,6 +18,23 @@ class M_basic extends CI_Model {
 		return $this->db->get($t);
 	}
 
+	public function getDataWherein($t, $w = null, $orderBy = null )
+	{
+		if ($w != null) {
+			foreach ($w as $column => $values) {
+				$this->db->where_in($column, $values);
+			}
+		}
+
+		if ($orderBy != null) {
+			foreach ($orderBy as $column => $order) {
+				$this->db->order_by($column, $order);
+			}
+		}
+		
+		return $this->db->get($t);
+	}
+
 	public function getDataLimit($t, $w = null, $limit, $start)
 	{
 		$this->db->limit($limit, $start);

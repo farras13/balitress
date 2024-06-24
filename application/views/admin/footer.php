@@ -108,6 +108,15 @@
       }
   </script>
   <script>
+    $(document).ready(function(){
+        $('.menu-select').change(function(){
+            var selectedMenu = $(this).val();
+            $('.link-input').addClass('d-none'); // Menyembunyikan semua input
+            $('.link-input.' + selectedMenu).removeClass('d-none'); // Menampilkan input sesuai dengan menu yang dipilih
+        });
+    });
+</script>
+  <script>
     document
 		.getElementById("imageInput")
 		.addEventListener("change", function (event) {

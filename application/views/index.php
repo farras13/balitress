@@ -8,19 +8,20 @@
                 <img class="w-100" src="<?= base_url().$b->images ?>" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase mb-md-3"><?php   
-                        $descriptions = strip_tags($b->deskripsi);
-                        if (strlen($descriptions) > 120) {
-                            $descriptions = substr($deskripsi, 0, 120) . '...';
-                        }
-                        echo $descriptions;
-                    ?></h4>
+                        <h4 class="text-white text-uppercase mb-md-3">
+                        <?php   
+                            $descriptions = strip_tags($b->deskripsi);
+                            if (strlen($descriptions) > 120) {
+                                $descriptions = substr($deskripsi, 0, 120) . '...';
+                            }
+                            echo $descriptions;
+                        ?>
+                        </h4>
                         <h1 class="display-3 text-white mb-md-4"><?= $b->judul ?></h1>
                     </div>
                 </div>
             </div>
             <?php $index++; } ?>
-           
         </div>
         <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
             <div class="btn btn-dark" style="width: 45px; height: 45px;">
@@ -34,6 +35,7 @@
         </a>
     </div>
 </div>
+
 <!-- Carousel End -->
 
 <!-- Booking Start -->
@@ -79,7 +81,7 @@
             <p class="text-primary">GET THE BEST DEAL</p>
         </div>
         <div class="row mx-auto my-auto">
-            <div id="caroselspecialoffer" class="carousel caroselspecialoffer slide w-100" data-ride="carousel">
+            <div id="caroselspecialoffer" class="carousel caroselvilla slide w-100" data-ride="carousel">
                 <div class="carousel-inner w-100" role="listbox">
                     <?php $y=1; foreach($spesialoffer as $so){ ?>
                     <div class="carousel-item <?php if($y==1) echo 'active'; ?>">
@@ -175,7 +177,7 @@
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Daily Activity</h6>
             </div>
             <!-- Package 1 -->
-             <div class="row align-items-center px-4">
+             <div class="row px-4">
                 <?php foreach($retreats_daily as $retreats) if($retreats->retreat_tipe == "Activities") {?>
                     <div class="col-md-3 mb-4 ">
                         <div class="card package-card">

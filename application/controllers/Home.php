@@ -29,7 +29,6 @@ class Home extends CI_Controller {
 		$data['link'] = $this->m->getData("link")->row();
 		$data['desc'] = $this->m->getData("banners", ["menu" => "descvilla"])->row();
 
-
 		$this->load->view('header');
 		$this->load->view('index', $data);
 		$this->load->view('footer');
@@ -39,7 +38,8 @@ class Home extends CI_Controller {
 	{
         $data["villas"] = $this->m->getData("villa")->result();
         $data["gallery"] = $this->m->getData("villa_galery")->result();
-        $data['banner'] = $this->m->getData("banners", ["menu" => "utama"])->result();
+        $data['banner'] = $this->m->getData("banners", ["menu" => "b-Villa"])->result();
+        $data['link'] = $this->m->getData("link")->row();
 		$this->load->view('header', $data);
 		$this->load->view('villa', $data);
 		$this->load->view('footer', $data);
@@ -128,6 +128,7 @@ class Home extends CI_Controller {
         $data['pagination2'] = $pagination2->create_links();
 
         $data['gallery'] = $this->m->getData("retreat_gallery")->result();
+        $data['banner'] = $this->m->getData("banners", ["menu" => "b-Retreat"])->result();
 
         $this->load->view('header');
         $this->load->view('aktivitas', $data);
@@ -183,7 +184,7 @@ class Home extends CI_Controller {
         $data['cards'] = $this->Tour_package_model->get_cards($config['per_page'], $page);
         $data['pagination'] = $this->pagination->create_links();
         $data["gallery"] = $this->m->getData("galeritourpackage")->result();
-        $data['banner'] = $this->m->getData("banners", ["menu" => "utama"])->result();
+        $data['banner'] = $this->m->getData("banners", ["menu" => "b-Tour"])->result();
 		// var_dump($data);die;
 		$this->load->view('header');
 		$this->load->view('tour', $data);
@@ -238,7 +239,7 @@ class Home extends CI_Controller {
     public function specialoffer()
 	{
         $data["specialoffer"] = $this->m->getData("spesialoffer")->result();
-        $data['banner'] = $this->m->getData("banners", ["menu" => "specialoffer"])->row();
+        $data['banner'] = $this->m->getData("banners", ["menu" => "b-Special"])->result();
         $data["gallery"] = $this->m->getData("spesialoffer_gallery")->result();
         $this->load->view('header');
 		$this->load->view('spesialoffer', $data);

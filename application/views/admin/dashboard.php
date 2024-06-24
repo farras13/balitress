@@ -50,9 +50,6 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Banner Utama</h3>
-                </div>
                 <div class="card-body">
                     <?php echo form_open_multipart('admin/banner_add'); ?>
                     
@@ -61,29 +58,43 @@
                         <input type="text" class="form-control" name="judul">
                     </div>
                     <div class="form-group">
+                        <label for="Judul">Position Banner</label>
+                        <select name="posisi" id="posisibanner" class="form-control">
+                            <option value="utama">Home</option>
+                            <option value="b-Villa">Villa & Suite</option>
+                            <option value="b-Retreat">Retreat</option>
+                            <option value="b-Tour">Tour Package</option>
+                            <option value="b-Special">Spesial Offer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="image">Image</label>
-                        <input type="file" class="form-control" name="image">
+                        <input type="file" class="form-control" name="image" id="imageInput">
+                    <img id="previewImage" style="max-width: 200px; margin-top: 10px; display: none;">
+
                     </div>
 
                     <button type="submit" class="btn btn-primary">Upload</button>
                     <?php echo form_close(); ?>
-                    
-                    <h3 class="mt-5">Banner</h3>
-                    <div class="row">
-                        <?php foreach ($banner as $image): ?>
-                            <div class="col-md-3">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <h3><?= $image->judul ?></h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <img src="<?php echo base_url($image->images); ?>" class="card-img-top" alt="...">
-                                        <a href="<?php echo site_url('admin/delete_banner/'.$image->id); ?>" class="btn btn-danger mt-4">Delete</a>
+                    <?php foreach ($categories as $key => $value) { ?>
+                        <h3 class="mt-5">Banner <?= $value ?></h3>
+                        <div class="row">
+                            <?php foreach ($banner as $image): if($image->menu == $categoriescode[$key]) {?>
+                                <div class="col-md-3">
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <h3><?= $image->judul ?></h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <img src="<?php echo base_url($image->images); ?>" class="card-img-top" alt="...">
+                                            <a href="<?php echo site_url('admin/delete_banner/'.$image->id); ?>" class="btn btn-danger mt-4">Delete</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
+                            <?php } endforeach; ?>
+                        </div>
+                        
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -94,10 +105,13 @@
                 </div>
                 <div class="card-body">
                     <?php echo form_open_multipart($linkform); ?>
-                    
                     <div class="form-group">
                         <label for="image">Link Youtube</label>
                         <input type="text" class="form-control" name="link" value="<?= isset($link->link) ? $link->link : "" ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Link Youtube Villa</label>
+                        <input type="text" class="form-control" name="link_villa" value="<?= isset($link->link_villa) ? $link->link_villa : "" ?>">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Upload</button>

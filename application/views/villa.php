@@ -1,4 +1,40 @@
-<!-- Carousel Start -->
+<style>
+    .card {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: auto;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.5); /* Overlay color */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        color: white;
+        padding: 1rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card:hover .overlay {
+        opacity: 1; /* Show overlay on hover */
+    }
+
+    .overlay .card-title,
+    .overlay .card-text {
+        margin-bottom: 1rem;
+    }
+
+    .overlay a.btn {
+        margin-top: auto; /* Push button to the bottom of overlay */
+    }
+</style>
+
 <div class="container-fluid p-0">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -22,13 +58,13 @@
                     </div>
                 </div>
             </div> -->
-            <?php $index = 1; foreach($gallery as $g){ ?>
+            <?php $index = 1; foreach($banner as $g){ ?>
                 <div class="carousel-item <?php if($index == 1){echo "active";} ?>">
-                    <img class="w-100" src="<?= base_url().$g->image ?>" alt="Image">
+                    <img class="w-100" src="<?= base_url().$g->images ?>" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <!-- <div class="p-3" style="max-width: 900px;">
-                            <h1 class="display-3 text-white mb-md-4">Balinese Watukaru Yoga Retreat</h1>
-                        </div> -->
+                        <div class="p-3" style="max-width: 900px;">
+                            <h1 class="display-3 text-white mb-md-4"><?= $g->judul ?></h1>
+                        </div>
                     </div>
                 </div>
             <?php $index++; } ?>
@@ -106,48 +142,36 @@
     </div>
 </div>
 <!-- Booking End -->
-<div class="container-fluid py-2">
-    <div class="container pb-3">
-        <!-- <div class="text-center mb-3 pb-3">
-            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Special Offer </h6>
-            <h1>Special Offer </h1>
-        </div> -->
-        <div class="row">
-            <?php $y=1; foreach($villas as $v) { ?>
-                <div class="post-slide package-item bg-white mb-2">
-                    <div class="row">
-                        <div class="col-md-6">
-                        <img class="img-fluid" src="<?= base_url().$v->image ?>" alt="">
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 mb-4">
+            <div class="card package-card" >
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="<?= $link->link_villa ?>" allowfullscreen></iframe>
+            </div>
+            </div>
+        </div>
+    </div>
+    <h3>Villa & Suites</h3>
+    <div class="row">
+        <?php foreach ($villas as $card): ?>
+        <div class="col-md-6 mb-4">
+            <div class="card position-relative">
+                <img src="<?= base_url() . $card->image ?>" class="card-img-top" alt="<?= $card->name ?>">
+                <div class="overlay position-absolute w-100">
+                    <div class="d-flex flex-column justify-content-between h-100">
+                        <div class="p-3">
+                            <h5 class="card-title text-white"><?= $card->name ?></h5>
+                            <p class="card-text text-white"><?= $card->lite_deskripsi ?></p>
                         </div>
-                        <div class="col-md-6">
-                            <div class="p-4">
-                                <h5 class="text-primary">Suite</h5>
-                                <a class="h5 text-decoration-none" href="<?= base_url('villa/detail/') ?>"><?= $v->name ?></a>
-                                <!-- <div class="d-flex justify-content-between my-3">
-                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Nusa Lembongan</small>
-                                    <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>1 days</small>
-                                    <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>1 Person</small>
-                                </div> -->
-                                <div class="border-top mt-4 pt-4">
-                                    <div class="d-flex justify-content-between">
-                                        <p><?= $v->lite_deskripsi ?></p>
-                                    </div>
-                                    <div class="float-right">
-                                        <a href="<?= base_url("villa/detail/").$v->id ?>" class="btn btn-primary"> See Detail </a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="p-3 text-right">
+                            <a href="<?= base_url('villa/detail/' . $card->id) ?>" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
-                   
                 </div>
-            <?php $y++; } ?>
-            <!-- <div class="col-lg-12 col-md-12 mb-4">
-                <div class="text-center">
-                    <a class="btn btn-md btn-primary" href="#">Read More</a>
-                </div>
-            </div>             -->
+            </div>
         </div>
+        <?php endforeach; ?>
     </div>
 </div>
