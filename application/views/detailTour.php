@@ -81,10 +81,13 @@
                 <ul class="list-unstyled mb-4">
                     <?php foreach($iexclude as $ie){ ?>
                         <?php if($ie->Tipe == "include"){ ?>
-                            <li class="mb-2"><i class="fa fa-check-circle text-primary mr-2"></i><?= $ie->Name ?></li>
-                        <?php }else{ ?>
-                            <li class="mb-2"><i class="fa fa-times-circle text-danger mr-2"></i><?= $ie->Name ?></li>
+                            <li class="mb-2"><i class="fa fa-check-circle text-primary mr-2"></i><?= $ie->Name ?></li>                      
                         <?php } ?>
+                    <?php } ?>
+                    <?php foreach($iexclude as $ie){ ?>
+                        <?php if($ie->Tipe != "include"){ ?>
+                            <li class="mb-2"><i class="fa fa-times-circle text-danger mr-2"></i><?= $ie->Name ?></li>
+                        <?php } ?>                           
                     <?php } ?>
                 </ul>
                 
