@@ -29,21 +29,21 @@ class Tour_package extends CI_Controller {
 		$data['gallery'] = $this->m->getData("galeritourpackage", ["Tour_id" => $id])->result();
 		$data['iexclude'] = $this->m->getData("ietourpackage", ["Tour_id" => $id])->result();
         
-        if (empty($data['tour_package'])) {
-            show_404();
-        }
+        // if (empty($data['tour_package'])) {
+        //     show_404();
+        // }
 
-        $data['title'] = $data['tour_package']['package_name'];
+        $data['title'] = $data['tour_package'][0]['package_name'];
 
         $this->load->view('admin/header', $data);
-        $this->load->view('admin/tour/view', $data);
+        $this->load->view('detailTour', $data);
         $this->load->view('admin/footer');
     }
 
     public function create() {
         $data['title'] = 'Create Tour Package';
         $data['linkform'] = 'tourpackage/create';
-
+    
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('price', 'Price', 'required|integer');
         $this->form_validation->set_rules('about', 'About', 'required');
@@ -51,7 +51,7 @@ class Tour_package extends CI_Controller {
         $this->form_validation->set_rules('full_desc', 'Full Description', 'required');
         $this->form_validation->set_rules('highlight', 'Highlight', 'required');
         $this->form_validation->set_rules('info', 'Info', 'required');
-
+    
         if ($this->form_validation->run() === FALSE)
         {
             $this->load->view('admin/header', $data);
@@ -65,18 +65,19 @@ class Tour_package extends CI_Controller {
             $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
             $config['max_size'] = 5120;
             $this->load->library('upload', $config);
-
+    
             if (!$this->upload->do_upload('thumbnail'))
             {
-                $data['upload_error'] = $this->upload->display_errors();
-                var_dump($this->upload->display_errors());die;
-                // $this->load->view('tourpackage/create', $data);
+                $this->session->set_flashdata('message', $this->upload->display_errors());
+                $this->session->set_flashdata('message_type', 'danger');
+                // Redirect kembali ke halaman form dengan pesan error
+                redirect('tourpackage/create');
             }
             else
             {
                 $upload_data = $this->upload->data();
                 $thumbnail_path = 'uploads/' . $upload_data['file_name'];
-
+    
                 $data = array(
                     'Name' => $this->input->post('name'),
                     'Price' => $this->input->post('price'),
@@ -92,24 +93,29 @@ class Tour_package extends CI_Controller {
                     'Modif_by' => "admin", // Initially same as Created_by
                     'Modif_date' => date('Y-m-d H:i:s')
                 );
-
+    
+                // Simpan data ke database
                 $this->Tour_package_model->create_package($data);
+    
+                // Redirect ke halaman tourpackage
                 redirect('tourpackage');
             }
         }
     }
+    
 
     public function edit($id) {
+        ob_start();
         $data['linkform'] = "tourpackage/edit/$id";
-
+    
         $data['tour_package'] = $this->Tour_package_model->get_packages($id);
-        
+    
         if (empty($data['tour_package'])) {
             show_404();
         }
-
+    
         $data['title'] = 'Edit Tour Package';
-
+    
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('price', 'Price', 'required|integer');
         $this->form_validation->set_rules('about', 'About', 'required');
@@ -117,8 +123,7 @@ class Tour_package extends CI_Controller {
         $this->form_validation->set_rules('full_desc', 'Full Description', 'required');
         $this->form_validation->set_rules('highlight', 'Highlight', 'required');
         $this->form_validation->set_rules('info', 'Info', 'required');
-
-        // var_dump($data);die;
+    
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('admin/header', $data);
             $this->load->view('admin/tour/edit', $data);
@@ -128,25 +133,21 @@ class Tour_package extends CI_Controller {
             $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp|svg';
             $config['max_size'] = 5120;
             $this->load->library('upload', $config);
-
-            if (!empty($_FILES['thumbnail']['name']))
-            {
-                if (!$this->upload->do_upload('thumbnail'))
-                {
+    
+            if (!empty($_FILES['thumbnail']['name'])) {
+                if (!$this->upload->do_upload('thumbnail')) {
                     $data['upload_error'] = $this->upload->display_errors();
-                    $this->load->view('admin/tour/edit', $data);
-                }
-                else
-                {
+                    $this->session->set_flashdata('message', $this->upload->display_errors());
+                    $this->session->set_flashdata('message_type', 'danger');
+                    redirect("tourpackage/edit/$id");
+                } else {
                     $upload_data = $this->upload->data();
                     $thumbnail_path = 'uploads/' . $upload_data['file_name'];
                 }
-            }
-            else
-            {
+            } else {
                 $thumbnail_path = $data['tour_package']['Thumbnail'];
             }
-
+    
             $input_data = array(
                 'Name' => $this->input->post('name'),
                 'Price' => $this->input->post('price'),
@@ -160,11 +161,13 @@ class Tour_package extends CI_Controller {
                 'Modif_by' => $this->input->post('modified_by'),
                 'Modif_date' => date('Y-m-d H:i:s')
             );
-
+    
             $this->Tour_package_model->update_package($id, $input_data);
             redirect('tourpackage');
         }
+        ob_end_flush();
     }
+    
 
     public function delete($id) {
         $this->Tour_package_model->delete_package($id);
@@ -210,9 +213,22 @@ class Tour_package extends CI_Controller {
 
     public function delete_image($id)
     {
-        $data = $this->m->getData(["galeritourpackage","id"=>$id])->row();
-        $this->GalleryTourPackage_model->delete_image($id);
-        redirect('tourpackage/gallery/'.$data->Tour_id);
+        ob_start(); // Start output buffering
+        $data = $this->m->getData("galeritourpackage", ["id" => $id])->row();
+        
+        if ($data) {
+            $this->GalleryTourPackage_model->delete_image($id);
+            $this->session->set_flashdata('message', 'Success Remove Image');
+            $this->session->set_flashdata('message_type', 'success');
+            redirect('tourpackage/gallery/' . $data->Tour_id);
+        } else {
+            // Handle case when data is not found, maybe set a flash message
+            $this->session->set_flashdata('message', 'Image not found.');
+            $this->session->set_flashdata('message_type', 'danger');
+            redirect('tourpackage/gallery');
+        }
+        
+        ob_end_flush(); // End output buffering
     }
 
     public function include_exclude($id)
@@ -238,7 +254,7 @@ class Tour_package extends CI_Controller {
             'Name' => $this->input->post('exclude')
         );
          if($include_data['Name'] != "" || $exclude_data['Name'] != ""){
-             if($include_data['Name']  != "" ){
+            if($include_data['Name']  != "" ){
                 $this->IncludeExclude_model->add_include($include_data);
             }
             if($exclude_data['Name'] != ""){

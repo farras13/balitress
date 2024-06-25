@@ -17,13 +17,12 @@
     </section>    
 
     <?php if ($this->session->flashdata('message')): ?>
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: '<?= $this->session->flashdata('message'); ?>'
-        });
-    </script>
+        <div class="alert alert-<?= $this->session->flashdata('message_type') ?> alert-dismissible fade show" role="alert">
+            <?= $this->session->flashdata('message') ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     <?php endif; ?>
     <section class="content">
     <div class="container-fluid">
@@ -85,10 +84,11 @@
                 </div>
                 <div class="form-group">
                     <label for="thumbnail">Thumbnail</label>
-                    <input type="file" class="form-control" name="thumbnail">
+                    <input type="file" class="form-control" name="thumbnail" id="imageInput">
                     <?php if(isset($tour_package['Thumbnail'])): ?>
                         <img src="<?php echo base_url($tour_package['Thumbnail']); ?>" alt="Current Thumbnail" style="max-width: 200px; margin-top: 10px;">
                     <?php endif; ?>
+                    <img id="previewImage" style="max-width: 200px; margin-top: 10px; display: none;">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
