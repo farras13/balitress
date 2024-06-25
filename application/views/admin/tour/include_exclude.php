@@ -44,12 +44,12 @@
 
                 <div class="form-group">
                     <label for="include">Include</label>
-                    <textarea class="form-control" name="include"><?php echo set_value('include'); ?></textarea>
+                    <input type="text" class="form-control" name="include"><?php echo set_value('include'); ?></input>
                 </div>
 
                 <div class="form-group">
                     <label for="exclude">Exclude</label>
-                    <textarea class="form-control" name="exclude"><?php echo set_value('exclude'); ?></textarea>
+                    <input type="text" class="form-control" name="exclude"><?php echo set_value('exclude'); ?></i>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -73,7 +73,7 @@
                                         <td><?php echo $include['tour_name']; ?></td>
                                         <td><?php echo $include['Name']; ?></td>
                                         <td>
-                                            <a href="<?php echo site_url('tourpackage/delete_include/'.$include['Id']); ?>" class="btn btn-danger">Delete</a>
+                                            <a href="<?php echo site_url('tourpackage/delete_include/'.$include['Id']); ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -96,7 +96,7 @@
                                         <td><?php echo $exclude['tour_name']; ?></td>
                                         <td><?php echo $exclude['Name']; ?></td>
                                         <td>
-                                            <a href="<?php echo site_url('tourpackage/delete_exclude/'.$exclude['Id']); ?>" class="btn btn-danger">Delete</a>
+                                            <a href="<?php echo site_url('tourpackage/delete_exclude/'.$exclude['Id']); ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

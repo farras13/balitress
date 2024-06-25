@@ -218,8 +218,8 @@ class Tour_package extends CI_Controller {
     public function include_exclude($id)
     {
         $data['package'] = $this->Tour_package_model->get_packages($id);
-        $data['includes'] = $this->IncludeExclude_model->get_all_includes();
-        $data['excludes'] = $this->IncludeExclude_model->get_all_excludes();
+        $data['includes'] = $this->IncludeExclude_model->get_all_includes(['Tipe' => 'include']);
+        $data['excludes'] = $this->IncludeExclude_model->get_all_includes(['Tipe' => 'exclude']);
         $data['id'] = $id;
         $this->load->view('admin/header', $data);
         $this->load->view('admin/tour/include_exclude', $data);
@@ -228,42 +228,38 @@ class Tour_package extends CI_Controller {
 
     public function add_include_exclude($id)
     {
-        $this->form_validation->set_rules('tour_id', 'Tour Package', 'required');
-        $this->form_validation->set_rules('include', 'Include', 'required');
-        $this->form_validation->set_rules('exclude', 'Exclude', 'required');
+        $include_data = array(
+            'Tour_id' => $id,
+            'Name' => $this->input->post('include')
+        );
 
-        if ($this->form_validation->run() === FALSE)
-        {
-            redirect('tourpackage/include_exclude/'.$id);
-        }
-        else
-        {
-            $include_data = array(
-                'Tour_id' => $id,
-                'Name' => $this->input->post('include')
-            );
+        $exclude_data = array(
+            'Tour_id' => $id,
+            'Name' => $this->input->post('exclude')
+        );
+         if($include_data['Name'] != "" || $exclude_data['Name'] != ""){
+             if($include_data['Name']  != "" ){
+                $this->IncludeExclude_model->add_include($include_data);
+            }
+            if($exclude_data['Name'] != ""){
+                $this->IncludeExclude_model->add_exclude($exclude_data);
+            }
+         }
 
-            $exclude_data = array(
-                'Tour_id' => $id,
-                'Name' => $this->input->post('exclude')
-            );
-             
-            $this->IncludeExclude_model->add_include($include_data);
-            $this->IncludeExclude_model->add_exclude($exclude_data);
-
-            redirect('tourpackage/include_exclude/'.$id);
-        }
+        redirect('tourpackage/include_exclude/'.$id);
     }
 
     public function delete_include($id)
     {
-        $this->IncludeExclude_model->delete_include($id);
-        redirect('tourpackage/include_exclude/'.$id);
+        $data = $this->IncludeExclude_model->get_all_includes(['ie.Id' => $id]);
+        $this->IncludeExclude_model->delete_include($data[0]["Id"]);
+        redirect('tourpackage/include_exclude/'.$data[0]["Id"]);
     }
 
     public function delete_exclude($id)
     {
-        $this->IncludeExclude_model->delete_exclude($id);
-        redirect('tourpackage/include_exclude/'.$id);
+         $data = $this->IncludeExclude_model->get_all_includes(['ie.Id' => $id]);
+        $this->IncludeExclude_model->delete_exclude($data[0]["Id"]);
+        redirect('tourpackage/include_exclude/'.$data[0]["Id"]);
     }
 }
