@@ -39,6 +39,7 @@ class Home extends CI_Controller {
         $data["villas"] = $this->m->getData("villa")->result();
         $data["gallery"] = $this->m->getData("villa_galery")->result();
         $data['banner'] = $this->m->getData("banners", ["menu" => "b-Villa"])->result();
+		$data['desc'] = $this->m->getData("banners", ["menu" => "descvilla"])->row();
         $data['link'] = $this->m->getData("link")->row();
 		$this->load->view('header', $data);
 		$this->load->view('villa', $data);
@@ -129,6 +130,7 @@ class Home extends CI_Controller {
 
         $data['gallery'] = $this->m->getData("retreat_gallery")->result();
         $data['banner'] = $this->m->getData("banners", ["menu" => "b-Retreat"])->result();
+		$data['desk'] = $this->m->getData("banners", ["menu" => "aktivitas"])->row();
 
         $this->load->view('header');
         $this->load->view('aktivitas', $data);

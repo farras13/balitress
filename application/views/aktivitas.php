@@ -82,16 +82,11 @@
 </div>
 <!-- Booking End -->
 <div class="container-fluid">
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <div class="text-center">
-                <h6 class="text-primary"><b>--SEE WHAT BALI CAN--</b></h6>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-12"></div>
-        <div class="col-lg-4 col-md-12">            
+    <div class="row mt-5 mb-4">
+        
+        <div class="col-lg-12 col-md-12">            
             <div class="text-center ">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse cupiditate voluptatibus, ipsa laborum molestiae similique optio maiores vero ab voluptate officia minus cumque dolores nulla nobis totam veritatis dicta corrupti!
+                <?= $desk->deskripsi ?>
             </div>
         </div>
     </div>
