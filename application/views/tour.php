@@ -149,36 +149,50 @@
             </div>
             <div id="card-container" class="row">
 
-                <?php if($cards){ foreach ($cards as $card): ?>
-                    <div class="col-6 col-sm-6 col-md-3 my-2">
-                        <div class="card">
-                            <img class="card-img-top" src="<?= base_url($card['Thumbnail']); ?>" alt="Card image cap" width="250px" height="120px">
-                            <div class="carousel-item">
-                                <button class="btn btn-primary btn-hover rounded">Click Me</button>
-                                <div class="text-overlay">
-                                    <p><?= $card['Name']; ?></p>
-                                </div>
+            <?php if($cards){ foreach ($cards as $card): ?>
+                <div class="col-6 col-sm-6 col-md-3 my-2">
+                    <div class="card">
+                        <img class="card-img-top" src="<?= base_url($card['Thumbnail']); ?>" alt="Card image cap" width="250px" height="120px">
+                        <div class="carousel-item">
+                            <button class="btn btn-primary btn-hover rounded">Click Me</button>
+                            <div class="text-overlay">
+                                <p class="text-overlay-content"><?= $card['Name']; ?></p>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $card['Name']; ?></h5>
-                                <p class="card-text text-justify"><?php
-                                            $description = strip_tags($card['Lite_desc']);
-                                            if (strlen($description) > 120) {
-                                                $description = substr($description, 0, 120) . '...';
-                                            }
-                                            echo $description;
-                                            ?>
-                                </p>
-                                <p class="card-text">IDR <?= number_format($card['Price'], 0, ',', '.'); ?></p>
-                                <div class="card-footer">
-                                    <a class="btn btn-sm btn-primary" href="<?= base_url('tour/detail/'.$card['Id']) ?>">Check Detail</a>
-                                </div>
+                        </div>
+                        <div class="card-body custom-text">
+                            <h5 class="card-title"><?= $card['Name']; ?></h5>
+                            <p class="card-text text-justify">
+                                <?php
+                                    $description = strip_tags($card['Lite_desc']);
+                                    if (strlen($description) > 120) {
+                                        $description = substr($description, 0, 120) . '...';
+                                    }
+                                    echo $description;
+                                ?>
+                            </p>
+                            <p class="card-text">IDR <?= number_format($card['Price'], 0, ',', '.'); ?></p>
+                            <div class="card-footer">
+                                <a class="btn btn-sm btn-primary" href="<?= base_url('tour/detail/'.$card['Id']) ?>">Check Detail</a>
                             </div>
                         </div>
                     </div>
-                <?php endforeach; } else { ?>
-                    <h4>Data Tour and Package Kosong</h4>
-                <?php } ?>
+                </div>
+            <?php endforeach; } else { ?>
+                <h4>Data Tour and Package Kosong</h4>
+            <?php } ?>
+
+            <style>
+                @media (max-width: 768px) {
+                    .custom-text, .custom-text .card-title, .custom-text .card-text {
+                        font-size: 0.8rem;
+                    }
+                    .text-overlay .text-overlay-content {
+                        font-size: 0.8rem;
+                    }
+                }
+            </style>
+
+
             </div>
             <?= $pagination; ?>
         </div>

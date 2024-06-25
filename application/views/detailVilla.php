@@ -23,32 +23,23 @@
 </style>
 <!-- Carousel End -->
 <div class="container mt-5">
-    <div class="container p-0">
-        <div id="header-carousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <?php $y=1; foreach($gallery as $g){ ?>
-                <div class="carousel-item <?php if($y==1) {echo "active";} ?>">
-                    <img class="w-100" src="<?= base_url('').$g->image ?>" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h1 class="display-3 text-white mb-md-4"><?= $villa->name ?></h1>
-                        </div>
-                    </div>
-                </div>
-                <?php $y++; } ?>
-            </div>
-            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
-                <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                    <span class="carousel-control-prev-icon mb-n2"></span>
-                </div>
-            </a>
-            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
-                <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                    <span class="carousel-control-next-icon mb-n2"></span>
-                </div>
+    <div class="row popup-gallery">
+        <div class="col-md-12">
+            <a href="<?= base_url(''.$villa->image) ?>" class="popup-link">
+                <center><img src="<?= base_url(''.$villa->image) ?>" class="img-fluid main-img" id="mainImage" alt="Main Image"></center>
             </a>
         </div>
+        <div class="row gallery" id="gallery1">
+            <?php foreach($gallery as $img): ?>
+                <div class="col-md-3 mt-5">
+                    <a href="<?= base_url().$img->image ?>" class="popup-link">
+                        <img src="<?= base_url().$img->image ?>" alt="Image" class="img-thumbnail thumb-image">
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
+    
     <div class="row">
         <!-- Bali Trees -->
         <div class="col-md-12 col-lg-8 mb-4">

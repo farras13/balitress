@@ -122,7 +122,7 @@
                     <div class="carousel-item <?php if($y==1) echo 'active'; ?>">
                         <div class="col-lg-4 col-md-6">
                             <img class="img-fluid" src="<?= base_url().$so->foto ?>">
-                            <button class="btn btn-primary btn-hover rounded"><?= $so->nama ?></button>
+                            <a href="<?= base_url("specialoffer") ?>" class="btn btn-primary btn-hover rounded"><?= $so->nama ?></a>
                         </div>
                     </div>
                     <?php $y++; } ?>
@@ -183,7 +183,8 @@
                             echo $descriptions;
                         ?>
                         </p>
-                        <a href="<?= base_url("activities/detail/").$retreat->retreat_id ?>" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a>
+                        <!-- <a href="<?= base_url("activities/detail/").$retreat->retreat_id ?>" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a> -->
+                        <a href="<?= base_url("activities") ?>" class="btn btn-primary rounded shadow"> <i class="fa fa-globe"></i> Find out more </a>
                     </div>
                     <div class="col-lg-5">
                         <div id="retreat-carousel" class="carousel caroselvilla slide" data-ride="carousel">
@@ -228,7 +229,8 @@
                                     echo $descriptions;
                                 ?>
                             </p>
-                            <a href="<?= base_url("activities/detail/").$retreats->retreat_id ?>" class="btn btn-primary">Explore</a>
+                            <!-- <a href="<?= base_url("activities/detail/").$retreats->retreat_id ?>" class="btn btn-primary">Explore</a> -->
+                            <a href="<?= base_url("activities")?>" class="btn btn-primary">Explore</a>
                         </div>
                         </div>
                     </div>
@@ -266,7 +268,8 @@
                                             <small class="card-text text-white"><?= $v->lite_deskripsi ?></small>
                                         </div>
                                         <div class="p-3 text-right">
-                                            <a href="<?= base_url('villa/detail/' . $v->id) ?>" class="btn btn-primary">Detail</a>
+                                            <!-- <a href="<?= base_url('villa/detail/' . $v->id) ?>" class="btn btn-primary">Detail</a> -->
+                                            <a href="<?= base_url('villa') ?>" class="btn btn-primary">Detail</a>
                                         </div>
                                     </div>
                                 </div>

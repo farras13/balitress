@@ -47,60 +47,36 @@
 <!-- Carousel End -->
 
 <!-- Booking Start -->
-<div class="container-fluid booking mt-5 pb-3">
+<div class="container booking mt-2">
     <div class="container pb-5">
-        <div class="bg-light shadow" style="padding: 30px;">
-            <div class="row align-items-center" style="min-height: 60px;">
-                <div class="col-md-10">
-                    <div class="row">
-                    <div class="col-md-3">
-                        <div class="mb-6 mb-md-0">
-                            <!-- <div class="date" id="date1" data-target-input="nearest">
-                                <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Check In" data-target="#date1" data-toggle="datetimepicker"/>
-                            </div> -->
-                            <label for="daterange">Check In - Check Out</label>
+        <div class="bg-light shadow p-4">
+            <form action="<?= base_url("home/search") ?>" method="get">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-4 mb-3 mb-md-0">
                                 <input type="date" name="checkin" id="checkin" hidden>
                                 <input type="date" name="checkout" id="checkout" hidden>
-                                <input type="text" id="daterange" class="form-control">
+                                <input type="text" id="daterange" class="form-control rounded" placeholder="Check In - Check Out">
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="mb-6 mb-md-0">
-                            <label for="adult">Adult</label>
-                            <select class="custom-select" name="adult" id="adult">
-                                    <?php for ($i=1; $i < 16; $i++) { ?>
-                                        <option value="<?= $i ?>" <?php if($i==1) "Selected"; ?>><?= $i ?></option>
-                                    <?php } ?>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="mb-6 mb-md-0">
-                            <label for="adult">Children</label>
-                            <select class="custom-select" name="children" id="children">
-                                    <option selected disabled>-</option>
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <select class="custom-select rounded" name="adult" id="adult">
+                                    <option value="1" disabled selected>Guest</option>
                                     <?php for ($i=1; $i < 16; $i++) { ?>
                                         <option value="<?= $i ?>"><?= $i ?></option>
                                     <?php } ?>
                                 </select>
-
+                            </div>
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <input type="text" name="promocode" id="promocode" class="form-control rounded" placeholder="Promo Code">
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="mb-6 mb-md-0">
-                            <label for="adult">Code Promo</label>
-                            <input type="text" name="promocode" id="promocode" class="form-control p-2" placeholder="Enter promo code...">
-
-                            </div>
-                        </div>
-
+                    </div>
+                    <div class="col-md-2 mt-3 mt-md-0">
+                        <button type="submit" class="btn btn-primary btn-block rounded" style="height: 47px;">Search</button>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <a class="btn btn-primary btn-block" href="<?= base_url("home/search") ?>" style="height: 47px;">Search</a>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -112,13 +88,12 @@
                 <h6 class="text-primary"><b>--SEE WHAT BALI CAN--</b></h6>
             </div>
         </div>
-        <div class="col-4"></div>
-        <div class="col-4">            
+        <div class="col-lg-4 col-md-12"></div>
+        <div class="col-lg-4 col-md-12">            
             <div class="text-center ">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse cupiditate voluptatibus, ipsa laborum molestiae similique optio maiores vero ab voluptate officia minus cumque dolores nulla nobis totam veritatis dicta corrupti!
             </div>
         </div>
-        <div class="col-4"></div>
     </div>
     <div class="container">        
         <h3 style="color: #3f3f3f;"> Retreats </h3>
@@ -129,14 +104,14 @@
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="row no-gutters">
-                            <div class="col-md-8">
+                            <div class="col-md-8 order-2 order-md-1">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $retreat->name; ?></h5>
                                     <p class="card-text"><?= $retreat->description; ?></p>
-                                    <a href="<?= base_url("activities/detail/.$retreat->retreat_id") ?>" class="btn btn-primary"> <i class="fa fa-arrow-circle-right"></i> View Retreat</a>
+                                    <a href="<?= base_url("activities/detail/$retreat->retreat_id") ?>" class="btn btn-primary"> <i class="fa fa-arrow-circle-right"></i> View Retreat</a>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 order-1 order-md-2">
                                 <img src="<?= base_url($retreat->image); ?>" class="card-img-custom" alt="...">
                             </div>
                         </div>
@@ -147,14 +122,14 @@
                 <div class="col-md-12 card-custom">
                     <div class="card">
                         <div class="row no-gutters">
-                            <div class="col-md-4">
+                            <div class="col-md-4 order-1 order-md-1">
                                 <img src="<?= base_url($retreat->image); ?>" class="card-img-custom" alt="...">
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 order-2 order-md-2">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $retreat->name; ?></h5>
                                     <p class="card-text"><?= $retreat->description; ?></p>
-                                    <a href="<?= base_url("activities/detail/.$retreat->retreat_id") ?>" class="btn btn-primary"> <i class="fa fa-arrow-circle-right"></i> View Retreat</a>
+                                    <a href="<?= base_url("activities/detail/$retreat->retreat_id") ?>" class="btn btn-primary"> <i class="fa fa-arrow-circle-right"></i> View Retreat</a>
                                 </div>
                             </div>
                         </div>
