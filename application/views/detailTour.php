@@ -14,17 +14,21 @@
         </form>
         <h5>Balinese - Tours Package - <?= $package['Name']; ?></h5>
         <h2> <?= $package['Name']; ?> </h2>
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <center><img src="<?= base_url(''.$package['Thumbnail']) ?>" class="img-fluid" id="mainImage" alt="Main Image"></center>
+        <div class="row popup-gallery">
+            <div class="col-md-12 mt-5">
+                <a href="<?= base_url(''.$package['Thumbnail']) ?>" class="popup-link">
+                    <center><img src="<?= base_url(''.$package['Thumbnail']) ?>" class="img-fluid main-img" id="mainImage" alt="Main Image"></center>
+                </a>
             </div>
-        </div>
-        <div class="row mt-2">
-            <?php foreach($gallery as $g): ?>
-                <div class="col-md-3">
-                    <center><img src="<?= base_url(''.$g->images) ?>" class="img-thumbnail thumb-image" data-target="#imageModal" data-toggle="modal" data-slide-to="<?php echo $i-1; ?>" alt="Image <?php echo $i; ?>"></center>
-                </div>
-            <?php endforeach; ?>
+            <div class="row gallery" id="gallery1">
+                <?php foreach($gallery as $img): ?>
+                    <div class="col-md-3 mt-5">
+                        <a href="<?= base_url().$img->images ?>" class="popup-link">
+                            <img src="<?= base_url().$img->images ?>" alt="Image" class="img-thumbnail thumb-image">
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </div>
@@ -32,10 +36,10 @@
 <div class="container mt-3">
     <div class="row">        
         <div class="col-md-8">    
-            <div class="bg-light p-5 rounded">
+            <div class="bg-light p-5 rounded" id="ParticipantSearch">
                 <h2 class="mb-4">About This Activity</h2>
                 <p class="lead"><?= $package['About'] ?></p>
-                <div class="bg-blue shadow p-4">
+                <div class="bg-blue shadow p-4" >
                     <h6>Select Participants and Date </h6>
                     <form action="<?= base_url("home/search") ?>" method="get">
                         <div class="row align-items-center">
@@ -119,7 +123,8 @@
                                 </div>       
                             </div>
                             <div class="col-md-6">
-                                <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-sm btn-block rounded mb-3">Check Availablity</a>
+                                <a href="#ParticipantSearch" class="btn btn-primary btn-sm btn-block rounded mb-3">Check Availablity</a>
+                                <!-- <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-sm btn-block rounded mb-3">Check Availablity</a> -->
                             </div>                         
                         </div>  
                         <div class="alert">

@@ -26,6 +26,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?= base_url('assets/') ?>css/style.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>css/styleAtv.css" rel="stylesheet">
+    <link href="<?= base_url('assets/') ?>css/magnific-popup.css" rel="stylesheet">
 </head>
 
 <body>

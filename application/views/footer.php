@@ -90,7 +90,8 @@
     <!-- Contact Javascript File -->
     <script src="<?= base_url('assets/') ?>mail/jqBootstrapValidation.min.js"></script>
     <script src="<?= base_url('assets/') ?>mail/contact.js"></script>
-  
+    <script src="<?= base_url('assets/') ?>js/jquery.magnific-popup.js"></script>
+   
     <!-- Template Javascript -->
     <script src="<?= base_url('assets/') ?>js/main.js"></script>
     <script>
