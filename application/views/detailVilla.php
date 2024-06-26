@@ -30,13 +30,13 @@
             </a>
         </div>
         <div class="row gallery" id="gallery1">
-            <?php foreach($gallery as $img): ?>
-                <div class="col-md-3 mt-5">
+            <?php $index=1; foreach($gallery as $img): ?>
+                <div class="col-md-3 mt-5" <?php if($index>4){echo "hidden"; } ?>>
                     <a href="<?= base_url().$img->image ?>" class="popup-link">
                         <img src="<?= base_url().$img->image ?>" alt="Image" class="img-thumbnail thumb-image">
                     </a>
                 </div>
-            <?php endforeach; ?>
+            <?php $index++; endforeach; ?>
         </div>
     </div>
     

@@ -214,7 +214,7 @@
             </div>
             <!-- Package 1 -->
              <div class="row px-4">
-                <?php foreach($retreats_daily as $retreats) if($retreats->retreat_tipe == "Activities") {?>
+                <?php $indexr = 1; foreach($retreats_daily as $retreats) if($retreats->retreat_tipe == "Activities" && $indexr < 5) {?>
                     <div class="col-md-3 mb-4 ">
                         <div class="card package-card">
                         <img src="<?= base_url($retreats->image) ?>" class="card-img-top" alt="<?= $retreats->name ?>">
@@ -234,7 +234,7 @@
                         </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php $indexr++; } ?>
              </div>
          
         </div>
