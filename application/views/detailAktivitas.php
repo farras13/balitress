@@ -40,6 +40,7 @@
     </div>
     <div class="row mt-3">
         <!-- Bali Trees -->
+        
         <div class="col-md-12 col-lg-8 mb-4">
             <div class="card">
                 <div class="card-body">
@@ -55,11 +56,11 @@
                                 <h2><b>Facilities</b></h2>
                                 <?= $retreat->facilities ?>
                             </div>
-                            <div class="col-md-12 mt-2">
-                            <h2><b>Choose Your Package</b></h2>
-                            <?php foreach($villa as $v){ ?>    
-                                <div class="package-item bg-white mb-2">
-                                    <div class="p-4">                                         
+                            <div class="col-md-12">
+                                <h2><b>Choose Your Package</b></h2>
+                                <?php foreach($villa as $v){ ?>   
+                                <div class="package-item bg-white mb-2" data-package="<?= $v->name ?>" data-price="<?= $v->price ?>">
+                                    <div class="p-4">
                                         <a class="h5 text-decoration-none" href="#"><?= $v->name ?></a>
                                         <p class="mb-3"><?= $v->lite_deskripsi ?></p>
                                         <div class="border-top mt-4 pt-4">
@@ -70,13 +71,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php } ?>
-                            
-                            
-                        </div>   
-                            
-                        </div>      
-                        <center><a class="btn btn-primary">Add to cart</a></center>                          
+                                <?php } ?>
+                                <center><button class="btn btn-primary mt-3" id="add-to-cart">Add to cart</button></center>
+                            </div>                         
+                        </div>                          
                     </div>
                 </div>
             </div>
@@ -87,53 +85,17 @@
                     <div class="card-body">
                         <h5 class="card-title">Reservation Summary</h5>
                         <div class="container">
-                            <div class="row pt-3">
-                                <!-- <div class="col-xs-1">
-                                    <a class="btn btn-link text-danger px-3" href="#">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <h6>Balitress Villa</h6>
-                                    <small>Deluxe</small>
-                                    <small>1 room</small>
-                                </div>
-                                <div class="col">
-                                    <p class="text-right">
-                                        <strong>$350</strong><br>
-                                        <small>Qty : 1</small>
-                                    </p>
-                                </div> -->
-                                <div class="col">
-                                    <p>No one choosed</p>
-                                </div>
+                            <div id="cart-items" class="row pt-3">
+                                <div class="col"><p>No one choosed</p></div>
                             </div>
-                            <!-- <div class="row pt-3">
-                                <div class="col-xs-1">
-                                    <a class="btn btn-link text-danger px-3" href="#">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <small>3 Days 2 nights Yoga, Meditation & Cultural Retreat in Bali</small>
-                                    <h6>Deluxe Double | Twin Bedroom</h6>
-                                </div>
-                                <div class="col">
-                                    <p class="text-right">
-                                        <strong>IDR 2,900,000</strong><br>
-                                        <small>Stay for 2 Nights<br>From Sat, 18 May 2024<br>to Mon, 20 May 2024</small>
-                                    </p>
-                                </div>
-                            </div> -->
                             <table class="mt-3 mb-3" width="100%">
                                 <tbody>
                                     <tr>
                                         <td><h5>Total</h5></td>
-                                        <td class="text-right"><h5><strong>Rp. 0</strong></h5></td>
+                                        <td class="text-right"><h5><strong id="total-amount">Rp 0</strong></h5></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <!-- <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block mb-3">Proceed to Payment</a> -->
                             <a href="" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
                         </div>
                     </div>
@@ -170,3 +132,77 @@
         
     </div>   
 </div>
+
+<script>
+    let selectedPackages = [];
+
+    // Function to select a package
+    document.querySelectorAll('.select-room').forEach(button => {
+        button.addEventListener('click', () => {
+            const packageItem = button.closest('.package-item');
+            const packageName = packageItem.getAttribute('data-package');
+            const price = parseInt(packageItem.getAttribute('data-price'));
+
+            selectedPackages.push({ packageName, price });
+            button.disabled = true; // Disable the button after selection
+        });
+    });
+
+    // Function to add selected packages to the cart
+    document.getElementById('add-to-cart').addEventListener('click', () => {
+        selectedPackages.forEach(item => {
+            addToCart(item.packageName, item.price);
+        });
+        selectedPackages = []; // Clear the selected packages after adding to cart
+        document.querySelectorAll('.select-room').forEach(button => {
+            button.disabled = false; // Enable all buttons for new selection
+        });
+    });
+
+    let cart = [];
+
+    // Function to add item to the cart
+    function addToCart(packageName, price) {
+        cart.push({ packageName, price });
+        updateCart();
+    }
+
+    // Function to update the cart display
+    function updateCart() {
+        let cartItemsContainer = document.getElementById('cart-items');
+        let totalAmount = 0;
+        cartItemsContainer.innerHTML = '';
+
+        if (cart.length > 0) {
+            cart.forEach((item, index) => {
+                totalAmount += item.price;
+                cartItemsContainer.innerHTML += `
+                    <div class="row pt-3">
+                        <div class="col-xs-1">
+                            <button class="btn btn-link text-danger px-3" onclick="removeFromCart(${index})">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <h6>${item.packageName}</h6>
+                            <small>1 room</small>
+                        </div>
+                        <div class="col text-right">
+                            <strong>Rp ${item.price.toLocaleString()}</strong>
+                        </div>
+                    </div>
+                `;
+            });
+        } else {
+            cartItemsContainer.innerHTML = '<div class="col"><p>No one choosed</p></div>';
+        }
+
+        document.getElementById('total-amount').innerText = `Rp ${totalAmount.toLocaleString()}`;
+    }
+
+    // Function to remove item from the cart
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+</script>

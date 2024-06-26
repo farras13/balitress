@@ -65,62 +65,44 @@
                             </div>
                         </div>  
                         <div class="col-md-12">
-                                    <h2><b>Choose Your Package</b></h2>
-                                    <div class="package-item bg-white mb-2">
-                                        <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-1.jpg" alt="Kamar 1"> -->
-                                        <div class="p-4">
-                                            <!-- <div class="d-flex justify-content-between mb-3">
-                                                <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Double Bed</small>
-                                                <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                                <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>En-suite Bathroom</small>
-                                            </div> -->
-                                            <a class="h5 text-decoration-none" href="#">Room Only</a>
-                                            <p class="mb-3">Deskripsi Room Only.</p>
-                                            <div class="border-top mt-4 pt-4">
-                                                <div class="flex-container">
-                                                    <h5 class="m-0">Rp 1.000.000/night</h5>
-                                                    <button class="btn btn-primary select-room">Select Package</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="package-item bg-white mb-2">
-                                        <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-2.jpg" alt="Kamar 2"> -->
-                                        <div class="p-4">
-                                            <!-- <div class="d-flex justify-content-between mb-3">
-                                                <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Single Bed</small>
-                                                <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                                <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Shared Bathroom</small>
-                                            </div> -->
-                                            <a class="h5 text-decoration-none" href="#">Room + Meals</a>
-                                            <p class="mb-3">Deskripsi Room + Meals</p>
-                                            <div class="border-top mt-4 pt-4">
-                                                <div class="flex-container">
-                                                    <h5 class="m-0">Rp 1.200.000/night</h5>
-                                                    <button class="btn btn-primary select-room">Select Package</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="package-item bg-white mb-2">
-                                        <!-- <img class="img-fluid" src="<?= base_url('assets/') ?>img/room-3.jpg" alt="Kamar 3"> -->
-                                        <div class="p-4">
-                                            <!-- <div class="d-flex justify-content-between mb-3">
-                                                <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>Queen Bed</small>
-                                                <small class="m-0"><i class="fa fa-wifi text-primary mr-2"></i>Free Wi-Fi</small>
-                                                <small class="m-0"><i class="fa fa-shower text-primary mr-2"></i>Private Bathroom</small>
-                                            </div> -->
-                                            <a class="h5 text-decoration-none" href="#">With Yoga Retreat</a>
-                                            <div class="border-top mt-4 pt-4">
-                                                <div class="flex-container">
-                                                    <h5 class="m-0">Rp 1.500.000/night</h5>
-                                                    <button class="btn btn-primary select-room">Select Package</button>
-                                                </div>
-                                            </div>
+                            <h2><b>Choose Your Package</b></h2>
+                            <div class="package-item bg-white mb-2" data-package="Room Only" data-price="1000000">
+                                <div class="p-4">
+                                    <a class="h5 text-decoration-none" href="#">Room Only</a>
+                                    <p class="mb-3">Deskripsi Room Only.</p>
+                                    <div class="border-top mt-4 pt-4">
+                                        <div class="flex-container">
+                                            <h5 class="m-0">Rp 1.000.000/night</h5>
+                                            <button class="btn btn-primary select-room">Select Package</button>
                                         </div>
                                     </div>
                                 </div>
-                        <center><a class="btn btn-primary mt-3">Add to cart</a></center>                          
+                            </div>
+                            <div class="package-item bg-white mb-2" data-package="Room + Meals" data-price="1200000">
+                                <div class="p-4">
+                                    <a class="h5 text-decoration-none" href="#">Room + Meals</a>
+                                    <p class="mb-3">Deskripsi Room + Meals</p>
+                                    <div class="border-top mt-4 pt-4">
+                                        <div class="flex-container">
+                                            <h5 class="m-0">Rp 1.200.000/night</h5>
+                                            <button class="btn btn-primary select-room">Select Package</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="package-item bg-white mb-2" data-package="With Yoga Retreat" data-price="1500000">
+                                <div class="p-4">
+                                    <a class="h5 text-decoration-none" href="#">With Yoga Retreat</a>
+                                    <div class="border-top mt-4 pt-4">
+                                        <div class="flex-container">
+                                            <h5 class="m-0">Rp 1.500.000/night</h5>
+                                            <button class="btn btn-primary select-room">Select Package</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <center><button class="btn btn-primary mt-3" id="add-to-cart">Add to cart</button></center>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -131,52 +113,18 @@
                 <div class="card-body">
                     <h5 class="card-title">Reservation Summary</h5>
                     <div class="container">
-                        <div class="row pt-3">
-                            <!-- <div class="col-xs-1">
-                                <a class="btn btn-link text-danger px-3" href="#">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <h6>Balitress Villa</h6>
-                                <small>Deluxe</small>
-                                <small>1 room</small>
-                            </div>
-                            <div class="col">
-                                <p class="text-right">
-                                    <strong>$350</strong><br>
-                                    <small>Qty : 1</small>
-                                </p>
-                            </div> -->
+                        <div id="cart-items" class="row pt-3">
                             <div class="col"><p>No one choosed</p></div>
                         </div>
-                        <!-- <div class="row pt-3">
-                            <div class="col-xs-1">
-                                <a class="btn btn-link text-danger px-3" href="#">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <small>3 Days 2 nights Yoga, Meditation & Cultural Retreat in Bali</small>
-                                <h6>Deluxe Double | Twin Bedroom</h6>
-                            </div>
-                            <div class="col">
-                                <p class="text-right">
-                                    <strong>IDR 2,900,000</strong><br>
-                                    <small>Stay for 2 Nights<br>From Sat, 18 May 2024<br>to Mon, 20 May 2024</small>
-                                </p>
-                            </div>
-                        </div> -->
                         <table class="mt-3 mb-3" width="100%">
                             <tbody>
                                 <tr>
                                     <td><h5>Total</h5></td>
-                                    <td class="text-right"><h5><strong>Rp 0</strong></h5></td>
+                                    <td class="text-right"><h5><strong id="total-amount">Rp 0</strong></h5></td>
                                 </tr>
                             </tbody>
                         </table>
                         <a href="" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
-                        <!-- <a href="<?= base_url("payment") ?>" class="btn btn-primary btn-block mb-3">Proceed to Payment</a> -->
                     </div>
                 </div>
                 <div class="alert mt-3">
@@ -220,3 +168,80 @@
         </div>
     </div>   
 </div>
+
+
+<script>
+    let selectedPackages = [];
+
+    // Function to select a package
+    document.querySelectorAll('.select-room').forEach(button => {
+        button.addEventListener('click', () => {
+            const packageItem = button.closest('.package-item');
+            const packageName = packageItem.getAttribute('data-package');
+            const price = parseInt(packageItem.getAttribute('data-price'));
+
+            selectedPackages.push({ packageName, price });
+            button.disabled = true; // Disable the button after selection
+        });
+    });
+
+    // Function to add selected packages to the cart
+    document.getElementById('add-to-cart').addEventListener('click', () => {
+        selectedPackages.forEach(item => {
+            addToCart(item.packageName, item.price);
+        });
+        selectedPackages = []; // Clear the selected packages after adding to cart
+        document.querySelectorAll('.select-room').forEach(button => {
+            button.disabled = false; // Enable all buttons for new selection
+        });
+    });
+
+    let cart = [];
+
+    // Function to add item to the cart
+    function addToCart(packageName, price) {
+        cart.push({ packageName, price });
+        updateCart();
+    }
+
+    // Function to update the cart display
+    function updateCart() {
+        let cartItemsContainer = document.getElementById('cart-items');
+        let totalAmount = 0;
+        cartItemsContainer.innerHTML = '';
+
+        if (cart.length > 0) {
+            cart.forEach((item, index) => {
+                totalAmount += item.price;
+                cartItemsContainer.innerHTML += `
+                    <div class="row pt-3">
+                        <div class="col-xs-1">
+                            <button class="btn btn-link text-danger px-3" onclick="removeFromCart(${index})">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <h6>${item.packageName}</h6>
+                            <small>1 room</small>
+                        </div>
+                        <div class="col text-right">
+                            <strong>Rp ${item.price.toLocaleString()}</strong>
+                        </div>
+                    </div>
+                `;
+            });
+        } else {
+            cartItemsContainer.innerHTML = '<div class="col"><p>No one choosed</p></div>';
+        }
+
+        document.getElementById('total-amount').innerText = `Rp ${totalAmount.toLocaleString()}`;
+    }
+
+    // Function to remove item from the cart
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+</script>
+
+
