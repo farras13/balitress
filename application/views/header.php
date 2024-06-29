@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Balitress - Vacation & Enjoy the Trip</title>
+    <title>Kiku Bali - Vacation & Enjoy the Trip</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -27,6 +27,7 @@
     <link href="<?= base_url('assets/') ?>css/style.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>css/styleAtv.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>css/magnific-popup.css" rel="stylesheet">
+    <script src="<?= base_url("assets/admin/") ?>plugins/jquery/jquery.min.js"></script>
 </head>
 
 <body>
@@ -71,7 +72,7 @@
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg  navbar-light  py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="" class="navbar-brand">
-                    <h1 class="m-0 text-primary"><span class="text-dark">Balitre</span>ss</h1>
+                    <h1 class="m-0 text-primary"><span class="text-dark">Kiku </span>Bali</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -94,7 +95,7 @@
                             </div>
                         </div> -->
                         <a href="<?= base_url('contact') ?>" class="nav-item nav-link">Contact</a>
-                        <a href="#" class="nav-item nav-link"><i class="fa fa-shopping-cart"></i></a>
+                        <!-- <a href="#" class="nav-item nav-link"><i class="fa fa-shopping-cart"></i></a> -->
                     </div>
                 </div>
             </nav>

@@ -20,7 +20,8 @@ class Rooms extends CI_Controller {
         $this->load->view('admin/footer', $data);
     }
 
-    public function create($no = 1) {
+    public function create() {
+        $no = $_GET["no"];
         $data['room_types'] = $this->Room_model->get_room_types();
         $data['facilities'] = $this->Room_model->get_facilities();
 

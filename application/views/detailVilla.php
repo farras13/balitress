@@ -136,7 +136,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <center><button class="btn btn-primary mt-3" id="add-to-cart">Add to cart</button></center>
+                            <center><button class="btn btn-primary mt-3" id="add-to-cart" hidden>Add to cart</button></center>
                         </div>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="" class="btn btn-primary btn-block mb-3" id="pay-button">Proceed to Payment</a>
+                        <a href="<?= base_url("Home/Payment") ?>" class="btn btn-primary btn-block mb-3" id="pay-button">Proceed to Payment</a>
                     </div>
                 </div>
                 <div class="alert mt-3">
@@ -214,29 +214,39 @@
             const packageItem = button.closest('.package-room');
             const packageName = packageItem.getAttribute('data-package');
             const price = parseInt(packageItem.getAttribute('data-price'));
-
-            selectedPackages.push({ packageName, price });
-            button.disabled = true; // Disable the button after selection
+            addToCart(packageName, price);
+            // selectedPackages.push({ packageName, price });
+            button.disabled = false; // Disable the button after selection
         });
     });
 
     // Function to add selected packages to the cart
-    document.getElementById('add-to-cart').addEventListener('click', () => {
-        selectedPackages.forEach(item => {
-            addToCart(item.packageName, item.price);
-        });
-        selectedPackages = []; // Clear the selected packages after adding to cart
-        document.querySelectorAll('.select-room').forEach(button => {
-            button.disabled = false; // Enable all buttons for new selection
-        });
-    });
+    // document.getElementById('add-to-cart').addEventListener('click', () => {
+    //     selectedPackages.forEach(item => {
+    //         addToCart(item.packageName, item.price);
+    //     });
+    //     selectedPackages = []; // Clear the selected packages after adding to cart
+    //     document.querySelectorAll('.select-room').forEach(button => {
+    //         button.disabled = false; // Enable all buttons for new selection
+    //     });
+    // });
 
     let cart = [];
 
     // Function to add item to the cart
     function addToCart(packageName, price) {
-        cart.push({ packageName, price });
+        let itemIndex = cart.findIndex(item => item.packageName === packageName);
+        if (itemIndex !== -1) {
+            cart[itemIndex].quantity += 1;
+        } else {
+            cart.push({ packageName, price, quantity: 1 });
+        }
+
+        // Update cart display
         updateCart();
+
+        // Store cart data in localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     // Function to update the cart display
@@ -245,9 +255,9 @@
         let totalAmount = 0;
         cartItemsContainer.innerHTML = '';
 
-        if (cart.length > 0) {
+        if (Array.isArray(cart) && cart.length > 0) {
             cart.forEach((item, index) => {
-                totalAmount += item.price;
+                totalAmount += item.price * item.quantity;
                 cartItemsContainer.innerHTML += `
                     <div class="row pt-3">
                         <div class="col-xs-1">
@@ -257,16 +267,16 @@
                         </div>
                         <div class="col">
                             <h6>${item.packageName}</h6>
-                            <small>1 room</small>
+                            <small>${item.quantity} room${item.quantity > 1 ? 's' : ''}</small>
                         </div>
                         <div class="col text-right">
-                            <strong>Rp ${item.price.toLocaleString()}</strong>
+                            <strong>Rp ${(item.price * item.quantity).toLocaleString()}</strong>
                         </div>
                     </div>
                 `;
             });
         } else {
-            cartItemsContainer.innerHTML = '<div class="col"><p>No one choosed</p></div>';
+            cartItemsContainer.innerHTML = '<div class="col"><p>No one chose</p></div>';
         }
 
         document.getElementById('total-amount').innerText = `Rp ${totalAmount.toLocaleString()}`;
@@ -275,8 +285,51 @@
     // Function to remove item from the cart
     function removeFromCart(index) {
         cart.splice(index, 1);
+        // Update cart display
         updateCart();
+
+        // Update localStorage after removing item
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
+
+    // Function to retrieve cart data from localStorage on page load
+    function retrieveCartFromStorage() {
+        let storedCart = localStorage.getItem('cart');
+        if (storedCart) {
+            cart = JSON.parse(storedCart);
+            // Update cart display
+            updateCart();
+        }
+    }
+
+    function sendDataToServer() {
+    let cartData = localStorage.getItem('cart');
+    if (cartData) {
+        $.ajax({
+            url: '<?= base_url('payment/save_cart_to_database') ?>', // Adjust the URL according to your CodeIgniter route
+            type: 'POST',
+            data: { cartData: cartData },
+            success: function(response) {
+                console.log('Data saved successfully:', response);
+                // Optionally, clear localStorage after data is saved
+                localStorage.removeItem('cart');
+            },
+            error: function(xhr, status, error) {
+                console.error('Error saving data:', error);
+            }
+        });
+    } else {
+        console.error('No cart data found in localStorage.');
+    }
+}
+
+    // On page load, retrieve cart data from localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        retrieveCartFromStorage();
+    });
+
+
+
 </script>
 
 

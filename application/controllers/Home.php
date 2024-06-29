@@ -262,8 +262,14 @@ class Home extends CI_Controller {
 
 	public function payment()
 	{
+        $cartData = $this->session->cart() ; // Assuming 'cart' is the key used in localStorage
+
+        // Process $cartData as needed
+        // Example: Pass $cartData to a view
+        $data['cartData'] = json_decode($cartData, true);
+        var_dump($data);die;
 		$this->load->view('header');
-		$this->load->view('Payment');
+		$this->load->view('Payment_old');
 		$this->load->view('footer');
 	}
 

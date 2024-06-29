@@ -136,6 +136,14 @@
             </a>           
           </li>
           <li class="nav-item">
+            <a href="<?= base_url("admin/user") ?>" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Users
+              </p>
+            </a>           
+          </li>
+          <li class="nav-item">
             <a href="<?= base_url("admin/villa") ?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>

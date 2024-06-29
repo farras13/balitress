@@ -64,7 +64,8 @@ $route['tour/detail/(:any)'] = 'Home/detail_tour/$1';
 $route['specialoffer'] = 'Home/specialoffer';
 $route['specialoffer/(:any)'] = 'Home/detail_specialoffer/$1';
 $route['payment'] = 'Home/payment';
-$route['payment'] = 'Home/payment';
+$route['CartController/getCart'] = 'CartController/getCart';
+$route['CartController/removeFromCart'] = 'CartController/removeFromCart';
 $route['contact'] = 'Home/contact';
 
 // Login & Register
@@ -111,3 +112,11 @@ $route['admin/specialoffer/edit/(:any)'] = 'SpesialOffer/edit/$1';
 $route['admin/specialoffer/create'] = 'SpesialOffer/create';
 $route['admin/specialoffer/update/(:any)'] = 'SpesialOffer/update/$1';
 $route['admin/specialoffer/delete/(:any)'] = 'SpesialOffer/delete/$1';
+
+$route['admin/user'] = 'Users/index';
+$route['admin/user/add'] = 'Users/add';
+$route['admin/user/create'] = 'Users/create';
+$route['admin/user/edit/(:any)'] = 'Users/edit/$1';
+$route['admin/user/update/(:any)'] = 'Users/update/$1';
+$route['admin/user/delete/(:any)'] = 'Users/delete/$1';
+
