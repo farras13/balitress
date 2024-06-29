@@ -65,7 +65,7 @@
                             <td><?php echo $room['description']; ?></td>
                             <td>
                                 <a href="<?php echo site_url('rooms/edit/' . $room['id']); ?>">Edit</a>
-                                <a href="<?php echo site_url('rooms/delete/' . $room['id']); ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                                <a href="<?php echo site_url('rooms/delete/' . $room['id']); ?>" onclick="return confirm('Are you sure?')"> Delete </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
