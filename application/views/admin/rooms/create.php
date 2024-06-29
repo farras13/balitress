@@ -35,18 +35,39 @@
                     <?= form_open('rooms/create'); ?>
                     <div class="form-group">
                         <label for="room_name">Room Name</label>
-                        <input type="text" class="form-control" name="room_name" value="<?= set_value('room_name'); ?>">
+                        <input type="text" class="form-control" name="room_name" value="<?= set_value('room_name'); ?>" required> 
+                        <input type="text" class="form-control" name="villa_id" value="<?= $villa_id; ?>" hidden>
                     </div>
 
                     <div class="form-group">
                         <label for="room_type_id">Room Type</label>
-                        <select class="form-control" name="room_type_id">
+                        <select class="form-control" name="room_type_id" required>
                             <?php foreach ($room_types as $type): ?>
                                 <option value="<?= $type['id']; ?>"><?= $type['type_name']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
-
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                            <label for="size">Price</label>
+                            <input type="number" class="form-control" name="price" value="<?= set_value('price'); ?>" required>
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="size">Price Meals</label>
+                                <input type="number" class="form-control" name="price_meals" value="<?= set_value('price_meals'); ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="size">Price Package</label>
+                                <input type="number" class="form-control" name="price_package" value="<?= set_value('price_package'); ?>" required>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
                         <label for="size">Size</label>
                         <input type="text" class="form-control" name="size" value="<?= set_value('size'); ?>">
@@ -54,12 +75,12 @@
 
                     <div class="form-group">
                         <label for="view_description">View</label>
-                        <input type="text" class="form-control" name="view_description" value="<?= set_value('view_description'); ?>">
+                        <input type="text" class="form-control" name="view_description" value="<?= set_value('view_description'); ?>" required>
                     </div>
 
                     <div class="form-group">
                         <label for="location">Location</label>
-                        <input type="text" class="form-control" name="location" value="<?= set_value('location'); ?>">
+                        <input type="text" class="form-control" name="location" value="<?= set_value('location'); ?>" required>
                     </div>
 
                     <div class="form-group">

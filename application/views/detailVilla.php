@@ -66,41 +66,76 @@
                         </div>  
                         <div class="col-md-12">
                             <h2><b>Choose Your Package</b></h2>
-                            <div class="package-item bg-white mb-2" data-package="Room Only" data-price="1000000">
-                                <div class="p-4">
-                                    <a class="h5 text-decoration-none" href="#">Room Only</a>
-                                    <p class="mb-3">Deskripsi Room Only.</p>
-                                    <div class="border-top mt-4 pt-4">
-                                        <div class="flex-container">
-                                            <h5 class="m-0">Rp 1.000.000/night</h5>
-                                            <button class="btn btn-primary select-room">Select Package</button>
+                                <div class="package-item bg-white mb-2" >
+                                    <div class="p-4">
+                                        <a class="h5 text-decoration-none" href="#">Room Only</a>
+                                        <!-- <p class="mb-3"><?= $villa->lite_deskripsi ?></p> -->
+                                        <div class="border-top mt-4 pt-4">
+                                            <?php foreach($rooms as $idx => $r){  ?>
+                                            <div class="row mb-4 align-items-center package-room" data-package="<?= $villa->name . "-" . $r->room_name ?>" data-price="<?= $r->price ?>">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-6">
+                                                    <small><b><?= $r->room_name.$idx ?></b></small>
+                                                    <h6 class="m-0">Rp <?= number_format($r->price, 2, '.', ','); ?>/night</h6>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button class="btn btn-primary btn-sm select-room">Select Package</button>
+                                                </div>
+                                            </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="package-item bg-white mb-2" data-package="Room + Meals" data-price="1200000">
-                                <div class="p-4">
-                                    <a class="h5 text-decoration-none" href="#">Room + Meals</a>
-                                    <p class="mb-3">Deskripsi Room + Meals</p>
-                                    <div class="border-top mt-4 pt-4">
-                                        <div class="flex-container">
-                                            <h5 class="m-0">Rp 1.200.000/night</h5>
-                                            <button class="btn btn-primary select-room">Select Package</button>
+                                <div class="package-item bg-white mb-2" >
+                                    <div class="p-4">
+                                        <a class="h5 text-decoration-none" href="#">Room + Meals</a>
+                                        <!-- <p class="mb-3"><?= $villa->lite_deskripsi ?></p> -->
+                                        <div class="border-top mt-4 pt-4">
+                                            <?php foreach($rooms as $idx => $r){  ?>
+                                            <div class="row mb-4 align-items-center package-room" data-package="<?= $villa->name . " + Meals -" . $r->room_name ?>" data-price="<?= $r->price_meals ?>">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-6">
+                                                    <small><b><?= $r->room_name.$idx ?></b></small>
+                                                    <h6 class="m-0">Rp <?= number_format($r->price_meals, 2, '.', ','); ?>/night</h6>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button class="btn btn-primary btn-sm select-room">Select Package</button>
+                                                </div>
+                                            </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="package-item bg-white mb-2" data-package="With Yoga Retreat" data-price="1500000">
-                                <div class="p-4">
-                                    <a class="h5 text-decoration-none" href="#">With Yoga Retreat</a>
-                                    <div class="border-top mt-4 pt-4">
-                                        <div class="flex-container">
-                                            <h5 class="m-0">Rp 1.500.000/night</h5>
-                                            <button class="btn btn-primary select-room">Select Package</button>
+                                <div class="package-item bg-white mb-2" >
+                                    <div class="p-4">
+                                        <a class="h5 text-decoration-none" href="#">Room + Package</a>
+                                        <!-- <p class="mb-3"><?= $villa->lite_deskripsi ?></p> -->
+                                        <div class="border-top mt-4 pt-4">
+                                            <?php foreach($rooms as $r){  ?>
+                                            <div class="row mb-4 align-items-center package-room" data-package="<?= $villa->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price_package ?>">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-6">
+                                                    <small><b><?= $r->room_name ?></b></small>
+                                                    <h6 class="m-0">Rp <?= number_format($r->price_package, 2, '.', ','); ?>/night</h6>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button class="btn btn-primary btn-sm select-room">Select Package</button>
+                                                </div>
+                                            </div>
+                                            <?php } ?>
+                                            <div class="row mb-4 align-items-center package-room" data-package="<?= $villa->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price_package ?>">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-6">
+                                                    <small><b> Yoga & Retreat Package </b></small>
+                                                    <small>See our package & Get the Best Deals</small>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <a href="<?= base_url("activities") ?>" class="btn btn-primary btn-sm select-room">Select Package</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <center><button class="btn btn-primary mt-3" id="add-to-cart">Add to cart</button></center>
                         </div>
                     </div>
@@ -124,7 +159,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
+                        <a href="" class="btn btn-primary btn-block mb-3" id="pay-button">Proceed to Payment</a>
                     </div>
                 </div>
                 <div class="alert mt-3">
@@ -176,7 +211,7 @@
     // Function to select a package
     document.querySelectorAll('.select-room').forEach(button => {
         button.addEventListener('click', () => {
-            const packageItem = button.closest('.package-item');
+            const packageItem = button.closest('.package-room');
             const packageName = packageItem.getAttribute('data-package');
             const price = parseInt(packageItem.getAttribute('data-price'));
 

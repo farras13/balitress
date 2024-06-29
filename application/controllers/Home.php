@@ -49,6 +49,7 @@ class Home extends CI_Controller {
 	public function detail_villa($id)
 	{
         $data["villa"] = $this->m->getData("villa", ["id" => $id])->row();
+        $data["rooms"] = $this->m->getData("rooms", ["villa_id" => $id])->result();
         $data["others"] = $this->m->getData("villa", ["id !=" => $id])->result();
         $data["fasilitas"] = $this->m->get_villa_fasilitass($id);
         $data["gallery"] = $this->m->getData("villa_galery", ["villa_id" => $id])->result();
@@ -140,6 +141,7 @@ class Home extends CI_Controller {
 	{
         $data["retreat"] = $this->m->getData("retreats", ["retreat_id" => $id])->row();
         $data["villa"] = $this->m->getData("villa")->result();
+        $data["rooms"] = $this->m->getData("rooms")->result();
 		$data['gallery'] = $this->m->getData("retreat_gallery", ["retreat_id" => $data['retreat']->retreat_id])->result();		
         $data["others"] = $this->m->getData("retreats", ["retreat_id !=" => $id])->result();
         $text = trim($data["retreat"]->name);

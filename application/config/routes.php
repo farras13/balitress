@@ -78,6 +78,7 @@ $route['rooms'] = 'rooms/index';
 $route['rooms/create'] = 'rooms/create';
 $route['rooms/edit/(:any)'] = 'rooms/edit/$1';
 $route['rooms/delete/(:any)'] = 'rooms/delete/$1';
+$route['rooms/(:any)'] = 'rooms/index/$1';
 
 $route['tourpackage'] = 'tour_package/index';
 $route['tourpackage/create'] = 'tour_package/create';

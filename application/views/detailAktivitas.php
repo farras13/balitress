@@ -59,17 +59,26 @@
                             <div class="col-md-12">
                                 <h2><b>Choose Your Package</b></h2>
                                 <?php foreach($villa as $v){ ?>   
-                                <div class="package-item bg-white mb-2" data-package="<?= $v->name ?>" data-price="<?= $v->price ?>">
+                                <div class="package-item bg-white mb-2" >
                                     <div class="p-4">
                                         <a class="h5 text-decoration-none" href="#"><?= $v->name ?></a>
                                         <p class="mb-3"><?= $v->lite_deskripsi ?></p>
                                         <div class="border-top mt-4 pt-4">
-                                            <div class="flex-container">
-                                                <h5 class="m-0">Rp <?= number_format($v->price, 2, '.', ','); ?>/night</h5>
-                                                <button class="btn btn-primary select-room">Select Package</button>
+                                            <?php foreach($rooms as $r){ if($v->id == $r->villa_id){ ?>
+                                            <div class="row mb-4 align-items-center package-room" data-package="<?= $v->name . "-" . $r->room_name ?>" data-price="<?= $r->price ?>">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-6">
+                                                    <small><b><?= $r->room_name ?></b></small>
+                                                    <h6 class="m-0">Rp <?= number_format($r->price, 2, '.', ','); ?>/night</h6>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button class="btn btn-primary btn-sm select-room">Select Package</button>
+                                                </div>
                                             </div>
+                                            <?php }} ?>
                                         </div>
                                     </div>
+
                                 </div>
                                 <?php } ?>
                                 <center><button class="btn btn-primary mt-3" id="add-to-cart">Add to cart</button></center>
@@ -96,7 +105,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
+                            <a href="#" id="pay-button" class="btn btn-primary btn-block mb-3">Proceed to Payment</a>
                         </div>
                     </div>
                     <div class="alert mt-3">
@@ -132,14 +141,14 @@
         
     </div>   
 </div>
-
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script>
 <script>
     let selectedPackages = [];
 
     // Function to select a package
     document.querySelectorAll('.select-room').forEach(button => {
         button.addEventListener('click', () => {
-            const packageItem = button.closest('.package-item');
+            const packageItem = button.closest('.package-room');
             const packageName = packageItem.getAttribute('data-package');
             const price = parseInt(packageItem.getAttribute('data-price'));
 
@@ -205,4 +214,40 @@
         cart.splice(index, 1);
         updateCart();
     }
+
+    document.getElementById('pay-button').addEventListener('click', () => {
+        // Prepare the data to send to the server
+        const transactionData = {
+            order_id: 'ORDER-' + Date.now(),
+            gross_amount: cart.reduce((sum, item) => sum + item.price, 0),
+            items: cart
+        };
+
+        // Send the data to the server to get the transaction token
+        fetch('<?= base_url() ?>Payment/getToken', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(transactionData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            snap.pay(data.token, {
+                onSuccess: function(result) {
+                    // Handle success, maybe save the transaction result
+                    console.log(result);
+                },
+                onPending: function(result) {
+                    // Handle pending payment
+                    console.log(result);
+                },
+                onError: function(result) {
+                    // Handle error
+                    console.log(result);
+                }
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    });
 </script>

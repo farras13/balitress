@@ -61,6 +61,7 @@
                                 <a href="<?= site_url('admin/villa/edit/' . $room->id); ?>" class="btn btn-sm btn-warning my-1" ><i class="fa fa-pen"></i></a>
                                 <a href="<?= site_url('admin/villa/gallery/' . $room->id); ?>" class="btn btn-sm btn-success my-1" ><i class="fa fa-image"></i></a>
                                 <a href="<?= site_url('admin/villa/delete/'.$room->id); ?>" class="btn btn-sm btn-danger my-1" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></a>
+                                <a href="<?= site_url('rooms/' . $room->id); ?>" class="btn btn-sm btn-info my-1" ><i class="fa fa-hotel" style="color:black"></i></a>
 
                                 <!-- <a href="#" onclick="confirmDelete(<?= $room->id; ?>)">Delete</a> -->
                             </td>

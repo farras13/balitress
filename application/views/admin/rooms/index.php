@@ -36,7 +36,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title pt-2">DataTable with default features</h3>
-                <a href="<?php echo site_url('rooms/create'); ?>" class="float-right btn btn-primary">Create New Room</a>
+                <a href="<?php echo site_url('rooms/create?no='.$this->uri->segment(2)); ?>" class="float-right btn btn-primary">Create New Room</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -45,6 +45,7 @@
                   <tr>
                     <th>Room Name</th>
                     <th>Room Type</th>
+                    <th>Price</th>
                     <th>Size</th>
                     <th>View</th>
                     <th>Location</th>
@@ -57,6 +58,7 @@
                         <tr>
                             <td><?php echo $room['room_name']; ?></td>
                             <td><?php echo $room['type_name']; ?></td>
+                            <td><?php echo $room['price']; ?></td>
                             <td><?php echo $room['size']; ?></td>
                             <td><?php echo $room['view_description']; ?></td>
                             <td><?php echo $room['location']; ?></td>

@@ -143,14 +143,14 @@
               </p>
             </a>           
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="<?= base_url("rooms") ?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Rooms
               </p>
             </a>           
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="<?= base_url("retreats") ?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>

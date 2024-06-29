@@ -1,96 +1,50 @@
-<div class="container mt-5">
-        <h2 class="mb-4">Payment</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Gateway</title>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <button id="pay-button">Pay!</button>
+    <form id="payment-form" method="post" action="<?= site_url() ?>/payment/finish">
+        <input type="hidden" name="result_type" id="result-type" value=""></div>
+        <input type="hidden" name="result_data" id="result-data" value=""></div>
+    </form>
 
-        <!-- Progress bar -->
-        <div class="progress mb-4">
-            <div class="progress-bar" role="progressbar" style="width: 33%" id="progress-bar">Step 1 of 3</div>
-        </div>
+    <script type="text/javascript">
+    $('#pay-button').click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: '<?= site_url() ?>payment/token',
+            cache: false,
 
-        <!-- Form pembayaran -->
-        <form id="paymentForm">
-            <!-- Step 1: Verifikasi Pesanan -->
-            <div id="step1">
-                <h4>Step 1: Verifikasi Pesanan</h4>
-                <!-- Opsi Penjemputan -->
-                <div class="form-group">
-                    <label for="pickup">Penjemputan</label>
-                    <select class="form-control" id="pickup" name="pickup">
-                        <option value="none">Tidak Perlu Penjemputan</option>
-                        <option value="hotel">Penjemputan di Hotel (+$50)</option>
-                        <option value="airport">Penjemputan di Bandara (+$75)</option>
-                    </select>
-                </div>
+            success: function(data) {
+                var resultType = document.getElementById('result-type');
+                var resultData = document.getElementById('result-data');
 
-                <!-- Opsi Aktivitas -->
-                <div class="form-group">
-                    <label for="activities">Pilih Aktivitas</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="snorkeling" id="activity1" name="activities[]">
-                        <label class="form-check-label" for="activity1">
-                            Snorkeling (+$100)
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="diving" id="activity2" name="activities[]">
-                        <label class="form-check-label" for="activity2">
-                            Diving (+$150)
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="mangrove" id="activity3" name="activities[]">
-                        <label class="form-check-label" for="activity3">
-                            Mangrove Tour (+$80)
-                        </label>
-                    </div>
-                </div>
+                function changeResult(type, data) {
+                    $("#result-type").val(type);
+                    $("#result-data").val(JSON.stringify(data));
+                }
 
-                <!-- Total Harga -->
-                <div class="form-group">
-                    <label for="total">Total Harga</label>
-                    <input type="text" class="form-control" id="total" name="total" readonly>
-                </div>
-
-                <button type="button" class="btn btn-primary" id="nextToStep2">Next</button>
-            </div>
-
-            <!-- Step 2: Pengisian Biodata -->
-            <div id="step2" style="display:none;">
-                <h4>Step 2: Pengisian Biodata</h4>
-                <div class="form-group">
-                    <label for="name">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Nomor Telepon</label>
-                    <input type="tel" class="form-control" id="phone" name="phone" required>
-                </div>
-
-                <button type="button" class="btn btn-secondary" id="backToStep1">Back</button>
-                <button type="button" class="btn btn-primary" id="nextToStep3">Next</button>
-            </div>
-
-            <!-- Step 3: Pembayaran -->
-            <div id="step3" style="display:none;">
-                <h4>Step 3: Pembayaran</h4>
-                <div class="form-group">
-                    <label for="cardNumber">Nomor Kartu Kredit</label>
-                    <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
-                </div>
-                <div class="form-group">
-                    <label for="expiryDate">Tanggal Kedaluwarsa</label>
-                    <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
-                </div>
-                <div class="form-group">
-                    <label for="cvv">CVV</label>
-                    <input type="text" class="form-control" id="cvv" name="cvv" required>
-                </div>
-
-                <button type="button" class="btn btn-secondary" id="backToStep2">Back</button>
-                <button type="submit" class="btn btn-success">Submit Payment</button>
-            </div>
-        </form>
-    </div>
+                snap.pay(data, {
+                    onSuccess: function(result) {
+                        changeResult('success', result);
+                        $("#payment-form").submit();
+                    },
+                    onPending: function(result) {
+                        changeResult('pending', result);
+                        $("#payment-form").submit();
+                    },
+                    onError: function(result) {
+                        changeResult('error', result);
+                        $("#payment-form").submit();
+                    }
+                });
+            }
+        });
+    });
+    </script>
+</body>
+</html>

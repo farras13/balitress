@@ -13,10 +13,14 @@ class Room_model extends CI_Model {
     }
 
     // Read all rooms
-    public function get_all_rooms() {
+    public function get_all_rooms($w = null) {
         $this->db->select('r.*, rt.type_name');
         $this->db->from('rooms r');
-        $this->db->join('room_types rt', 'r.room_type_id = rt.id');
+        $this->db->join('villa vl', 'r.villa_id = vl.id');
+        $this->db->join('room_types rt', 'r.room_type = rt.id');
+        if($w != null){
+            $this->db->where($w);
+        }
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -25,7 +29,7 @@ class Room_model extends CI_Model {
     public function get_room_by_id($id) {
         $this->db->select('rooms.*, room_types.type_name');
         $this->db->from('rooms');
-        $this->db->join('room_types', 'rooms.room_type_id = room_types.id');
+        $this->db->join('room_types', 'rooms.room_type = room_types.id');
         $this->db->where('rooms.id', $id);
         $query = $this->db->get();
         $room = $query->row_array();
