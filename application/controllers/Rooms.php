@@ -105,6 +105,6 @@ class Rooms extends CI_Controller {
         $this->Room_model->delete_room_facilities($id);
         $this->Room_model->delete_room($id);
         $this->session->set_flashdata('message', 'Room deleted successfully');
-        redirect('rooms'.$data->villa_id);
+        redirect('rooms/'.$data["villa_id"]);
     }
 }
