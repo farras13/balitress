@@ -57,7 +57,7 @@ class Rooms extends CI_Controller {
             }
 
             $this->session->set_flashdata('message', 'Room created successfully');
-            redirect('rooms/'.$no);
+            redirect('rooms/'.$this->input->post("villa_id"));
         }
     }
 

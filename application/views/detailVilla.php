@@ -75,7 +75,7 @@
                                             <div class="row mb-4 align-items-center package-room" data-package="<?= $villa->name . "-" . $r->room_name ?>" data-price="<?= $r->price ?>">
                                                 <div class="col-md-2"></div>
                                                 <div class="col-md-6">
-                                                    <small><b><?= $r->room_name.$idx ?></b></small>
+                                                    <small><b><?= $r->room_name ?></b></small>
                                                     <h6 class="m-0">Rp <?= number_format($r->price, 2, '.', ','); ?>/night</h6>
                                                 </div>
                                                 <div class="col-md-4">
@@ -95,7 +95,7 @@
                                             <div class="row mb-4 align-items-center package-room" data-package="<?= $villa->name . " + Meals -" . $r->room_name ?>" data-price="<?= $r->price_meals ?>">
                                                 <div class="col-md-2"></div>
                                                 <div class="col-md-6">
-                                                    <small><b><?= $r->room_name.$idx ?></b></small>
+                                                    <small><b><?= $r->room_name ?></b></small>
                                                     <h6 class="m-0">Rp <?= number_format($r->price_meals, 2, '.', ','); ?>/night</h6>
                                                 </div>
                                                 <div class="col-md-4">
