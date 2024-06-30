@@ -84,6 +84,7 @@
                         <a href="<?= base_url('activities') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "activities") echo "active";?>">Activities</a>
                         <a href="<?= base_url('tour') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "tour") echo "active";?>">Tour Packages</a>
                         <a href="<?= base_url('specialoffer') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "specialoffer") echo "active";?>">Special Offer</a>
+                        <a href="<?= base_url('contact') ?>" class="nav-item nav-link">Contact</a>
                         <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
@@ -94,7 +95,6 @@
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </div> -->
-                        <a href="<?= base_url('contact') ?>" class="nav-item nav-link">Contact</a>
                         <!-- <a href="#" class="nav-item nav-link"><i class="fa fa-shopping-cart"></i></a> -->
                     </div>
                 </div>
