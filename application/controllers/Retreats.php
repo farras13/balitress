@@ -216,4 +216,46 @@ class Retreats extends CI_Controller {
         $this->m->del("retreat_gallery",["id"=>$id]);
         redirect('retreats/gallery/'.$data->retreat_id);
     }
+
+    public function villa($id){
+        $data["retreats"] = $this->m->retreat_villa_rooms($id);
+        $data["id"] = $id;
+        $this->load->view("admin/header");
+        $this->load->view("admin/retreat/villa", $data);
+        $this->load->view("admin/footer");
+    }
+
+    public function villa_add($id){
+        $data["rooms"] = $this->m->villa_rooms();
+        $data["id"] = $id;
+        $this->load->view("admin/header");
+        $this->load->view("admin/retreat/villa_add", $data);
+        $this->load->view("admin/footer");
+    }
+
+    public function villa_create(){
+        $id = $this->input->post("id");
+        $idrooms = $this->input->post("room_type_id");
+        $room = $this->m->getData("rooms", ['id'=> $idrooms ])->row();
+        $data = [
+            "retreat_id" => $id,
+            "villa_id" => $room->villa_id,
+            "rooms_id" => $idrooms,
+            "price" => $this->input->post("price")
+        ];
+
+        $cek = $this->m->retreat_villa_rooms($id, $room->villa_id, $idrooms);
+        if($cek){
+            $this->m->upd("retreat_villa", $data, ["id" => $cek->idr]);
+        }else{
+            $this->m->ins("retreat_villa",$data);
+        }
+        redirect("retreats/villa/".$id);
+    }
+
+    public function villa_del($id){
+        $data = $this->m->getData("retreat_villa", ["id" => $id])->row();
+        $this->m->del("retreat_villa", ["id" => $id]);
+        redirect("retreats/villa/".$data->retreat_id);
+    }
 }

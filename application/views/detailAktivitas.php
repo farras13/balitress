@@ -58,24 +58,25 @@
                             </div>
                             <div class="col-md-12">
                                 <h2><b>Choose Your Package</b></h2>
-                                <?php foreach($villa as $v){ ?>   
-                                <div class="package-item bg-white mb-2" >
-                                    <div class="p-4">
-                                        <a class="h5 text-decoration-none" href="#"><?= $v->name ?></a>
-                                        <p class="mb-3"><?= $v->lite_deskripsi ?></p>
-                                        <div class="border-top mt-4 pt-4">
-                                            <?php foreach($rooms as $r){ if($v->id == $r->villa_id){ ?>
-                                            <div class="row mb-4 align-items-center package-room" data-tipe="aktivitas" data-aktivitas="<?= $retreat->retreat_id ?>" data-package="<?= $v->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price_meals ?>" data-temp="<?= $r->id ?>">
-                                                <div class="col-md-2"></div>
-                                                <div class="col-md-6">
-                                                    <small><b><?= $r->room_name ?></b></small>
-                                                    <h6 class="m-0">Rp <?= number_format($r->price, 2, '.', ','); ?>/night</h6>
+                                <?php foreach($villa as $v){  ?>   
+                                    <div class="package-item bg-white mb-2" >
+                                        <div class="p-4">
+                                            <a class="h5 text-decoration-none" href="#"><?= $v->name ?></a>
+                                            <p class="mb-3"><?= $v->lite_deskripsi ?></p>
+                                            <div class="border-top mt-4 pt-4">
+                                            <?php foreach($rv as $rs){ if($rs->villa_id == $v->id) {  ?>
+                                            <?php foreach($rooms as $r){ if($v->id == $r->villa_id && $rs->rooms_id == $r->id  ){ ?>
+                                                <div class="row mb-4 align-items-center package-room" data-tipe="aktivitas" data-aktivitas="<?= $retreat->retreat_id ?>" data-package="<?= $v->name . " Package -" . $r->room_name ?>" data-price="<?= $rs->price ?>" data-temp="<?= $r->id ?>">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-6">
+                                                        <small><b><?= $r->room_name ?></b></small>
+                                                        <h6 class="m-0">Rp <?= number_format($rs->price, 2, '.', ','); ?></h6>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button class="btn btn-primary btn-sm select-room">Select Package</button>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <button class="btn btn-primary btn-sm select-room">Select Package</button>
-                                                </div>
-                                            </div>
-                                            <?php }} ?>
+                                            <?php }}}} ?>
                                         </div>
                                     </div>
 
@@ -194,18 +195,8 @@
     // Function to update the cart display
     function updateCart() {
         let cartItemsContainer = document.getElementById('cart-items');
-        let totalAmount =  <?= $retreat->price ?>;
-        cartItemsContainer.innerHTML = `<div class="row pt-3">
-                        <div class="col-xs-1">
-                            
-                        </div>
-                        <div class="col">
-                            <h6><?= $retreat->name  ?></h6>
-                        </div>
-                        <div class="col text-right">
-                            <strong>Rp <?= $retreat->price ?></strong>
-                        </div>
-                    </div>`;
+        let totalAmount =  0;
+        cartItemsContainer.innerHTML = '';
 
         if (Array.isArray(cart) && cart.length > 0) {
             cart.forEach((item, index) => {

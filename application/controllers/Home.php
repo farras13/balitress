@@ -142,6 +142,7 @@ class Home extends CI_Controller {
         $data["retreat"] = $this->m->getData("retreats", ["retreat_id" => $id])->row();
         $data["villa"] = $this->m->getData("villa")->result();
         $data["rooms"] = $this->m->getData("rooms")->result();
+        $data["rv"] = $this->m->getData("retreat_villa", ["retreat_id" => $id])->result();
 		$data['gallery'] = $this->m->getData("retreat_gallery", ["retreat_id" => $data['retreat']->retreat_id])->result();		
         $data["others"] = $this->m->getData("retreats", ["retreat_id !=" => $id])->result();
         $text = trim($data["retreat"]->name);
