@@ -17,7 +17,7 @@
                 <input type="date" name="checkin" id="checkin" hidden>
                 <input type="date" name="checkout" id="checkout" hidden>
                 <input type="text" id="daterange" class="form-control rounded" placeholder="<?= date("d M Y") . " - " . date("d M Y")  ?>" required>
-            </div>
+            </div> 
 
             <?php  foreach($this->session->userdata('data-item') as $c){ ?>
                 <div class="col-md-12 mb-4">
