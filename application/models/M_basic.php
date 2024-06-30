@@ -123,16 +123,16 @@ class M_basic extends CI_Model {
 
 	public function retreat_villa_rooms($id = null, $vila = null, $room = null){
 		if($id != null){
-			return  $this->db->query("SELECT retreat_villa.id as idr , retreat_villa.price as harga, rooms.*, villa.name as villa_name FROM retreat_villa join rooms on retreat_villa.rooms_id = rooms.id join villa on rooms.villa_id = villa.id 
+			return  $this->db->query("SELECT retreat_villa.id as id_rv , retreat_villa.price as harga, rooms.*, villa.name as villa_name FROM retreat_villa join rooms on retreat_villa.rooms_id = rooms.id join villa on rooms.villa_id = villa.id 
 			where retreat_villa.retreat_id = $id")->result();
 		}else if($vila != null){
-			return  $this->db->query("SELECT retreat_villa.id as idr , retreat_villa.price as harga, rooms.*, villa.name as villa_name FROM retreat_villa join rooms on retreat_villa.rooms_id = rooms.id join villa on rooms.villa_id = villa.id 
+			return  $this->db->query("SELECT retreat_villa.id as id_rv , retreat_villa.price as harga, rooms.*, villa.name as villa_name FROM retreat_villa join rooms on retreat_villa.rooms_id = rooms.id join villa on rooms.villa_id = villa.id 
 			where retreat_villa.villa_id = $vila")->result();
 		}else if($room != null){
-			return  $this->db->query("SELECT retreat_villa.id as idr , retreat_villa.price as harga, rooms.*, villa.name as villa_name FROM retreat_villa join rooms on retreat_villa.rooms_id = rooms.id join villa on rooms.villa_id = villa.id 
+			return  $this->db->query("SELECT retreat_villa.id as id_rv , retreat_villa.price as harga, rooms.*, villa.name as villa_name FROM retreat_villa join rooms on retreat_villa.rooms_id = rooms.id join villa on rooms.villa_id = villa.id 
 			where retreat_villa.rooms_id = $room")->result();
 		}else if($id != null && $vila != null && $room != null){
-			return  $this->db->query("SELECT retreat_villa.id as idr , retreat_villa.price as harga, rooms.*, villa.name as villa_name FROM retreat_villa join rooms on retreat_villa.rooms_id = rooms.id join villa on rooms.villa_id = villa.id 
+			return  $this->db->query("SELECT retreat_villa.id as id_rv , retreat_villa.price as harga, rooms.*, villa.name as villa_name FROM retreat_villa join rooms on retreat_villa.rooms_id = rooms.id join villa on rooms.villa_id = villa.id 
 			where retreat_villa.retreat_id = $id and retreat_villa.villa_id = $vila and retreat_villa.rooms_id = $room")->row();
 		}else{
 			return $this->db->query("SELECT retreat_villa.id as id_rv, retreat_villa.price as harga, rooms.*, villa.name as villa_name FROM retreat_villa join rooms on retreat_villa.rooms_id = rooms.id join villa on rooms.villa_id = villa.id")->result();
