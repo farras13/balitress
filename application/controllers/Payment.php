@@ -39,6 +39,8 @@ class Payment extends CI_Controller {
 
                 $data_transaksi_item = [
                     "transaction_id" => $temp_id,
+                    "day_in" => $pd["checkin"],
+                    "day_out" => $pd["checkout"],
                     "item_id" => (empty($pd["aktivitas_id"])) ? $pd["room_id"] : $pd["aktivitas_id"],
                     "category" =>(empty($pd["aktivitas_id"])) ? "villa" : "activity",
                     "item_name" => $pd['title'],

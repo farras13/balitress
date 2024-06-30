@@ -51,6 +51,7 @@
                                                 <a href="<?php echo site_url('retreats/edit/' . $retreat->retreat_id); ?>" class="btn btn-primary btn-sm"><i class="fa fa-pen"></i></a>
                                                 <a href="<?php echo site_url('retreats/gallery/' . $retreat->retreat_id); ?>" class="btn btn-warning btn-sm"><i class="fa fa-image"></i></a>
                                                 <a href="<?php echo site_url('retreats/delete/' . $retreat->retreat_id); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this retreat?')"><i class="fa fa-trash"></i></a>
+                                                <a href="<?php echo site_url('retreats/villa/' . $retreat->retreat_id); ?>" class="btn btn-info btn-sm" ><i class="fa fa-hotel"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

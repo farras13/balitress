@@ -12,17 +12,25 @@
         <h4>Step 1: Verifikasi Pesanan</h4>
         <!-- Opsi Penjemputan -->
         <div class="row">
-            <?php foreach($this->session->userdata('data-item') as $c){ ?>
+             <div class="col-md-12 my-3">
+                <label for=""><b>Choose your date</b></label>
+                <input type="date" name="checkin" id="checkin" hidden>
+                <input type="date" name="checkout" id="checkout" hidden>
+                <input type="text" id="daterange" class="form-control rounded" placeholder="<?= date("d M Y") . " - " . date("d M Y")  ?>" required>
+            </div>
+
+            <?php  foreach($this->session->userdata('data-item') as $c){ ?>
                 <div class="col-md-12 mb-4">
                     <div class="card package-card">
-                        <img src="<?= $c['thumbnail'] ?>" class="card-img-top" alt="<?= $c['nama'] ?>" width="250px" height="180px">
+                        <img src="<?= $c['thumbnail'] ?>" class="card-img-top" alt="<?= $c['nama'] ?>" width="100%" height="380px">
                         <div class="card-body">
                             <h5 class="card-title"><?= $c['nama'] ?></h5>
                             <p>Room : <br>
                                 <small><?= $c['nama'] ?> - <?= $c['rooms'] ?></small>
-                                <br> Qty : <?= $c['qty'] ?>
+                                <br> Qty : <?= $c['qty'] ?>                               
                             </p>
-                            <p class="card-text float-right">IDR <?= number_format($c['harga'], 0, ',', '.'); ?><br>Sub Total Price</p>
+                            
+                            <p class="card-text float-right">IDR <?= number_format($c['harga'], 0, ',', '.'); ?><br>Subtotal Price</p>
                         </div>
                     </div>
                 </div>
@@ -31,11 +39,12 @@
 
         <div class="card">
             <div class="card-body">
-                <div id="total-amount"><b>Total : </b> <?= $this->session->userdata("data-totalPrice") ?></div>
+                <div id="total-amount "><b>Total :  </b> Rp. <?=  number_format($this->session->userdata("data-totalPrice"), 0, ',', '.'); ?>
+                <button type="button" class="btn btn-primary" id="nextToStep2">Next</button>
+        </div>
             </div>
         </div>
 
-        <button type="button" class="btn btn-primary" id="nextToStep2">Next</button>
     </div>
 
     <!-- Step 2: Pengisian Biodata -->
@@ -62,7 +71,7 @@
     <div id="step3" style="display:none;">
         <h4>Step 3: Pembayaran</h4>
         <div class="row">
-            <?php foreach($this->session->userdata('data-item') as $c){ ?>
+            <?php  foreach($this->session->userdata('data-item') as $c){ ?>
                 <div class="col-md-12 mb-4">
                     <div class="card package-card">
                         <input type="text" hidden name="room_id" id="room_id" value="<?= $c['room_id'] ?>">
@@ -74,7 +83,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?= $c['nama'] ?></h5>
                             <p>Room : <br>
-                                <small><?= $c['nama'] ?> - <?= $c['rooms'] ?></small>
+                                <small><?= $c['rooms'] ?></small>
                                 <br> Qty : <?= $c['qty'] ?>
                             </p>
                             <p class="card-text float-right">IDR <?= number_format($c['harga'], 0, ',', '.'); ?> </p>
@@ -131,8 +140,20 @@
 
     // Tambahkan event listener untuk navigasi antar langkah
     document.getElementById('nextToStep2').addEventListener('click', function() {
+        if (!document.getElementById('checkin').value) {
+            alert("Please enter a check-in date.");
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+        }
+        if (!document.getElementById('checkout').value) {
+            alert("Please enter a check-out date.");
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+        }
+
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
+        
     });
 
     document.getElementById('backToStep1').addEventListener('click', function() {
@@ -160,6 +181,8 @@
         var name = document.getElementById('name').value;
         var email = document.getElementById('email').value;
         var phone = document.getElementById('phone').value;
+        var checkin = document.getElementById('checkin').value;
+        var checkout = document.getElementById('checkout').value;
 
         
         // Dapatkan detail pesanan
@@ -177,7 +200,7 @@
             var harga = <?= $c['harga'] ?>;
 
             orderDetails += title + " - " + price + "\n";
-            datapemesanan.push({room_id, villa_id, aktivitas_id, title, qty, harga})
+            datapemesanan.push({room_id, villa_id, aktivitas_id, title, qty, harga, checkin, checkout})
         });
 
         // Dapatkan total pembayaran
@@ -199,21 +222,62 @@
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
+                if (validateForm(name, email, phone, checkin, checkout)) {
+                    // If valid, send WhatsApp message
+                    localStorage.removeItem('cart');
+                    sendWhatsApp(name, email, phone, orderDetails, totalAmount, checkin, checkout);
+                } else {
+                    // Prevent form submission if validation fails
+                    event.preventDefault();
+                }
                 // Jika penyimpanan berhasil, lanjutkan dengan mengirim pesan WhatsApp
-                localStorage.removeItem('cart');
-                localStorage
-                sendWhatsApp(name, email, phone, orderDetails, totalAmount);
+                
             } else {
                 // Tampilkan pesan atau lakukan sesuatu jika ada masalah
             }
         };
         xhr.send(JSON.stringify(data));
     });
+ 
+    function validateForm(name, email, phone,checkin, checkout) {
+    // Name validation: not empty and contains only letters and spaces
+    var nameRegex = /^[a-zA-Z\s]+$/;
+    if (!name || !nameRegex.test(name)) {
+        alert("Please enter a valid name.");
+        return false;
+    }
+
+    // Email validation: basic regex for email
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    // Phone validation: not empty and contains only digits
+    var phoneRegex = /^[0-9]+$/;
+    if (!phone || !phoneRegex.test(phone)) {
+        alert("Please enter a valid phone number.");
+        return false;
+    }
+
+    if (!checkin) {
+        alert("Please enter a date checkin");
+        return false;
+    }
+
+    if (!checkout) {
+        alert("Please enter a date checkout.");
+        return false;
+    }
+
+    return true;
+}
 
     // Fungsi untuk mengirim pesan WhatsApp
-    function sendWhatsApp(name, email, phone, orderDetails, totalAmount) {
+    function sendWhatsApp(name, email, phone, orderDetails, totalAmount, checkin, checkout) {
         // Format pesan WhatsApp
-        var message = encodeURIComponent("Biodata Pembeli:\n" + "Nama: " + name + "\nEmail: " + email + "\nTelepon: " + phone + "\n\nDetail Pesanan:\n" + orderDetails + "\nTotal Pembayaran:\n" + totalAmount);
+        var message = encodeURIComponent("Biodata Pembeli:\n" + "Nama: " + name + "\nEmail: " + email + "\nTelepon: " + phone + "\nCheck In:" + checkin + "\nCheck Out:" + checkout +"\n\nDetail Pesanan:\n" + orderDetails + "\nTotal Pembayaran:\n" + totalAmount);
 
         // Nomor WhatsApp tujuan
         var whatsappNumber = "6282266509516";
@@ -222,7 +286,8 @@
         var whatsappURL = "https://api.whatsapp.com/send?phone=" + whatsappNumber + "&text=" + message;
 
         // Buka WhatsApp dengan URL yang telah dibuat
-        window.open(whatsappURL, '_blank');
+        window.location.href = whatsappURL;
+        // window.open(whatsappURL, '_blank');
     }
 </script>
 

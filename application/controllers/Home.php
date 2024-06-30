@@ -268,13 +268,14 @@ class Home extends CI_Controller {
         // Example: Pass $cartData to a view
         $dataItems = [];
         $price = 0;
+        $price_aktivitas = 0;
         
         foreach($cartArray as $c) {
             if($c['tipe'] == "villa") {
                 $rooms = $this->m->getData("rooms", ["id" => $c['id']])->row();
                 $villa = $this->m->getData("villa", ['id' => $rooms->villa_id])->row();
                 $data = [
-                    "thumbnail" => base_url($villa->image),
+                    "thumbnail" => base_url("".$villa->image),
                     "nama" => $villa->name,
                     "rooms" => $rooms->room_name,
                     "room_id" => $rooms->room_id,
@@ -283,30 +284,34 @@ class Home extends CI_Controller {
                     "aktivitas_id" => "-",
                     "aktivitas_name" => "-",
                     'harga' => $c['price'],
+                    'harga_aktivitas' => 0
                 ];
                 $temp = $c['price'] * $c['quantity'];
             } else {
                 $rooms = $this->m->getData("rooms", ["id" => $c['id']])->row();
                 $villa = $this->m->getData("villa", ['id' => $rooms->villa_id])->row();
-                $aktivitas = $this->m->getData("retreats", ["retreat_id" => $c['aktivitasd']])->row();
+                $aktivitas = $this->m->getData("retreats", ["retreat_id" => $c['aktivitas']])->row();
                 $data = [
-                    "thumbnail" => base_url($aktivitas->image),
-                    "nama" => $villa->name,
-                    "rooms" => $rooms->room_name,
+                    "thumbnail" => base_url("".$aktivitas->image),
+                    "nama" => $aktivitas->name,
+                    "rooms" => $villa->name ." - ".$rooms->room_name,
                     "room_id" => $rooms->id,
                     "villa_id" => $rooms->villa_id,
                     "qty" => $c["quantity"],
                     "aktivitas_id" => $aktivitas->retreat_id,
                     "aktivitas_name" => $aktivitas->name,
-                    'harga' => $c['price']
+                    'harga' => $c['price'],
+                    'harga_aktivitas' => $aktivitas->price
                 ];
-                $temp = $c['price'] * $c['quantity'] + $aktivitas->price;
+                $temp = $c['price'] * $c['quantity'];
+                $price_aktivitas = $aktivitas->price;
             }
             $price += $temp;
-        
+            
             // Add the data to the dataItems array
             $dataItems[] = $data;
         }
+        $price += $price_aktivitas;
         
         // Save the items data and total price to the session
         $this->session->set_userdata("data-item", $dataItems);

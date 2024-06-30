@@ -215,7 +215,7 @@
             const packageName = packageItem.getAttribute('data-package');
             const price = parseInt(packageItem.getAttribute('data-price'));
             const tempid = parseInt(packageItem.getAttribute('data-temp'));
-            const tipe = parseInt(packageItem.getAttribute('data-tipe'));
+            const tipe = packageItem.getAttribute('data-tipe');
             const aktivitas = parseInt(packageItem.getAttribute('data-aktivitas'));
             addToCart(packageName, price, tempid, tipe, aktivitas);
             // selectedPackages.push({ packageName, price });
@@ -239,7 +239,8 @@
     // Function to add item to the cart
     function addToCart(packageName, price, id, tipe, aktivitas) {
         let itemIndex = cart.findIndex(item => item.packageName === packageName);
-        if (itemIndex !== -1) {
+        let itemIndexPrice = cart.findIndex(item => item.price === price);
+        if (itemIndex !== -1 && itemIndexPrice !== -1) {
             cart[itemIndex].quantity += 1;
         } else {
             cart.push({  tipe, id, packageName, price, quantity: 1, tipe, aktivitas });
