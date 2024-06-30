@@ -254,7 +254,6 @@ class Retreats extends CI_Controller {
     }
 
     public function villa_del($id){
-        var_dump($id);die;
         $data = $this->m->getData("retreat_villa", ["id" => $id])->row()->retreat_id;
         $this->m->del("retreat_villa", ["id" => $id]);
         redirect("retreats/villa/".$data);
