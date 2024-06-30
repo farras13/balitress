@@ -8,11 +8,74 @@ class Payment extends CI_Controller {
         parent::__construct();
         $this->load->library('midtrans');
         $this->load->helper('url');
+        $this->load->model("M_basic", "m");
     }
 
     public function index()
     {
-        $this->load->view('payment');
+        $this->load->view('header');
+        $this->load->view('payment_old');
+        $this->load->view('footer');
+    }
+
+    public function addTransaction(){
+        $post_data = json_decode(file_get_contents('php://input'), true);
+
+        // Pastikan data yang dibutuhkan tersedia
+        if (!empty($post_data['name']) && !empty($post_data['email']) && !empty($post_data['phone']) && !empty($post_data['orderDetails']) && !empty($post_data['totalAmount'])) {
+            // Simpan data transaksi ke dalam database
+            $data_transaksi = [
+                "nama" => $post_data['name'],
+                "email" => $post_data['email'],
+                "phone" => $post_data['phone'],
+                "total_amount" => $post_data['totalAmount']
+            ];  
+            $this->m->ins("transactions", $data_transaksi);
+            $temp_id = $this->db->insert_id();
+        
+            foreach ($post_data['orderDetails'] as $pd) {
+                // Perhitungan total price, perhatikan apakah ini sesuai dengan logika bisnis Anda
+                $total_price = $pd["quantity"] * $pd['harga'];
+
+                $data_transaksi_item = [
+                    "transaction_id" => $temp_id,
+                    "item_id" => (empty($pd["aktivitas_id"])) ? $pd["room_id"] : $pd["aktivitas_id"],
+                    "category" =>(empty($pd["aktivitas_id"])) ? "villa" : "activity",
+                    "item_name" => $pd['title'],
+                    "quantity" => $pd['qty'],
+                    "price_per_item" => $pd['harga'],
+                    "total_price" => $total_price  // Sesuaikan dengan perhitungan yang benar
+                ];
+                $this->m->ins("transaction_items", $data_transaksi_item);
+            }
+            $this->session->unset_userdata("data-item");
+            $this->session->unset_userdata("data-totalPrice");
+            if (!empty($temp_id)) {
+                // Jika penyimpanan berhasil
+                $response = array(
+                    'success' => true,
+                    'message' => 'Data transaksi berhasil disimpan.',
+                    'data' => $post_data
+                );
+            } else {
+                // Jika gagal menyimpan data transaksi
+                $response = array(
+                    'success' => false,
+                    'message' => 'Gagal menyimpan data transaksi.'
+                );
+            }
+        } else {
+            // Jika data yang diperlukan tidak lengkap
+            $response = array(
+                'success' => false,
+                'message' => 'Data yang diperlukan tidak lengkap.'
+            );
+        }
+
+        // Set header untuk response JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
     }
 
     public function getToken()

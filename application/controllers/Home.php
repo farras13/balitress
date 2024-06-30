@@ -262,15 +262,55 @@ class Home extends CI_Controller {
 
 	public function payment()
 	{
-        $cartData = $this->session->cart() ; // Assuming 'cart' is the key used in localStorage
-
+        $cartData = $this->input->post('cartData');// Assuming 'cart' is the key used in localStorage
+        $cartArray = json_decode($cartData, true);
         // Process $cartData as needed
         // Example: Pass $cartData to a view
-        $data['cartData'] = json_decode($cartData, true);
-        var_dump($data);die;
-		$this->load->view('header');
-		$this->load->view('Payment_old');
-		$this->load->view('footer');
+        $dataItems = [];
+        $price = 0;
+        
+        foreach($cartArray as $c) {
+            if($c['tipe'] == "villa") {
+                $rooms = $this->m->getData("rooms", ["id" => $c['id']])->row();
+                $villa = $this->m->getData("villa", ['id' => $rooms->villa_id])->row();
+                $data = [
+                    "thumbnail" => base_url($villa->image),
+                    "nama" => $villa->name,
+                    "rooms" => $rooms->room_name,
+                    "room_id" => $rooms->room_id,
+                    "villa_id" => $rooms->villa_id,
+                    "qty" => $c["quantity"],
+                    "aktivitas_id" => "-",
+                    "aktivitas_name" => "-",
+                    'harga' => $c['price'],
+                ];
+                $temp = $c['price'] * $c['quantity'];
+            } else {
+                $rooms = $this->m->getData("rooms", ["id" => $c['id']])->row();
+                $villa = $this->m->getData("villa", ['id' => $rooms->villa_id])->row();
+                $aktivitas = $this->m->getData("retreats", ["retreat_id" => $c['aktivitasd']])->row();
+                $data = [
+                    "thumbnail" => base_url($aktivitas->image),
+                    "nama" => $villa->name,
+                    "rooms" => $rooms->room_name,
+                    "room_id" => $rooms->id,
+                    "villa_id" => $rooms->villa_id,
+                    "qty" => $c["quantity"],
+                    "aktivitas_id" => $aktivitas->retreat_id,
+                    "aktivitas_name" => $aktivitas->name,
+                    'harga' => $c['price']
+                ];
+                $temp = $c['price'] * $c['quantity'] + $aktivitas->price;
+            }
+            $price += $temp;
+        
+            // Add the data to the dataItems array
+            $dataItems[] = $data;
+        }
+        
+        // Save the items data and total price to the session
+        $this->session->set_userdata("data-item", $dataItems);
+        $this->session->set_userdata("data-totalPrice", $price);
 	}
 
 	public function search()

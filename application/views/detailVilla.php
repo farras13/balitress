@@ -72,7 +72,7 @@
                                         <!-- <p class="mb-3"><?= $villa->lite_deskripsi ?></p> -->
                                         <div class="border-top mt-4 pt-4">
                                             <?php foreach($rooms as $idx => $r){  ?>
-                                            <div class="row mb-4 align-items-center package-room" data-package="<?= $villa->name . "-" . $r->room_name ?>" data-price="<?= $r->price ?>">
+                                            <div class="row mb-4 align-items-center package-room" data-tipe="villa" data-aktivitas="-" data-package="<?= $villa->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price ?>" data-temp="<?= $r->id ?>">
                                                 <div class="col-md-2"></div>
                                                 <div class="col-md-6">
                                                     <small><b><?= $r->room_name ?></b></small>
@@ -92,7 +92,7 @@
                                         <!-- <p class="mb-3"><?= $villa->lite_deskripsi ?></p> -->
                                         <div class="border-top mt-4 pt-4">
                                             <?php foreach($rooms as $idx => $r){  ?>
-                                            <div class="row mb-4 align-items-center package-room" data-package="<?= $villa->name . " + Meals -" . $r->room_name ?>" data-price="<?= $r->price_meals ?>">
+                                            <div class="row mb-4 align-items-center package-room" data-tipe="villa" data-aktivitas="-" data-package="<?= $villa->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price_meals ?>" data-temp="<?= $r->id ?>">
                                                 <div class="col-md-2"></div>
                                                 <div class="col-md-6">
                                                     <small><b><?= $r->room_name ?></b></small>
@@ -112,7 +112,7 @@
                                         <!-- <p class="mb-3"><?= $villa->lite_deskripsi ?></p> -->
                                         <div class="border-top mt-4 pt-4">
                                             <?php foreach($rooms as $r){  ?>
-                                            <div class="row mb-4 align-items-center package-room" data-package="<?= $villa->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price_package ?>">
+                                            <div class="row mb-4 align-items-center package-room" data-tipe="villa" data-aktivitas="-" data-package="<?= $villa->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price_package ?>" data-temp="<?= $r->id ?>">
                                                 <div class="col-md-2"></div>
                                                 <div class="col-md-6">
                                                     <small><b><?= $r->room_name ?></b></small>
@@ -123,7 +123,7 @@
                                                 </div>
                                             </div>
                                             <?php } ?>
-                                            <div class="row mb-4 align-items-center package-room" data-package="<?= $villa->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price_package ?>">
+                                            <div class="row mb-4 align-items-center package-room" data-tipe="villa" data-aktivitas="-" data-package="<?= $villa->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price_package ?>" data-temp="<?= $r->id ?>">
                                                 <div class="col-md-2"></div>
                                                 <div class="col-md-6">
                                                     <small><b> Yoga & Retreat Package </b></small>
@@ -159,7 +159,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="<?= base_url("Home/Payment") ?>" class="btn btn-primary btn-block mb-3" id="pay-button">Proceed to Payment</a>
+                        <a onclick="sendDataToServer()" class="btn btn-primary btn-block mb-3" id="pay-button">Proceed to Payment</a>
                     </div>
                 </div>
                 <div class="alert mt-3">
@@ -214,7 +214,10 @@
             const packageItem = button.closest('.package-room');
             const packageName = packageItem.getAttribute('data-package');
             const price = parseInt(packageItem.getAttribute('data-price'));
-            addToCart(packageName, price);
+            const tempid = parseInt(packageItem.getAttribute('data-temp'));
+            const tipe = parseInt(packageItem.getAttribute('data-tipe'));
+            const aktivitas = parseInt(packageItem.getAttribute('data-aktivitas'));
+            addToCart(packageName, price, tempid, tipe, aktivitas);
             // selectedPackages.push({ packageName, price });
             button.disabled = false; // Disable the button after selection
         });
@@ -234,12 +237,12 @@
     let cart = [];
 
     // Function to add item to the cart
-    function addToCart(packageName, price) {
+    function addToCart(packageName, price, id, tipe, aktivitas) {
         let itemIndex = cart.findIndex(item => item.packageName === packageName);
         if (itemIndex !== -1) {
             cart[itemIndex].quantity += 1;
         } else {
-            cart.push({ packageName, price, quantity: 1 });
+            cart.push({  tipe, id, packageName, price, quantity: 1, tipe, aktivitas });
         }
 
         // Update cart display
@@ -306,13 +309,14 @@
     let cartData = localStorage.getItem('cart');
     if (cartData) {
         $.ajax({
-            url: '<?= base_url('payment/save_cart_to_database') ?>', // Adjust the URL according to your CodeIgniter route
+            url: '<?= base_url('Home/payment') ?>', // Adjust the URL according to your CodeIgniter route
             type: 'POST',
             data: { cartData: cartData },
             success: function(response) {
                 console.log('Data saved successfully:', response);
                 // Optionally, clear localStorage after data is saved
-                localStorage.removeItem('cart');
+               
+                window.open('<?= base_url("payment") ?>')
             },
             error: function(xhr, status, error) {
                 console.error('Error saving data:', error);

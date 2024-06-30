@@ -144,7 +144,7 @@
 <div class="container mt-3">
     <div class="container mt-3 pt-3 pb-3" style="max-height: 100%;">
         <div class="text-center mb-3 pb-3">
-            <h1 class="mb-2 text-primary"><span class="text-dark">Welcome to </span>Balitress</h1>
+            <h1 class="mb-2 text-primary"><span class="text-dark">Welcome to </span>KIKUBALI</h1>
             <p>Check out our introduction video:</p>
         </div>
         <div class="row">
