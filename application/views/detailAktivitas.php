@@ -73,7 +73,7 @@
                                                         <h6 class="m-0">Rp <?= number_format($rs->price, 2, '.', ','); ?></h6>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <button class="btn btn-primary btn-sm select-room">Select Package</button>
+                                                        <a href="#reservasi" class="btn btn-primary btn-sm select-room">Select Package</a>
                                                     </div>
                                                 </div>
                                             <?php }}}} ?>
@@ -90,7 +90,7 @@
             </div>
         </div>  
         <div class="col-lg-4 col-md-4">
-            <div class="position-relative">
+            <div class="position-relative" id="reservasi">
                 <div class="card mb-4">
                     <div class="card-body">
                         <h5 class="card-title">Reservation Summary</h5>

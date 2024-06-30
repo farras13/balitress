@@ -79,7 +79,7 @@
                                                     <h6 class="m-0">Rp <?= number_format($r->price, 2, '.', ','); ?>/night</h6>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <button class="btn btn-primary btn-sm select-room">Select Package</button>
+                                                    <a href="#reservasi" class="btn btn-primary btn-sm select-room" >Select Package</a>
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -99,7 +99,7 @@
                                                     <h6 class="m-0">Rp <?= number_format($r->price_meals, 2, '.', ','); ?>/night</h6>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <button class="btn btn-primary btn-sm select-room">Select Package</button>
+                                                    <a href="#reservasi" class="btn btn-primary btn-sm select-room">Select Package</a>
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -143,7 +143,7 @@
             </div>
         </div>  
         <div class="col-md-12 col-lg-4 my-3">
-        <div class="position-relative">
+        <div class="position-relative" id="reservasi">
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Reservation Summary</h5>
