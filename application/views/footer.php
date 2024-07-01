@@ -9,10 +9,10 @@
                 <!-- <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p> -->
                 <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                    <!-- <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a> -->
+                    <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/profile.php?id=61561346421992&mibextid=LQQJ4d"><i class="fab fa-facebook-f"></i></a>
+                    <!-- <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a> -->
+                    <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/kikubali?igsh=YnA4MHdmczltbnFz&utm_source=qr"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-5">
