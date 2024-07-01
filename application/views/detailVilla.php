@@ -111,18 +111,6 @@
                                         <a class="h5 text-decoration-none" href="#">Room + Package</a>
                                         <!-- <p class="mb-3"><?= $villa->lite_deskripsi ?></p> -->
                                         <div class="border-top mt-4 pt-4">
-                                            <?php foreach($rooms as $r){  ?>
-                                            <div class="row mb-4 align-items-center package-room" data-tipe="villa" data-aktivitas="-" data-package="<?= $villa->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price_package ?>" data-temp="<?= $r->id ?>">
-                                                <div class="col-md-2"></div>
-                                                <div class="col-md-6">
-                                                    <small><b><?= $r->room_name ?></b></small>
-                                                    <h6 class="m-0">Rp <?= number_format($r->price_package, 2, '.', ','); ?>/night</h6>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <button class="btn btn-primary btn-sm select-room">Select Package</button>
-                                                </div>
-                                            </div>
-                                            <?php } ?>
                                             <div class="row mb-4 align-items-center package-room" data-tipe="villa" data-aktivitas="-" data-package="<?= $villa->name . " Package -" . $r->room_name ?>" data-price="<?= $r->price_package ?>" data-temp="<?= $r->id ?>">
                                                 <div class="col-md-2"></div>
                                                 <div class="col-md-6">
