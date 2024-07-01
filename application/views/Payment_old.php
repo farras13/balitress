@@ -196,8 +196,10 @@
             var title = item.querySelector('.card-title').innerText;
             var price = item.querySelector('.card-text').innerText;
             var harga = <?= $c['harga'] ?>;
+            var villa = <?= $c['nama'] ?>;
+            var room = <?= $c['rooms'] ?>;
 
-            orderDetails += title + " - " + price + "\n";
+            orderDetails += title + " ( " + villa + " - " + room + " ) " + price + "\n";
             datapemesanan.push({room_id, villa_id, aktivitas_id, title, qty, harga, checkin, checkout})
         });
 
