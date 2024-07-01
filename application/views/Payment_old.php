@@ -7,45 +7,45 @@
         </div>
 
         <form id="paymentForm">
-    <!-- Step 1: Verifikasi Pesanan -->
-    <div id="step1">
-        <h4>Step 1: Verifikasi Pesanan</h4>
-        <!-- Opsi Penjemputan -->
-        <div class="row">
-             <div class="col-md-12 my-3">
-                <label for=""><b>Choose your date</b></label>
-                <input type="date" name="checkin" id="checkin" hidden>
-                <input type="date" name="checkout" id="checkout" hidden>
-                <input type="text" id="daterange" class="form-control rounded" placeholder="<?= date("d M Y") . " - " . date("d M Y")  ?>" required>
-            </div> 
+        <!-- Step 1: Verifikasi Pesanan -->
+        <div id="step1">
+            <h4>Step 1: Verifikasi Pesanan</h4>
+            <!-- Opsi Penjemputan -->
+            <div class="row">
+                <div class="col-md-12 my-3">
+                    <label for=""><b>Choose your date</b></label>
+                    <input type="date" name="checkin" id="checkin" required hidden>
+                    <input type="date" name="checkout" id="checkout" required hidden>
+                    <input type="text" id="daterange" class="form-control rounded" placeholder="<?= date("d M Y") . " - " . date("d M Y")  ?>" required>
+                </div> 
 
-            <?php  foreach($this->session->userdata('data-item') as $c){ ?>
-                <div class="col-md-12 mb-4">
-                    <div class="card package-card">
-                        <img src="<?= $c['thumbnail'] ?>" class="card-img-top" alt="<?= $c['nama'] ?>" width="100%" height="380px">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $c['nama'] ?></h5>
-                            <p>Room : <br>
-                                <small><?= $c['nama'] ?> - <?= $c['rooms'] ?></small>
-                                <br> Qty : <?= $c['qty'] ?>                               
-                            </p>
-                            
-                            <p class="card-text float-right">IDR <?= number_format($c['harga'], 0, ',', '.'); ?><br>Subtotal Price</p>
+                <?php  foreach($this->session->userdata('data-item') as $c){ ?>
+                    <div class="col-md-12 mb-4">
+                        <div class="card package-card">
+                            <img src="<?= $c['thumbnail'] ?>" class="card-img-top" alt="<?= $c['nama'] ?>" width="100%" height="380px">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $c['nama'] ?></h5>
+                                <p>Room : <br>
+                                    <small><?= $c['nama'] ?> - <?= $c['rooms'] ?></small>
+                                    <br> Qty : <?= $c['qty'] ?>                               
+                                </p>
+                                
+                                <p class="card-text float-right">IDR <?= number_format($c['harga'], 0, ',', '.'); ?><br>Subtotal Price</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php } ?>                 
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <div id="total-amount "><b>Total :  </b> Rp. <?=  number_format($this->session->userdata("data-totalPrice"), 0, ',', '.'); ?>
-                <button type="button" class="btn btn-primary" id="nextToStep2">Next</button>
-        </div>
+                <?php } ?>                 
             </div>
-        </div>
 
-    </div>
+            <div class="card">
+                <div class="card-body">
+                    <div id="total-amount "><b>Total :  </b> Rp. <?=  number_format($this->session->userdata("data-totalPrice"), 0, ',', '.'); ?>
+                    <button type="button" class="btn btn-primary" id="nextToStep2">Next</button>
+            </div>
+                </div>
+            </div>
+
+        </div>
 
     <!-- Step 2: Pengisian Biodata -->
     <div id="step2" style="display:none;">
@@ -123,7 +123,7 @@
         <div id="confirmation-details">
             <div class="card mt-4">
                 <p><center>Total : <b>IDR <?= number_format($this->session->userdata('data-totalPrice'), 0, ',', '.'); ?></b></center>
-                </p><button type="button" class="btn btn-success" id="submitPayment">Submit Payment</button>
+                </p><button type="button" class="btn btn-success" id="submitPayment"> Send Inquiries</button>
                 <button type="button" class="btn btn-secondary" id="backToStep2">Back</button>
             </div>
         </div>
@@ -140,20 +140,18 @@
 
     // Tambahkan event listener untuk navigasi antar langkah
     document.getElementById('nextToStep2').addEventListener('click', function() {
-        if (!document.getElementById('checkin').value) {
-            alert("Please enter a check-in date.");
-            document.getElementById('step1').style.display = 'block';
-            document.getElementById('step2').style.display = 'none';
-        }
-        if (!document.getElementById('checkout').value) {
-            alert("Please enter a check-out date.");
-            document.getElementById('step1').style.display = 'block';
-            document.getElementById('step2').style.display = 'none';
-        }
+       
+        var checkin = document.getElementById('checkin').value.trim();
+        var checkout = document.getElementById('checkout').value.trim();
 
-        document.getElementById('step1').style.display = 'none';
-        document.getElementById('step2').style.display = 'block';
-        
+        // Check if both date inputs are filled
+        if (checkin === "" || checkout === "") {
+            alert("Please select both check-in and check-out dates.");
+        } else {
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+        }
+       
     });
 
     document.getElementById('backToStep1').addEventListener('click', function() {
