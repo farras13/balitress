@@ -201,7 +201,7 @@
             var room = <?= $c['rooms'] ?>;
 
             orderDetails += villa + " - " + price + "\n";
-            datapemesanan.push({room_id, villa_id, aktivitas_id, title, qty, harga, checkin, checkout})
+            datapemesanan.push({room_id, villa_id, aktivitas_id, title, villa, room, qty, harga, checkin, checkout})
         });
 
         // Dapatkan total pembayaran
