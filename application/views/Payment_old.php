@@ -83,9 +83,10 @@
                         <div class="card-body">
                             <h5 class="card-title"><?= $c['nama'] ?></h5>
                             <p>Room : <br>
-                                <small><?= $c['rooms'] ?></small>
+                                <small><?= $c['nama'] ?> - <?= $c['rooms'] ?></small>
                                 <br> Qty : <?= $c['qty'] ?>
                             </p>
+                            <div class="card-sub-title" hidden> <?= $c['nama'] ?> - <?= $c['rooms'] ?>  </div>
                             <p class="card-text float-right">IDR <?= number_format($c['harga'], 0, ',', '.'); ?> </p>
                             <p>Sub Total Price</p>
                         </div>
@@ -196,10 +197,10 @@
             var title = item.querySelector('.card-title').innerText;
             var price = item.querySelector('.card-text').innerText;
             var harga = <?= $c['harga'] ?>;
-            var villa = <?= $c['nama'] ?>;
+            var villa = item.querySelector('.card-sub-title').innerText;
             var room = <?= $c['rooms'] ?>;
 
-            orderDetails += title + " ( " + villa + " - " + room + " ) " + price + "\n";
+            orderDetails += villa + " - " + price + "\n";
             datapemesanan.push({room_id, villa_id, aktivitas_id, title, qty, harga, checkin, checkout})
         });
 
