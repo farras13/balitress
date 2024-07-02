@@ -164,29 +164,7 @@
 		calculateTotal();
 
 		// Navigasi antar langkah
-		$("#nextToStep2").click(function () {
-			$("#step1").hide();
-			$("#step2").show();
-			$("#progress-bar").css("width", "66%").text("Step 2 of 3");
-		});
-
-		$("#backToStep1").click(function () {
-			$("#step2").hide();
-			$("#step1").show();
-			$("#progress-bar").css("width", "33%").text("Step 1 of 3");
-		});
-
-		$("#nextToStep3").click(function () {
-			$("#step2").hide();
-			$("#step3").show();
-			$("#progress-bar").css("width", "100%").text("Step 3 of 3");
-		});
-
-		$("#backToStep2").click(function () {
-			$("#step3").hide();
-			$("#step2").show();
-			$("#progress-bar").css("width", "66%").text("Step 2 of 3");
-		});
+		
 
 		// Tangani submit form
 		$("#paymentForm").submit(function (event) {

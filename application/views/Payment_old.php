@@ -40,7 +40,7 @@
             <div class="card">
                 <div class="card-body">
                     <div id="total-amount "><b>Total :  </b> Rp. <?=  number_format($this->session->userdata("data-totalPrice"), 0, ',', '.'); ?>
-                    <button type="button" class="btn btn-primary" id="nextToStep2">Next</button>
+                    <button type="button" class="btn btn-primary" id="na">Next</button>
             </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                                 <small><?= $c['nama'] ?> - <?= $c['rooms'] ?></small>
                                 <br> Qty : <?= $c['qty'] ?>
                             </p>
-                            <div class="card-sub-title" hidden> <?= $c['nama'] ?> - <?= $c['rooms'] ?>  </div>
+                            <input type="text" hidden id="pesananroom" value="<?= $c['nama'] .'-'. $c['rooms'] ?>">
                             <p class="card-text float-right">IDR <?= number_format($c['harga'], 0, ',', '.'); ?> </p>
                             <p>Sub Total Price</p>
                         </div>
@@ -140,7 +140,7 @@
     var paymentForm = document.getElementById('paymentForm');
 
     // Tambahkan event listener untuk navigasi antar langkah
-    document.getElementById('nextToStep2').addEventListener('click', function() {
+    document.getElementById('na').addEventListener('click', function() {
        
         var checkin = document.getElementById('checkin').value.trim();
         var checkout = document.getElementById('checkout').value.trim();
@@ -151,6 +151,7 @@
         } else {
             document.getElementById('step1').style.display = 'none';
             document.getElementById('step2').style.display = 'block';
+			$("#progress-bar").css("width", "66%").text("Step 2 of 3");
         }
        
     });
@@ -158,20 +159,27 @@
     document.getElementById('backToStep1').addEventListener('click', function() {
         document.getElementById('step2').style.display = 'none';
         document.getElementById('step1').style.display = 'block';
+			$("#progress-bar").css("width", "33%").text("Step 1 of 3");
     });
 
     document.getElementById('nextToStep3').addEventListener('click', function() {
-        document.getElementById('step2').style.display = 'none';
-        document.getElementById('step3').style.display = 'block';
-
-        document.getElementById('nama_pembeli').innerText = document.getElementById('name').value;
-        document.getElementById('email_pembeli').innerText = document.getElementById('email').value;
-        document.getElementById('phone_pembeli').innerText = document.getElementById('phone').value;
+        if(validateFormPembeli(document.getElementById('name').value, document.getElementById('email').value, document.getElementById('phone').value)){
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'block';
+    
+            document.getElementById('nama_pembeli').innerText = document.getElementById('name').value;
+            document.getElementById('email_pembeli').innerText = document.getElementById('email').value;
+            document.getElementById('phone_pembeli').innerText = document.getElementById('phone').value;
+            $("#progress-bar").css("width", "100%").text("Step 3 of 3");
+        }else{
+            alert("Pleast complete the form");
+        }
     });
 
     document.getElementById('backToStep2').addEventListener('click', function() {
         document.getElementById('step3').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
+			$("#progress-bar").css("width", "66%").text("Step 2 of 3");
     });
 
     // Tambahkan event listener untuk submit form
@@ -197,11 +205,9 @@
             var title = item.querySelector('.card-title').innerText;
             var price = item.querySelector('.card-text').innerText;
             var harga = <?= $c['harga'] ?>;
-            var villa = item.querySelector('.card-sub-title').innerText;
-            var room = <?= $c['rooms'] ?>;
-
-            orderDetails += villa + " - " + price + "\n";
-            datapemesanan.push({room_id, villa_id, aktivitas_id, title, villa, room, qty, harga, checkin, checkout})
+            var villa = document.getElementById('pesananroom').value;
+            orderDetails += villa + " : " + price + "\n";
+            datapemesanan.push({room_id, villa_id, aktivitas_id, title, villa, qty, harga, checkin, checkout})
         });
 
         // Dapatkan total pembayaran
@@ -239,8 +245,31 @@
         };
         xhr.send(JSON.stringify(data));
     });
- 
-    function validateForm(name, email, phone,checkin, checkout) {
+    function validateFormPembeli(name, email, phone) {
+    // Name validation: not empty and contains only letters and spaces
+    var nameRegex = /^[a-zA-Z\s]+$/;
+    if (!name || !nameRegex.test(name)) {
+        alert("Please enter a valid name.");
+        return false;
+    }
+
+    // Email validation: basic regex for email
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    // Phone validation: not empty and contains only digits
+    var phoneRegex = /^[0-9]+$/;
+    if (!phone || !phoneRegex.test(phone)) {
+        alert("Please enter a valid phone number.");
+        return false;
+    }
+
+    return true;
+}
+    function validateForm(name, email, phone, checkin, checkout) {
     // Name validation: not empty and contains only letters and spaces
     var nameRegex = /^[a-zA-Z\s]+$/;
     if (!name || !nameRegex.test(name)) {
