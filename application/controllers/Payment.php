@@ -14,7 +14,7 @@ class Payment extends CI_Controller {
     public function index()
     {
         $this->load->view('header');
-        $this->load->view('payment_old');
+        $this->load->view('Payment_old');
         $this->load->view('footer');
     }
 
