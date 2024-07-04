@@ -18,6 +18,65 @@ class Payment extends CI_Controller {
         $this->load->view('footer');
     }
 
+    public function tour()
+    {
+        $person = $_POST['adult'];
+        $in = $_POST['checkin'];
+        $kode = $_POST['tkd'];
+
+        $data['pesan'] = $this->m->getData("tourpackage", ["Id" => $kode])->row();
+        $data['harga'] = $person * $data['pesan']->Price;
+        $data['tanggal'] = $in;
+        $data['qty'] = $person;
+
+        $this->load->view('header');
+        $this->load->view('payment_tour', $data);
+        $this->load->view('footer');
+    }
+
+    public function tourpackage() {
+        $post_data = json_decode(file_get_contents('php://input'), true);
+        $data_transaksi = [
+            "nama" => $post_data['name'],
+            "email" => $post_data['email'],
+            "phone" => $post_data['phone'],
+            "total_amount" => $post_data['totalAmount']
+        ];  
+        $this->m->ins("transactions", $data_transaksi);
+        $temp_id = $this->db->insert_id();
+
+        $data_transaksi_item = [
+            "transaction_id" => $temp_id,
+            "day_in" => $post_data["checkin"],
+            "day_out" => $post_data["checkin"],
+            "item_id" => $post_data["kode"],
+            "category" => "tour",
+            "item_name" => $post_data['title'],
+            "quantity" => $post_data['qty'],
+            "price_per_item" => $post_data['harga'],
+            "total_price" => $post_data['totalAmount']  // Sesuaikan dengan perhitungan yang benar
+        ];
+        $this->m->ins("transaction_items", $data_transaksi_item);
+
+        $this->session->unset_userdata("data-item");
+        $this->session->unset_userdata("data-totalPrice");
+        
+        if (!empty($temp_id)) {
+            // Jika penyimpanan berhasil
+            $response = array(
+                'success' => true,
+                'message' => 'Data transaksi berhasil disimpan.',
+                'data' => $post_data
+            );
+        } else {
+            // Jika gagal menyimpan data transaksi
+            $response = array(
+                'success' => false,
+                'message' => 'Gagal menyimpan data transaksi.'
+            );
+        }
+    }
+
     public function addTransaction(){
         $post_data = json_decode(file_get_contents('php://input'), true);
 

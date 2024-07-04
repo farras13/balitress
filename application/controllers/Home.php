@@ -198,6 +198,7 @@ class Home extends CI_Controller {
 
 	public function detail_tour($id)
 	{
+        
 		$data['package'] = $this->Tour_package_model->get_packages($id);
 		$data['gallery'] = $this->m->getData("galeritourpackage", ["Tour_id" => $id])->result();
 		$data['iexclude'] = $this->m->getData("ietourpackage", ["Tour_id" => $id])->result();

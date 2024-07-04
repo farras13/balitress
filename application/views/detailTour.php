@@ -41,10 +41,11 @@
                 <p class="lead"><?= $package['About'] ?></p>
                 <div class="bg-blue shadow p-4" >
                     <h6>Select Participants and Date </h6>
-                    <form action="<?= base_url("home/search") ?>" method="get">
+                    <form action="<?= base_url("payment/tour") ?>" method="post">
                         <div class="row align-items-center">
                             <div class="col-md-12">
                                 <div class="row">
+                                    <input type="text" name="tkd" id="tkd" value="<?= $package['Id']; ?>" hidden>
                                     <div class="col-md-6 mb-3">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -63,9 +64,10 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-calendar-alt"></i></span>
                                             </div>
-                                            <input type="date" name="checkin" id="checkin" hidden>
-                                            <input type="date" name="checkout" id="checkout" hidden>
-                                            <input type="text" id="daterange" class="form-control rounded-right" placeholder="Check In - Check Out">
+                                            <input type="date" name="checkin" id="tgl" class="form-control">
+                                            <!-- <input type="date" name="checkin" id="checkin" hidden> -->
+                                            <!-- <input type="date" name="checkout" id="checkout" hidden> -->
+                                            <!-- <input type="text" id="daterange" class="form-control rounded-right" placeholder="Check In - Check Out"> -->
                                         </div>
                                         
                                     </div>                                                                        
