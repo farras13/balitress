@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-md-12 mb-4">
                     <div class="card package-card">
-                        <img src="<?= $pesan->Thumbnail ?>" class="card-img-top" alt="<?= $pesan->Name ?>" width="100%" height="380px">
+                        <img src="<?= base_url($pesan->Thumbnail) ?>" class="card-img-top" alt="<?= $pesan->Name ?>" width="100%" height="380px">
                         <div class="card-body">
                             <h5 class="card-title"><?= $pesan->Name ?></h5>
                             <p>Tanggal : <?= $tanggal ?> <br> Person : <?= $qty ?></p>
@@ -62,7 +62,7 @@
         <div class="row">
                 <div class="col-md-12 mb-4">
                     <div class="card package-card">
-                        <img src="<?= $pesan->Thumbnail ?>" class="card-img-top" alt="<?= $pesan->Name ?>" width="100%" height="380px">
+                        <img src="<?= base_url($pesan->Thumbnail) ?>" class="card-img-top" alt="<?= $pesan->Name ?>" width="100%" height="380px">
                         <div class="card-body">
                             <h5 class="card-title"><?= $pesan->Name ?></h5>
                             <p>Tanggal : <?= $tanggal ?> <br> Person : <?= $qty ?></p>                            
