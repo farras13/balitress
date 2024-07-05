@@ -310,7 +310,7 @@
         var message = encodeURIComponent("Biodata Pembeli:\n" + "Nama: " + name + "\nEmail: " + email + "\nTelepon: " + phone + "\nCheck In:" + checkin + "\nCheck Out:" + checkout +"\n\nDetail Pesanan:\n" + orderDetails + "\nTotal Pembayaran:\n" + totalAmount);
 
         // Nomor WhatsApp tujuan
-        var whatsappNumber = "6282266509516";
+        var whatsappNumber = "6283866906123";
 
         // URL WhatsApp dengan nomor tujuan dan pesan
         var whatsappURL = "https://api.whatsapp.com/send?phone=" + whatsappNumber + "&text=" + message;
