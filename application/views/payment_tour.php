@@ -9,7 +9,7 @@
         <form id="paymentForm">
         <!-- Step 1: Verifikasi Pesanan -->
         <div id="step1">
-            <h4>Step 1: Verifikasi Pesanan</h4>
+            <h4>Step 1: Order Verification</h4>
             <!-- Opsi Penjemputan -->
             <div class="row">
                 <div class="col-md-12 mb-4">
@@ -17,7 +17,7 @@
                         <img src="<?= base_url($pesan->Thumbnail) ?>" class="card-img-top" alt="<?= $pesan->Name ?>" width="100%" height="380px">
                         <div class="card-body">
                             <h5 class="card-title"><?= $pesan->Name ?></h5>
-                            <p>Tanggal : <?= $tanggal ?> <br> Person : <?= $qty ?></p>
+                            <p>Date : <?= $tanggal ?> <br> Person : <?= $qty ?></p>
                             
                             <p class="card-text float-right">IDR <?= number_format($pesan->Price, 0, ',', '.'); ?><br>Subtotal Price</p>
                         </div>
@@ -38,9 +38,9 @@
 
     <!-- Step 2: Pengisian Biodata -->
     <div id="step2" style="display:none;">
-        <h4>Step 2: Pengisian Biodata</h4>
+        <h4>Step 2: Fill in Biodata</h4>
         <div class="form-group">
-            <label for="name">Nama Lengkap</label>
+            <label for="name">Full name</label>
             <input type="text" class="form-control" id="name" name="name" required>
         </div>
         <div class="form-group">
@@ -48,7 +48,7 @@
             <input type="email" class="form-control" id="email" name="email" required>
         </div>
         <div class="form-group">
-            <label for="phone">Nomor Telepon</label>
+            <label for="phone">Phone number</label>
             <input type="tel" class="form-control" id="phone" name="phone" required>
         </div>
 
@@ -58,14 +58,14 @@
 
     <!-- Step 3: Pembayaran -->
     <div id="step3" style="display:none;">
-        <h4>Step 3: Pembayaran</h4>
+        <h4>Step 3: Payment</h4>
         <div class="row">
                 <div class="col-md-12 mb-4">
                     <div class="card package-card">
                         <img src="<?= base_url($pesan->Thumbnail) ?>" class="card-img-top" alt="<?= $pesan->Name ?>" width="100%" height="380px">
                         <div class="card-body">
                             <h5 class="card-title"><?= $pesan->Name ?></h5>
-                            <p>Tanggal : <?= $tanggal ?> <br> Person : <?= $qty ?></p>                            
+                            <p>Date : <?= $tanggal ?> <br> Person : <?= $qty ?></p>                            
                             <p class="card-text float-right">IDR <?= number_format($pesan->Price, 0, ',', '.'); ?><br>Subtotal Price</p>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="card-body mb-3">
                         <div class="row mb-2">
                             <div class="col-md-1"></div>
-                            <div class="col-md-4"><b>Nama:</b> </div>
+                            <div class="col-md-4"><b>Name:</b> </div>
                             <div class="col-md-7" id="nama_pembeli"></div>
                         </div>
                         <div class="row mb-2">
@@ -257,7 +257,7 @@
     // Fungsi untuk mengirim pesan WhatsApp
     function sendWhatsApp(name, email, phone, checkin, totalAmount, orderDetails) {
         // Format pesan WhatsApp
-        var message = encodeURIComponent("Biodata Pembeli:\n" + "Nama: " + name + "\nEmail: " + email + "\nTelepon: " + phone + "\nTanggal:" + checkin  +"\n\nDetail Pesanan:\n" + orderDetails + "\nTotal Pembayaran:\n" + totalAmount);
+        var message = encodeURIComponent("Customer Information:\n" + "Name: " + name + "\nEmail: " + email + "\nPhone: " + phone + "\nDate:" + checkin  +"\n\nDetail Order:\n" + orderDetails + "\nTotal Payment:\n" + totalAmount);
 
         // Nomor WhatsApp tujuan
         var whatsappNumber = "6283866906123";
