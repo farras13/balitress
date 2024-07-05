@@ -30,7 +30,7 @@
             <div class="col-lg-4 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
                 <!-- <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Bali, Indonesia</p> -->
-                <p><i class="fa fa-phone-alt mr-2"></i>+62 822-6650-9516</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+62 838 6690 6123</p>
                 <!-- <p><i class="fa fa-envelope mr-2"></i>info@Balitress.com</p> -->
                 <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
                 <div class="w-100">
