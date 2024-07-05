@@ -153,7 +153,7 @@
             </div>
         </div>
     </div>
-    <h3>Villa & Suites</h3>
+    <h3>Accomodation</h3>
     <div class="row">
         <?php foreach ($villas as $card): ?>
         <div class="col-md-6 mb-4">

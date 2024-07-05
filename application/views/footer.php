@@ -19,8 +19,8 @@
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
                 <div class="d-flex flex-column justify-content-start">
                     <a href="<?= base_url() ?>" class="text-white-50 mb-2 <?php if($this->uri->segment('1') == "") echo "active";?>">Home</a>
-                    <a href="<?= base_url('villa') ?>" class="text-white-50 mb-2 <?php if($this->uri->segment('1') == "villa") echo "active";?>">Villa & Suites </a>
-                    <a href="<?= base_url('activities') ?>" class="text-white-50 mb-2 <?php if($this->uri->segment('1') == "activities") echo "active";?>">Activities</a>
+                    <a href="<?= base_url('villa') ?>" class="text-white-50 mb-2 <?php if($this->uri->segment('1') == "villa") echo "active";?>">Accomodation </a>
+                    <a href="<?= base_url('activities') ?>" class="text-white-50 mb-2 <?php if($this->uri->segment('1') == "activities") echo "active";?>">Our Retreat</a>
                     <a href="<?= base_url('tour') ?>" class="text-white-50 mb-2 <?php if($this->uri->segment('1') == "tour") echo "active";?>">Tour Packages</a>
                     <a href="<?= base_url('specialoffer') ?>" class="text-white-50 mb-2 <?php if($this->uri->segment('1') == "specialoffer") echo "active";?>">Special Offer</a>
                     <a href="<?= base_url('contact') ?>" class="text-white-50 mb-2">Contact</a>

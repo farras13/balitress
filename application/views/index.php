@@ -246,8 +246,8 @@
 <div class="container">
     <div class="container pt-3 pb-3" style="max-height: 100%;">
         <div class="text-center mb-3 pb-3">
-            <h5 class="text-primary">VILLA & SUITES</h5>
-            <h1 class="mb-2 text-primary"><span class="text-dark">Our Villa & Suites</h1>
+            <h5 class="text-primary">Accomodation</h5>
+            <h1 class="mb-2 text-primary"><span class="text-dark">Our Accomodation</h1>
             <blockquote class="blockquote blockquote-custom text-dark mx-4" style="font-size: 1rem !important;">
                 <?= $desc->deskripsi ?>
             </blockquote>

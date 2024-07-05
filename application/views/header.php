@@ -80,8 +80,8 @@
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         <a href="<?= base_url() ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "") echo "active";?>">Home</a>
-                        <a href="<?= base_url('villa') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "villa") echo "active";?>">Villa & Suites </a>
-                        <a href="<?= base_url('activities') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "activities") echo "active";?>">Activities</a>
+                        <a href="<?= base_url('villa') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "villa") echo "active";?>">Accomodation </a>
+                        <a href="<?= base_url('activities') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "activities") echo "active";?>"> Our Retreat</a>
                         <a href="<?= base_url('tour') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "tour") echo "active";?>">Tour Packages</a>
                         <a href="<?= base_url('specialoffer') ?>" class="nav-item nav-link <?php if($this->uri->segment('1') == "specialoffer") echo "active";?>">Special Offer</a>
                         <a href="<?= base_url('contact') ?>" class="nav-item nav-link">Contact</a>
