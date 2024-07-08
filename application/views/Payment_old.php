@@ -14,12 +14,13 @@
             <div class="row">
                 <div class="col-md-12 my-3">
                     <label for=""><b>Choose your date</b></label>
-                    <input type="date" name="checkin" id="checkin" required hidden>
-                    <input type="date" name="checkout" id="checkout" required hidden>
-                    <input type="text" id="daterange" class="form-control rounded" placeholder="<?= date("d M Y") . " - " . date("d M Y")  ?>" required>
+                    <input type="date" name="checkin" id="checkin" required class="d-none">
+                    <input type="date" name="checkout" id="checkout" required class="d-none">
+					<?php $placeholderDefaultTommorow = date_add(date_create(), date_interval_create_from_date_string("1 day")) ?>
+                    <input type="text" id="daterange" class="form-control rounded" value="<?= date("j F Y") . " - " . date_format($placeholderDefaultTommorow, 'j F Y')  ?>" required>
                 </div> 
 
-                <?php  foreach($this->session->userdata('data-item') as $c){ ?>
+                <?php foreach($this->session->userdata('data-item') as $c){ ?>
                     <div class="col-md-12 mb-4">
                         <div class="card package-card">
                             <img src="<?= $c['thumbnail'] ?>" class="card-img-top" alt="<?= $c['nama'] ?>" width="100%" height="380px">
@@ -94,10 +95,9 @@
                 </div>
             <?php } ?>                 
         </div>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <div class="card">
+		<div class="row">
+			<div class="col-md-12 mb-4">
+				<div class="card">
                     <div class="card-title px-3 pt-4">
                         <h4>Your Info Details</h4>
                     </div>
@@ -119,8 +119,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+			</div>
+		</div>
         <div id="confirmation-details">
             <div class="card mt-4">
                 <p><center>Total : <b>IDR <?= number_format($this->session->userdata('data-totalPrice'), 0, ',', '.'); ?></b></center>
@@ -135,6 +135,7 @@
 
 <!-- Script JavaScript -->
 </div>
+
 <script>
     // Ambil elemen form
     var paymentForm = document.getElementById('paymentForm');

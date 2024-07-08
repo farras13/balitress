@@ -87,7 +87,9 @@
                 locale: {
                     format: 'YYYY-MM-DD'
                 },
-                autoUpdateInput: false
+                autoUpdateInput: false,
+				startDate: moment().format('YYYY-MM-DD'),
+				endDate: moment().add(1, 'day').format('YYYY-MM-DD')
             });
 
             $('#daterange').on('apply.daterangepicker', function(ev, picker) {

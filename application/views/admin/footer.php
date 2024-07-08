@@ -34,6 +34,9 @@
 <script src="<?= base_url("assets/admin/") ?>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?= base_url("assets/admin/") ?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?= base_url("assets/admin/") ?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- DayJs -->
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
 <!-- Summernote -->
 <script src="<?= base_url("assets/admin/") ?>plugins/summernote/summernote-bs4.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -44,20 +47,20 @@
       $('.summernote').summernote()
 
       // CodeMirror
-      CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-      mode: "htmlmixed",
-      theme: "monokai"
-      });
+      // CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      // mode: "htmlmixed",
+      // theme: "monokai"
+      // });
   })
   $(function () {
         // Summernote
         $('#facilities').summernote()
 
         // CodeMirror
-        CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-        mode: "htmlmixed",
-        theme: "monokai"
-        });
+        // CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+        // mode: "htmlmixed",
+        // theme: "monokai"
+        // });
     })
   $(function () {
     // Tabel dengan tombol aksi
@@ -117,46 +120,80 @@
     });
 </script>
   <script>
-    document
-		.getElementById("imageInput")
-		.addEventListener("change", function (event) {
-			const file = event.target.files[0];
-			if (file) {
-				const reader = new FileReader();
-				reader.onload = function (e) {
-					const previewImage = document.getElementById("previewImage");
-					previewImage.src = e.target.result;
-					previewImage.style.display = "block";
+    $(document).ready(() => {
+			$(document).find("#imageInput").change((event) => {
+				const file = event.target.files[0];
+					if (file) {
+						const reader = new FileReader();
+						reader.onload = function (e) {
+							const previewImage = document.getElementById("previewImage");
+							previewImage.src = e.target.result;
+							previewImage.style.display = "block";
 
-					const currentImage = document.getElementById("currentImage");
-					if (currentImage) {
-						currentImage.style.display = "none";
+							const currentImage = document.getElementById("currentImage");
+							if (currentImage) {
+								currentImage.style.display = "none";
+							}
+						};
+						reader.readAsDataURL(file);
 					}
-				};
-				reader.readAsDataURL(file);
-			}
-		});
-  </script>
-  <script>
-    document
-		.getElementById("imageInputbg")
-		.addEventListener("change", function (event) {
-			const file = event.target.files[0];
-			if (file) {
-				const reader = new FileReader();
-				reader.onload = function (e) {
-					const previewImage = document.getElementById("previewImagebg");
-					previewImage.src = e.target.result;
-					previewImage.style.display = "block";
+			})
+			// document
+			// 	.getElementById("imageInput")
+			// 	.addEventListener("change", function (event) {
+			// 		const file = event.target.files[0];
+			// 		if (file) {
+			// 			const reader = new FileReader();
+			// 			reader.onload = function (e) {
+			// 				const previewImage = document.getElementById("previewImage");
+			// 				previewImage.src = e.target.result;
+			// 				previewImage.style.display = "block";
 
-					const currentImage = document.getElementById("currentImagebg");
-					if (currentImage) {
-						currentImage.style.display = "none";
+			// 				const currentImage = document.getElementById("currentImage");
+			// 				if (currentImage) {
+			// 					currentImage.style.display = "none";
+			// 				}
+			// 			};
+			// 			reader.readAsDataURL(file);
+			// 		}
+			// 	});
+			$(document).find("#imageInputbg").change((event) => {
+				const file = event.target.files[0];
+					if (file) {
+						const reader = new FileReader();
+						reader.onload = function (e) {
+							const previewImage = document.getElementById("previewImagebg");
+							previewImage.src = e.target.result;
+							previewImage.style.display = "block";
+
+							const currentImage = document.getElementById("currentImagebg");
+							if (currentImage) {
+								currentImage.style.display = "none";
+							}
+						};
+						reader.readAsDataURL(file);
 					}
-				};
-				reader.readAsDataURL(file);
-			}
-		});
+			})
+			// document
+			// 	.getElementById("imageInputbg")
+			// 	.addEventListener("change", function (event) {
+			// 		const file = event.target.files[0];
+			// 		if (file) {
+			// 			const reader = new FileReader();
+			// 			reader.onload = function (e) {
+			// 				const previewImage = document.getElementById("previewImagebg");
+			// 				previewImage.src = e.target.result;
+			// 				previewImage.style.display = "block";
+
+			// 				const currentImage = document.getElementById("currentImagebg");
+			// 				if (currentImage) {
+			// 					currentImage.style.display = "none";
+			// 				}
+			// 			};
+			// 			reader.readAsDataURL(file);
+			// 		}
+			// 	});
+		})
   </script>
 </body> 
 </html>

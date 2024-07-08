@@ -23,7 +23,7 @@ class Login extends CI_Controller {
 		);
 		$cek = $this->m->getData('users', $data);
 		
-		if($cek){
+		if($cek->row()){
 			$session_data = array(
 				'user_id' => $cek->row()->id,
 				'username' => $cek->row()->fullname,
@@ -31,10 +31,8 @@ class Login extends CI_Controller {
 			);
 			$this->session->set_userdata($session_data);
 			return redirect('Admin','refresh');
-		}else{
-			
-			return redirect('Login','refresh');
 		}
+		return redirect('Login','refresh');
 	}
 	
 	public function register()

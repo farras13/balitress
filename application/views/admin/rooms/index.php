@@ -50,6 +50,7 @@
                     <th>View</th>
                     <th>Location</th>
                     <th>Description</th>
+                    <th>Stock</th>
                     <th>Actions</th>
                   </tr>
                   </thead>
@@ -63,6 +64,7 @@
                             <td><?php echo $room['view_description']; ?></td>
                             <td><?php echo $room['location']; ?></td>
                             <td><?php echo $room['description']; ?></td>
+                            <td><?php echo $room['stock'] ? $room['stock'] : 0; ?></td>
                             <td>
                                 <a href="<?php echo site_url('rooms/edit/' . $room['id']); ?>">Edit</a>
                                 <a href="<?php echo site_url('rooms/delete/' . $room['id']); ?>" onclick="return confirm('Are you sure?')"> Delete </a>
@@ -73,12 +75,14 @@
                   
                   <tfoot>
                   <tr>
-                    <th>Room Name</th>
+										<th>Room Name</th>
                     <th>Room Type</th>
+                    <th>Price</th>
                     <th>Size</th>
                     <th>View</th>
                     <th>Location</th>
                     <th>Description</th>
+                    <th>Stock</th>
                     <th>Actions</th>
                   </tr>
                   </tfoot>

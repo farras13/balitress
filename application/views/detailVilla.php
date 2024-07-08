@@ -79,7 +79,13 @@
                                                     <h6 class="m-0">Rp <?= number_format($r->price, 2, '.', ','); ?>/night</h6>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <a href="#reservasi" class="btn btn-primary btn-sm select-room" >Select Package</a>
+													<?php 
+														if($r->isAvailable) {
+															echo '<a href="#reservasi" class="btn btn-primary btn-sm select-room" >Select Package</a>';
+														}else{
+															echo '<button class="btn btn-secondary btn-sm" disabled>Full Booked</button>';
+														}
+													?>
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -99,7 +105,13 @@
                                                     <h6 class="m-0">Rp <?= number_format($r->price_meals, 2, '.', ','); ?>/night</h6>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <a href="#reservasi" class="btn btn-primary btn-sm select-room">Select Package</a>
+													<?php 
+														if($r->isAvailable) {
+															echo '<a href="#reservasi" class="btn btn-primary btn-sm select-room" >Select Package</a>';
+														}else{
+															echo '<button class="btn btn-secondary btn-sm" disabled>Full Booked</button>';
+														}
+													?>
                                                 </div>
                                             </div>
                                             <?php } ?>

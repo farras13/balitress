@@ -1,6 +1,9 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * User home page
+ */
 class Home extends CI_Controller {
 
     public function __construct()
@@ -48,11 +51,14 @@ class Home extends CI_Controller {
 
 	public function detail_villa($id)
 	{
+		$checkinDate = $this->session->userdata('date_startdate') ?? date('Y-m-d');
+		$checkoutDate = $this->session->userdata('date_enddat') ?? (new DateTime())->modify("+1 day")->format('Y-m-d');
+
         $data["villa"] = $this->m->getData("villa", ["id" => $id])->row();
-        $data["rooms"] = $this->m->getData("rooms", ["villa_id" => $id])->result();
-        $data["others"] = $this->m->getData("villa", ["id !=" => $id])->result();
+		$data["others"] = $this->m->getData("villa", ["id !=" => $id])->result();
         $data["fasilitas"] = $this->m->get_villa_fasilitass($id);
         $data["gallery"] = $this->m->getData("villa_galery", ["villa_id" => $id])->result();
+        $data["rooms"] = $this->db->query("call check_booked_villa_date($checkinDate, $checkoutDate, $id)")->result();
 		$this->load->view('header', $data);
 		$this->load->view('detailVilla',$data);
 		$this->load->view('footer');
@@ -322,6 +328,9 @@ class Home extends CI_Controller {
 
 	public function search()
 	{
+		$this->session->set_userdata("date_startdate", $_GET['checkin']);
+		$this->session->set_userdata("date_enddate", $_GET['checkout']);
+
         $cari = $this->input->post("cari");
         $tipe = $this->input->post("tipe");
 

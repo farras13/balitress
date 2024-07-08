@@ -69,7 +69,8 @@
                   
                   <tfoot>
                   <tr>
-                    <th>Name</th>
+										<th>Name</th>
+                    <th>Lite Description</th>
                     <th>Description</th>
                     <th>Thumbnail</th>
                     <th>Actions</th>

@@ -80,7 +80,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="p-4">
-                                    <h5 class="text-primary"><?= $a->tipe ?></h5>
+                                    <h5 class="text-primary"><?= $a->retreat_tipe ?></h5>
                                     <a class="h5 text-decoration-none" href="<?= base_url('Home/tour') ?>"><?= $a->name ?></a>
                                     
                                     <div class="border-top mt-4 pt-4">
